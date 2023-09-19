@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Import containers
-import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './admin/containers';
+import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './Admin/containers';
 
 import {
   AvatarModule,
@@ -37,18 +37,25 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { HomeComponent } from './user/home/home/home.component';
-import { NavbarComponent } from './user/sharepage/navbar/navbar.component';
-import { FooterComponent } from './user/sharepage/footer/footer.component';
+import { MainUserComponent } from './User/main-user/main-user.component';
+import { NavbarComponent } from './User/sharepages/navbar/navbar.component';
+import { FooterComponent } from './User/sharepages/footer/footer.component';
+import { HomeComponent } from './User/pages/home/home.component';
+import { AboutComponent } from './User/pages/about/about.component';
+import { ContactComponent } from './User/pages/contact/contact.component';
+import { DefaultLayoutTeacherComponent } from './Teacher/containers-teacher/default-layout-teacher/default-layout-teacher.component';
+import { TeacherHeaderComponent } from './Teacher/containers-teacher/default-layout-teacher/teacher-header/teacher-header.component';
+import { TeacherFooterComponent } from './Teacher/containers-teacher/default-layout-teacher/teacher-footer/teacher-footer.component';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
-  DefaultLayoutComponent
+  DefaultLayoutComponent,
+  DefaultLayoutTeacherComponent
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, HomeComponent, NavbarComponent, FooterComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, MainUserComponent, NavbarComponent, FooterComponent, HomeComponent, AboutComponent, ContactComponent, TeacherHeaderComponent, TeacherFooterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -1,74 +1,74 @@
 import { INavData } from '@coreui/angular';
 
-export const navItems: INavData[] = [
+export const navTeacherItems: INavData[] = [
 
 
   {
     name: 'Forms',
-    url: '/admin/forms',
+    url: '/teacher/forms',
     iconComponent: { name: 'cil-notes' },
     children: [
       {
         name: 'Form Control',
-        url: '/admin/forms/form-control'
+        url: '/teacher/forms/form-control'
       },
       {
         name: 'Select',
-        url: '/forms/select'
+        url: '/teacher/forms/select'
       },
       {
         name: 'Checks & Radios',
-        url: '/forms/checks-radios'
+        url: '/teacher/forms/checks-radios'
       },
       {
         name: 'Range',
-        url: '/forms/range'
+        url: '/teacher/forms/range'
       },
       {
         name: 'Input Group',
-        url: '/forms/input-group'
+        url: '/teacher/forms/input-group'
       },
       {
         name: 'Floating Labels',
-        url: '/forms/floating-labels'
+        url: '/teacher/forms/floating-labels'
       },
       {
         name: 'Layout',
-        url: '/forms/layout'
+        url: '/teacher/forms/layout'
       },
       {
         name: 'Validation',
-        url: '/forms/validation'
+        url: '/teacher/forms/validation'
       }
     ]
   },
-  {
-    title: true,
-    name: 'Extras'
-  },
-  {
-    name: 'Pages',
-    url: '/login',
-    iconComponent: { name: 'cil-star' },
-    children: [
-      {
-        name: 'Login',
-        url: '/login'
-      },
-      {
-        name: 'Register',
-        url: '/register'
-      },
-      {
-        name: 'Error 404',
-        url: '/404'
-      },
-      {
-        name: 'Error 500',
-        url: '/500'
-      }
-    ]
-  },
+  // {
+  //   title: true,
+  //   name: 'Extras'
+  // },
+  // {
+  //   name: 'Pages',
+  //   url: '/login',
+  //   iconComponent: { name: 'cil-star' },
+  //   children: [
+  //     {
+  //       name: 'Login',
+  //       url: '/login'
+  //     },
+  //     {
+  //       name: 'Register',
+  //       url: '/register'
+  //     },
+  //     {
+  //       name: 'Error 404',
+  //       url: '/404'
+  //     },
+  //     {
+  //       name: 'Error 500',
+  //       url: '/500'
+  //     }
+  //   ]
+  // },
   // {
   //   title: true,
   //   name: 'Links',
