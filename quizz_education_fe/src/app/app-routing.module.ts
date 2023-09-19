@@ -6,7 +6,6 @@ import { Page404Component } from './admin/views/pages/page404/page404.component'
 import { Page500Component } from './admin/views/pages/page500/page500.component';
 import { LoginComponent } from './admin/views/pages/login/login.component';
 import { RegisterComponent } from './admin/views/pages/register/register.component';
-import { HomeComponent } from './user/home/home/home.component';
 const routes: Routes = [
   {
     path: '',
@@ -92,13 +91,7 @@ const routes: Routes = [
     data: {
       title: 'Login Page'
     }
-  }, {
-    path: 'home',
-    component: HomeComponent,
-    data: {
-      title: 'Home Page'
-    }
-  },
+  }, 
   {
     path: 'register',
     component: RegisterComponent,

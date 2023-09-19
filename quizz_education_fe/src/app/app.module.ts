@@ -38,6 +38,8 @@ import {
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { HomeComponent } from './user/home/home/home.component';
+import { NavbarComponent } from './user/sharepage/navbar/navbar.component';
+import { FooterComponent } from './user/sharepage/footer/footer.component';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -46,7 +48,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, HomeComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, HomeComponent, NavbarComponent, FooterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

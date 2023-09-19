@@ -1,0 +1,7 @@
+.footer{
+    overflow: hidden;
+    position: sticky;
+    top: 100%;
+    background-color: aliceblue;
+    padding: 20px 10px;
+}
