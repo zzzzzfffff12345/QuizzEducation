@@ -1,13 +1,17 @@
 package com.vnpt.quizz_education_be.Entity;
 
 import java.io.Serializable;
-
+import java.sql.Date;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -29,8 +33,40 @@ public class TaiKhoan implements Serializable {
     private String email;
 
     @Column(name = "trang_thai")
-    private boolean trangThai;
+    private Boolean trangThai;
 
-    
-    
+    @Column(name = "can_cuoc_cong_dan")
+    private String canCuocCongDan;
+
+    @Column(name = "ho_va_ten")
+    private String hoVaTen;
+
+    @Column(name = "gioi_tinh")
+    private Boolean gioiTinh;
+
+    @Column(name = "ngay_sinh")
+    private Date ngaySinh;
+
+    @Column(name = "dia_chi")
+    private String diaChi;
+
+    @Column(name = "so_dien_thoai")
+    private String soDienThoai;
+
+    @Column(name = "ngay_tao_tai_khoan")
+    private Date ngayTaoTaiKhoan;
+
+    @Column(name = "anh_dai_dien")
+    private String anhDaiDien;
+
+    // Relationship 1-N
+
+    @ManyToOne
+    @JoinColumn(name = "ma_vai_tro")
+    VaiTro vaiTro;
+
+    @ManyToOne
+    @JoinColumn(name = "ma_lop")
+    LopThi lopThi;
+
 }
