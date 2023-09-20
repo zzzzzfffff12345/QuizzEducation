@@ -1,0 +1,30 @@
+*{
+    font-family: "Nunito", sans-serif;
+}
+nav{
+    background-color: #f8f9fa !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+.active-link{
+    font-weight: bold;
+    color: #17a2b8 !important;
+    
+}   
+.text-primary{
+    color: #17a2b8 !important;
+    font-size: 45px;
+}
+.btn-primary{
+    background-color: #17a2b8 !important;
+    border: none;
+    border-radius: 10px;
+}
+.nav-item {
+    // padding: 30px 35px;
+    color: #00394f;
+    outline: none;
+    font-size: 18px;
+}
+.nav-link{
+    margin-left: 20px;
+}

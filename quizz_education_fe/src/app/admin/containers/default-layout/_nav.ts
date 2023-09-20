@@ -1,262 +1,82 @@
 import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
-  {
-    name: 'Dashboard',
-    url: '/dashboard',
-    iconComponent: { name: 'cil-speedometer' },
-    badge: {
-      color: 'info',
-      text: 'NEW'
-    }
-  },
+
+
   {
     title: true,
-    name: 'Theme'
+    name: 'Kỳ Thi'
   },
   {
-    name: 'Colors',
-    url: '/theme/colors',
-    iconComponent: { name: 'cil-drop' }
-  },
-  {
-    name: 'Typography',
-    url: '/theme/typography',
-    linkProps: { fragment: 'someAnchor' },
-    iconComponent: { name: 'cil-pencil' }
-  },
-  {
-    name: 'Components',
-    title: true
-  },
-  {
-    name: 'Base',
-    url: '/base',
-    iconComponent: { name: 'cil-puzzle' },
-    children: [
-      {
-        name: 'Accordion',
-        url: '/base/accordion'
-      },
-      {
-        name: 'Breadcrumbs',
-        url: '/base/breadcrumbs'
-      },
-      {
-        name: 'Cards',
-        url: '/base/cards'
-      },
-      {
-        name: 'Carousel',
-        url: '/base/carousel'
-      },
-      {
-        name: 'Collapse',
-        url: '/base/collapse'
-      },
-      {
-        name: 'List Group',
-        url: '/base/list-group'
-      },
-      {
-        name: 'Navs & Tabs',
-        url: '/base/navs'
-      },
-      {
-        name: 'Pagination',
-        url: '/base/pagination'
-      },
-      {
-        name: 'Placeholder',
-        url: '/base/placeholder'
-      },
-      {
-        name: 'Popovers',
-        url: '/base/popovers'
-      },
-      {
-        name: 'Progress',
-        url: '/base/progress'
-      },
-      {
-        name: 'Spinners',
-        url: '/base/spinners'
-      },
-      {
-        name: 'Tables',
-        url: '/base/tables'
-      },
-      {
-        name: 'Tabs',
-        url: '/base/tabs'
-      },
-      {
-        name: 'Tooltips',
-        url: '/base/tooltips'
-      }
-    ]
-  },
-  {
-    name: 'Buttons',
-    url: '/buttons',
-    iconComponent: { name: 'cil-cursor' },
-    children: [
-      {
-        name: 'Buttons',
-        url: '/buttons/buttons'
-      },
-      {
-        name: 'Button groups',
-        url: '/buttons/button-groups'
-      },
-      {
-        name: 'Dropdowns',
-        url: '/buttons/dropdowns'
-      }
-    ]
-  },
-  {
-    name: 'Forms',
-    url: '/forms',
+    name: 'Quản lý kỳ thi',
+    url: '/exam',
     iconComponent: { name: 'cil-notes' },
     children: [
       {
-        name: 'Form Control',
-        url: '/forms/form-control'
+        name: 'Quản lý đợt thi',
+        url: '/admin/contest'
       },
       {
-        name: 'Select',
-        url: '/forms/select'
+        name: 'Quản lý môn thi',
+        url: '/admin/exam-subjects'
       },
       {
-        name: 'Checks & Radios',
-        url: '/forms/checks-radios'
-      },
-      {
-        name: 'Range',
-        url: '/forms/range'
-      },
-      {
-        name: 'Input Group',
-        url: '/forms/input-group'
-      },
-      {
-        name: 'Floating Labels',
-        url: '/forms/floating-labels'
-      },
-      {
-        name: 'Layout',
-        url: '/forms/layout'
-      },
-      {
-        name: 'Validation',
-        url: '/forms/validation'
-      }
-    ]
-  },
-  {
-    name: 'Charts',
-    url: '/charts',
-    iconComponent: { name: 'cil-chart-pie' }
-  },
-  {
-    name: 'Icons',
-    iconComponent: { name: 'cil-star' },
-    url: '/icons',
-    children: [
-      {
-        name: 'CoreUI Free',
-        url: '/icons/coreui-icons',
-        badge: {
-          color: 'success',
-          text: 'FREE'
-        }
-      },
-      {
-        name: 'CoreUI Flags',
-        url: '/icons/flags'
-      },
-      {
-        name: 'CoreUI Brands',
-        url: '/icons/brands'
-      }
-    ]
-  },
-  {
-    name: 'Notifications',
-    url: '/notifications',
-    iconComponent: { name: 'cil-bell' },
-    children: [
-      {
-        name: 'Alerts',
-        url: '/notifications/alerts'
-      },
-      {
-        name: 'Badges',
-        url: '/notifications/badges'
-      },
-      {
-        name: 'Modal',
-        url: '/notifications/modal'
-      },
-      {
-        name: 'Toast',
-        url: '/notifications/toasts'
-      }
-    ]
-  },
-  {
-    name: 'Widgets',
-    url: '/widgets',
-    iconComponent: { name: 'cil-calculator' },
-    badge: {
-      color: 'info',
-      text: 'NEW'
-    }
-  },
-  {
-    title: true,
-    name: 'Extras'
-  },
-  {
-    name: 'Pages',
-    url: '/login',
-    iconComponent: { name: 'cil-star' },
-    children: [
-      {
-        name: 'Login',
-        url: '/login'
-      },
-      {
-        name: 'Register',
-        url: '/register'
-      },
-      {
-        name: 'Error 404',
-        url: '/404'
-      },
-      {
-        name: 'Error 500',
-        url: '/500'
+        name: 'Quản lý lớp thi',
+        url: '/admin/exam-class'
       }
     ]
   },
   {
     title: true,
-    name: 'Links',
-    class: 'py-0'
+    name: 'Người dùng'
   },
   {
-    name: 'Docs',
-    url: 'https://coreui.io/angular/docs/templates/installation',
+    name: 'Quản lý người dùng',
+    url: '/account',
+    iconComponent: { name: 'cil-star' },
+    children: [
+      {
+        name: 'Quản lý giáo viên',
+        url: '/admin/teacher'
+      },
+      {
+        name: 'Quản lý học sinh',
+        url: '/admin/user'
+      },
+    ]
+  }, {
+    title: true,
+    name: 'Đề thi'
+  },
+  {
+    name: 'Quản lý đề thi',
+    url: '/exam-papers',
+    iconComponent: { name: 'cil-star' },
+    children: [
+      {
+        name: 'Quản lý câu hỏi',
+        url: '/admin/exam-request'
+      },
+      {
+        name: 'Quản lý câu trả lời',
+        url: '/admin/exam-answer'
+      },
+    ]
+  },
+  {
+    title: true,
+    name: 'Thống kê'
+  },
+  {
+    name: 'Thống kê',
     iconComponent: { name: 'cil-description' },
-    attributes: { target: '_blank', class: '-text-dark' },
-    class: 'mt-auto'
+    class: 'mt-auto',
+    url: '/admin/report'
   },
-  {
-    name: 'Try CoreUI PRO',
-    url: 'https://coreui.io/product/angular-dashboard-template/',
-    iconComponent: { name: 'cil-layers' },
-    attributes: { target: '_blank' }
-  }
+  // {
+  //   name: 'Try CoreUI PRO',
+  //   url: 'https://coreui.io/product/angular-dashboard-template/',
+  //   iconComponent: { name: 'cil-layers' },
+  //   attributes: { target: '_blank' }
+  // }
 ];
