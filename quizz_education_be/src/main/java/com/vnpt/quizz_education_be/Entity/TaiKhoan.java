@@ -15,12 +15,16 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @SuppressWarnings("serial")
 @Data
 @Entity
-@Table(name = "TaiKhoan")
+@Table(name = "Taikhoan")
 public class TaiKhoan implements Serializable {
     @Id
     @Column(name = "ten_dang_nhap")
@@ -29,11 +33,12 @@ public class TaiKhoan implements Serializable {
     @Column(name = "mat_khau")
     private String matKhau;
 
-    @Column(name = "email")
-    private String email;
 
     @Column(name = "trang_thai")
     private Boolean trangThai;
+
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "can_cuoc_cong_dan")
     private String canCuocCongDan;
@@ -59,14 +64,14 @@ public class TaiKhoan implements Serializable {
     @Column(name = "anh_dai_dien")
     private String anhDaiDien;
 
+    @ManyToOne
+    @JoinColumn(name = "ma_lop")
+    LopThi lopThi;
+
+    
     // Relationship 1-N
 
     @ManyToOne
     @JoinColumn(name = "ma_vai_tro")
     VaiTro vaiTro;
-
-    @ManyToOne
-    @JoinColumn(name = "ma_lop")
-    LopThi lopThi;
-
 }

@@ -5,10 +5,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.vnpt.quizz_education_be.Entity.VaiTro;
+import com.vnpt.quizz_education_be.Entity.PhanCong;
 
 import java.util.List;
 
-public interface VaiTroDAO extends JpaRepository<VaiTro, Integer> {
- 
+public interface PhanCongDAO extends JpaRepository<PhanCong, Integer> {
+
 }

@@ -20,7 +20,7 @@ import lombok.Data;
 @SuppressWarnings("serial")
 @Data
 @Entity
-@Table(name = "KiThi")
+@Table(name = "Kithi")
 public class KiThi implements Serializable {
     
     @Id

@@ -22,7 +22,7 @@ import lombok.Data;
 @SuppressWarnings("serial")
 @Data
 @Entity
-@Table(name = "ChiTietKiThi")
+@Table(name = "Chitietkithi")
 public class ChiTietKiThi implements Serializable {
     
     @Id
@@ -42,5 +42,17 @@ public class ChiTietKiThi implements Serializable {
     @JoinColumn(name = "ma_ki_thi")
     KiThi kiThi;
 
+    @ManyToOne
+    @JoinColumn(name = "ma_de_thi")
+    DeThi deThi;
 
+    @ManyToOne
+    @JoinColumn(name = "ma_mon")
+    MonThi monThi;
+
+    @ManyToOne
+    @JoinColumn(name = "ma_lop")
+    LopThi lopThi;
+
+    
 }

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -19,9 +21,9 @@ import lombok.Data;
 @SuppressWarnings("serial")
 @Data
 @Entity
-@Table(name = "VaiTro")
+@Table(name = "Vaitro")
 public class VaiTro implements Serializable {
-    
+
     @Id
     @Column(name = "ma_vai_tro")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,5 +32,8 @@ public class VaiTro implements Serializable {
     @Column(name = "ten_vai_tro")
     private String tenVaiTro;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "vaiTro")
+    List<TaiKhoan> List_TK;
 
 }

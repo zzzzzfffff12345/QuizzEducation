@@ -10,6 +10,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -19,18 +20,27 @@ import lombok.Data;
 @SuppressWarnings("serial")
 @Data
 @Entity
-@Table(name = "Monthi")
-public class MonThi implements Serializable {
-
+@Table(name = "Cauhoi")
+public class CauHoi implements Serializable {
+    
     @Id
-    @Column(name = "ma_mon")
+    @Column(name = "ma_cau_hoi")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int maMon;
+    private int maCauHoi;
 
-    @Column(name = "ten_mon")
-    private String tenMon;
+    @Column(name = "noi_dung_cau_hoi")
+    private String noiDungCauHoi;
 
-    @Column(name = "thoi_gian_lam_bai")
-    private Float thoiGianLamBai;
+    @Column(name = "diem_cau_hoi")
+    private Float diemCauHoi;
 
+    @Column(name = "nhieu_dap_an")
+    private Boolean nhieuDapAn;
+
+    // Relationship N - 1
+
+    @ManyToOne
+    @JoinColumn(name = "ma_de_thi")
+    DeThi deThi;
 }
+
