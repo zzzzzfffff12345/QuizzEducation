@@ -22,13 +22,13 @@ import lombok.Data;
 @SuppressWarnings("serial")
 @Data
 @Entity
-@Table(name = "Chitietkithi")
-public class ChiTietKiThi implements Serializable {
+@Table(name = "Chitietkythi")
+public class ChiTietKyThi implements Serializable {
     
     @Id
-    @Column(name = "ma_chi_tiet_ki_thi")
+    @Column(name = "ma_chi_tiet_ky_thi")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int maChiTietKiThi;
+    private int maChiTietKyThi;
 
     @Column(name = "thoi_gian_bat_dau")
     private Date thoiGianBatDau;
@@ -39,8 +39,8 @@ public class ChiTietKiThi implements Serializable {
     // Relationship N - 1
 
     @ManyToOne
-    @JoinColumn(name = "ma_ki_thi")
-    KiThi kiThi;
+    @JoinColumn(name = "ma_ky_thi")
+    KyThi kyThi;
 
     @ManyToOne
     @JoinColumn(name = "ma_de_thi")

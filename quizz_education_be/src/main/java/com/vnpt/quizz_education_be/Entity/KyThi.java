@@ -20,22 +20,28 @@ import lombok.Data;
 @SuppressWarnings("serial")
 @Data
 @Entity
-@Table(name = "Kithi")
-public class KiThi implements Serializable {
+@Table(name = "Kythi")
+public class KyThi implements Serializable {
     
     @Id
-    @Column(name = "ma_ki_thi")
+    @Column(name = "ma_ky_thi")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int maKiThi;
+    private int maKyThi;
 
-    @Column(name = "ten_ki_thi")
-    private String tenKiThi;
+    @Column(name = "ten_ky_thi")
+    private String tenKyThi;
 
     @Column(name = "da_dien_ra")
     private Boolean daDienRa;
 
     @Column(name = "mo_ta")
     private String moTa;
+
+    @Column(name = "thoi_gian_bat_dau")
+    private String thoiGianBatDau;
+
+    @Column(name = "thoi_gian_ket_thuc")
+    private String thoiGianKetThuc;
 
     // Relationship N - 1
 

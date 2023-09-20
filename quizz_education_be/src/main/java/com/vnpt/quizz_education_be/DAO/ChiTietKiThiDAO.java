@@ -5,10 +5,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.vnpt.quizz_education_be.Entity.ChiTietKiThi;
+import com.vnpt.quizz_education_be.Entity.ChiTietKyThi;
 
 import java.util.List;
 
-public interface ChiTietKiThiDAO extends JpaRepository<ChiTietKiThi, Integer> {
+public interface ChiTietKiThiDAO extends JpaRepository<ChiTietKyThi, Integer> {
 
 }
