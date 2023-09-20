@@ -4,83 +4,75 @@ export const navItems: INavData[] = [
 
 
   {
-    name: 'Forms',
-    url: '/admin/forms',
+    title: true,
+    name: 'Kỳ Thi'
+  },
+  {
+    name: 'Quản lý kỳ thi',
+    url: '/exam',
     iconComponent: { name: 'cil-notes' },
     children: [
       {
-        name: 'Form Control',
-        url: '/admin/forms/form-control'
+        name: 'Quản lý đợt thi',
+        url: '/admin/contest'
       },
       {
-        name: 'Select',
-        url: '/forms/select'
+        name: 'Quản lý môn thi',
+        url: '/admin/exam-subjects'
       },
       {
-        name: 'Checks & Radios',
-        url: '/forms/checks-radios'
-      },
-      {
-        name: 'Range',
-        url: '/forms/range'
-      },
-      {
-        name: 'Input Group',
-        url: '/forms/input-group'
-      },
-      {
-        name: 'Floating Labels',
-        url: '/forms/floating-labels'
-      },
-      {
-        name: 'Layout',
-        url: '/forms/layout'
-      },
-      {
-        name: 'Validation',
-        url: '/forms/validation'
+        name: 'Quản lý lớp thi',
+        url: '/admin/exam-class'
       }
     ]
   },
   {
     title: true,
-    name: 'Extras'
+    name: 'Người dùng'
   },
   {
-    name: 'Pages',
-    url: '/login',
+    name: 'Quản lý người dùng',
+    url: '/account',
     iconComponent: { name: 'cil-star' },
     children: [
       {
-        name: 'Login',
-        url: '/login'
+        name: 'Quản lý giáo viên',
+        url: '/admin/teacher'
       },
       {
-        name: 'Register',
-        url: '/register'
+        name: 'Quản lý học sinh',
+        url: '/admin/user'
+      },
+    ]
+  }, {
+    title: true,
+    name: 'Đề thi'
+  },
+  {
+    name: 'Quản lý đề thi',
+    url: '/exam-papers',
+    iconComponent: { name: 'cil-star' },
+    children: [
+      {
+        name: 'Quản lý câu hỏi',
+        url: '/admin/exam-request'
       },
       {
-        name: 'Error 404',
-        url: '/404'
+        name: 'Quản lý câu trả lời',
+        url: '/admin/exam-answer'
       },
-      {
-        name: 'Error 500',
-        url: '/500'
-      }
     ]
   },
-  // {
-  //   title: true,
-  //   name: 'Links',
-  //   class: 'py-0'
-  // },
-  // {
-  //   name: 'Docs',
-  //   url: 'https://coreui.io/angular/docs/templates/installation',
-  //   iconComponent: { name: 'cil-description' },
-  //   attributes: { target: '_blank', class: '-text-dark' },
-  //   class: 'mt-auto'
-  // },
+  {
+    title: true,
+    name: 'Thống kê'
+  },
+  {
+    name: 'Thống kê',
+    iconComponent: { name: 'cil-description' },
+    class: 'mt-auto',
+    url: '/admin/report'
+  },
   // {
   //   name: 'Try CoreUI PRO',
   //   url: 'https://coreui.io/product/angular-dashboard-template/',

@@ -11,6 +11,7 @@ import { AboutComponent } from './User/pages/about/about.component';
 import { HomeComponent } from './User/pages/home/home.component';
 import { ContactComponent } from './User/pages/contact/contact.component';
 import { DefaultLayoutTeacherComponent } from './Teacher/containers-teacher/index-teacher';
+import { HistoryComponent } from './User/pages/history/history.component';
 const routes: Routes = [
   {
     path: 'user',
@@ -18,22 +19,29 @@ const routes: Routes = [
     children: [
       { path: 'about', component: AboutComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'contact', component: ContactComponent }
+      { path: 'contact', component: ContactComponent },
+      { path: 'history', component: HistoryComponent },
+      { path: 'login', component: ContactComponent },
     ]
   }
   , {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
+    redirectTo: 'admin',
+    pathMatch: 'full',
   },
   {
-    path: '',
+    path: 'admin',
     component: DefaultLayoutComponent,
     data: {
-      title: 'Home'
+      title: 'Trang chủ'
     },
     children: [
 
+      {
+        path: 'contest',
+        loadChildren: () =>
+          import('./Admin/views/exam/exam.module').then((m) => m.CoreUIExamModule)
+      },
       {
         path: 'forms',
         loadChildren: () =>
