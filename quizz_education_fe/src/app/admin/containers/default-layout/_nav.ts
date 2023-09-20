@@ -14,15 +14,15 @@ export const navItems: INavData[] = [
     children: [
       {
         name: 'Quản lý đợt thi',
-        url: '/admin/contest'
+        url: '/exam/contest'
       },
       {
         name: 'Quản lý môn thi',
-        url: '/admin/exam-subjects'
+        url: '/exam/exam-subjects'
       },
       {
         name: 'Quản lý lớp thi',
-        url: '/admin/exam-class'
+        url: '/exam/exam-class'
       }
     ]
   },
@@ -73,10 +73,11 @@ export const navItems: INavData[] = [
     class: 'mt-auto',
     url: '/admin/report'
   },
-  // {
-  //   name: 'Try CoreUI PRO',
-  //   url: 'https://coreui.io/product/angular-dashboard-template/',
-  //   iconComponent: { name: 'cil-layers' },
-  //   attributes: { target: '_blank' }
-  // }
+
+  {
+    name: 'Try CoreUI PRO',
+    url: 'https://coreui.io/product/angular-dashboard-template/',
+    iconComponent: { name: 'cil-layers' },
+    attributes: { target: '_blank' }
+  }
 ];
