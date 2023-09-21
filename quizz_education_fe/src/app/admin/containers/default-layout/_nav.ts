@@ -37,11 +37,11 @@ export const navItems: INavData[] = [
     children: [
       {
         name: 'Quản lý giáo viên',
-        url: '/admin/teacher'
+        url: '/account/teacher'
       },
       {
         name: 'Quản lý học sinh',
-        url: '/admin/user'
+        url: '/account/user'
       },
     ]
   }, {
@@ -50,16 +50,20 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Quản lý đề thi',
-    url: '/exam-papers',
+    url: '/exam-papers-main',
     iconComponent: { name: 'cil-star' },
     children: [
       {
+        name: 'Quản lý đề thi',
+        url: '/exam-papers-main/exam-papers'
+      },
+      {
         name: 'Quản lý câu hỏi',
-        url: '/admin/exam-request'
+        url: '/exam-papers-main/exam-request'
       },
       {
         name: 'Quản lý câu trả lời',
-        url: '/admin/exam-answer'
+        url: '/exam-papers-main/exam-answer'
       },
     ]
   },
@@ -71,13 +75,6 @@ export const navItems: INavData[] = [
     name: 'Thống kê',
     iconComponent: { name: 'cil-description' },
     class: 'mt-auto',
-    url: '/admin/report'
-  },
-
-  {
-    name: 'Try CoreUI PRO',
-    url: 'https://coreui.io/product/angular-dashboard-template/',
-    iconComponent: { name: 'cil-layers' },
-    attributes: { target: '_blank' }
+    url: '/report'
   }
 ];

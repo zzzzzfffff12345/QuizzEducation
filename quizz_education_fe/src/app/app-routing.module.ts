@@ -33,7 +33,7 @@ const routes: Routes = [
     path: '',
     component: DefaultLayoutComponent,
     data: {
-      title: 'Home'
+      title: 'Admin'
     },
     children: [
 
@@ -41,6 +41,21 @@ const routes: Routes = [
         path: 'exam',
         loadChildren: () =>
           import('./Admin/views/exam/exam.module').then((m) => m.CoreUIExamModule)
+      },
+      {
+        path: 'account',
+        loadChildren: () =>
+          import('./Admin/views/account/account.module').then((m) => m.UIAccountModule)
+      },
+      {
+        path: 'exam-papers-main',
+        loadChildren: () =>
+          import('./Admin/views/exam-papers-main/exam-papers-main.module').then((m) => m.CoreUIExamPaperMainModule)
+      },
+      {
+        path: 'report',
+        loadChildren: () =>
+          import('./Admin/views/report/report.module').then((m) => m.CoreUIReportModule)
       },
       {
         path: 'pages',

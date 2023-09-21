@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContestComponent } from './contest/contest.component';
-import { ExamClassComponent } from './exam-class/exam-class.component';
-import { ExamSubjectsComponent } from './exam-subjects/exam-subjects.component';
-
+import { ExamAnswerComponent } from './exam-answer/exam-answer.component';
+import { ExamPapersComponent } from './exam-papers/exam-papers.component';
+import { ExamClassComponent } from '../exam/exam-class/exam-class.component';
 
 
 const routes: Routes = [
@@ -19,24 +18,23 @@ const routes: Routes = [
         redirectTo: 'exam-subjects'
       },
       {
-        path: 'exam-subjects',
-        component: ExamSubjectsComponent,
+        path: 'exam-answer',
+        component: ExamAnswerComponent,
         data: {
-          title: 'Exam Subjects'
+          title: 'Exam Answer'
         }
       },
-
       {
-        path: 'contest',
-        component: ContestComponent,
+        path: 'exam-papers',
+        component: ExamPapersComponent,
         data: {
-          title: 'Contest'
+          title: 'Exam Papers'
         }
-      }, {
-        path: 'exam-class',
+      },{
+        path: 'exam-request',
         component: ExamClassComponent,
         data: {
-          title: 'Exam Class'
+          title: 'Exam Request'
         }
       }
     ]
@@ -47,5 +45,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class FormsRoutingModule {
+export class ExamPapersMainRoutingModule {
 }

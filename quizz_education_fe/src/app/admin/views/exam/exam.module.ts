@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from "angular-datatables";
 
 import {
   ButtonGroupModule,
@@ -16,12 +17,17 @@ import {
 import { DocsComponentsModule } from '@docs-components/docs-components.module';
 
 import { FormsRoutingModule } from './exam-routing.module';
-import { FormControlsComponent } from './form-controls/form-controls.component';
+import { ExamSubjectsComponent } from './exam-subjects/exam-subjects.component';
+import { TableContestComponent } from './contest/table-contest/table-contest.component';
+
+import { ContestComponent } from './contest/contest.component';
 
 
 @NgModule({
   declarations: [
-    FormControlsComponent,
+    TableContestComponent,
+    ExamSubjectsComponent,
+    ContestComponent,
   ],
   imports: [
     CommonModule,
@@ -38,7 +44,7 @@ import { FormControlsComponent } from './form-controls/form-controls.component';
     ButtonGroupModule,
     DropdownModule,
     SharedModule,
-    ListGroupModule
+    ListGroupModule, DataTablesModule
   ]
 })
 export class CoreUIExamModule {

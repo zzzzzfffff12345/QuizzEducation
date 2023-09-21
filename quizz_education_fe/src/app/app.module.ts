@@ -49,8 +49,8 @@ import { TeacherFooterComponent } from './Teacher/containers-teacher/default-lay
 import { HistoryComponent } from './User/pages/history/history.component';
 import { HomeHeaderComponent } from './User/pages/home/home-header/home-header.component';
 import { HomeContentComponent } from './User/pages/home/home-content/home-content.component';
-import { TeacherComponent } from './Admin/views/account/teacher/teacher.component';
-import { UserComponent } from './Admin/views/account/user/user.component';
+import { ReportComponent } from './Admin/views/report/report.component';
+import { ServiceComponent } from './Admin/service/Api.service';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -60,7 +60,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, MainUserComponent, NavbarComponent, FooterComponent, HomeComponent, AboutComponent, ContactComponent, TeacherHeaderComponent, TeacherFooterComponent, HistoryComponent, HomeHeaderComponent, HomeContentComponent, TeacherComponent, UserComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, MainUserComponent, NavbarComponent, FooterComponent, HomeComponent, AboutComponent, ContactComponent, TeacherHeaderComponent, TeacherFooterComponent, HistoryComponent, HomeHeaderComponent, HomeContentComponent, ReportComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
