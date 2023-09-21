@@ -33,7 +33,11 @@ const routes: Routes = [
     path: 'admin',
     component: DefaultLayoutComponent,
     data: {
+<<<<<<< Updated upstream
       title: 'Trang chủ'
+=======
+      title: 'Admin'
+>>>>>>> Stashed changes
     },
     children: [
 
@@ -59,7 +63,7 @@ const routes: Routes = [
     path: 'teacher',
     component: DefaultLayoutTeacherComponent,
     data: {
-      title: 'Home'
+      title: 'Admin'
     },
     children: [
 

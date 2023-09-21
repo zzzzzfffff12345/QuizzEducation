@@ -4,10 +4,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContestComponent  } from './contest/contest.component';
 
 const routes: Routes = [
+<<<<<<< Updated upstream
     {
       path: '',
       data: {
         title: 'Kỳ thi'
+=======
+  {
+    path: '',
+    data: {
+      title: 'Exam'
+    },
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'exam-subjects'
+>>>>>>> Stashed changes
       },
       children: [
         {

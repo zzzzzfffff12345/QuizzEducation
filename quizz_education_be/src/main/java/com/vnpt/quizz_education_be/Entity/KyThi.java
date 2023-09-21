@@ -38,10 +38,10 @@ public class KyThi implements Serializable {
     private String moTa;
 
     @Column(name = "thoi_gian_bat_dau")
-    private String thoiGianBatDau;
+    private Date thoiGianBatDau;
 
     @Column(name = "thoi_gian_ket_thuc")
-    private String thoiGianKetThuc;
+    private Date thoiGianKetThuc;
 
     // Relationship N - 1
 
