@@ -1,35 +1,47 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ContestComponent  } from './contest/contest.component';
+import { FormControlsComponent } from './form-controls/form-controls.component';
 
 const routes: Routes = [
-    {
-      path: '',
-      data: {
-        title: 'Kỳ thi'
+  {
+    path: '',
+    data: {
+      title: 'Kì thi'
+    },
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'exam-subjects'
       },
-      children: [
-        {
-          path: '',
-          pathMatch: 'full',
-          redirectTo: 'contest'
-        },
-        {
-          path: 'contest',
-          component: ContestComponent,
-          data: {
-            title: 'Contest'
-          }
+      {
+        path: 'exam-subjects',
+        component: FormControlsComponent,
+        data: {
+          title: 'Exam Subjects'
         }
-      ]
-    }
-  ];
-  
-  @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
-  })
-  export class ExamRoutingModule {
+      },
+      {
+        path: 'contest',
+        component: FormControlsComponent,
+        data: {
+          title: 'Contest'
+        }
+      },{
+        path: 'exam-class',
+        component: FormControlsComponent,
+        data: {
+          title: 'Exam Class'
+        }
+      }
+    ]
   }
-  
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class FormsRoutingModule {
+}

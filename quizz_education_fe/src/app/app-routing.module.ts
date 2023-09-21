@@ -26,28 +26,22 @@ const routes: Routes = [
   }
   , {
     path: '',
-    redirectTo: 'admin',
-    pathMatch: 'full',
+    redirectTo: 'contest',
+    pathMatch: 'full'
   },
   {
-    path: 'admin',
+    path: '',
     component: DefaultLayoutComponent,
     data: {
-      title: 'Trang chủ'
+      title: 'Home'
     },
     children: [
 
       {
-        path: 'contest',
+        path: 'exam',
         loadChildren: () =>
           import('./Admin/views/exam/exam.module').then((m) => m.CoreUIExamModule)
       },
-      {
-        path: 'forms',
-        loadChildren: () =>
-          import('./Admin/views/forms/forms.module').then((m) => m.CoreUIFormsModule)
-      },
-
       {
         path: 'pages',
         loadChildren: () =>
