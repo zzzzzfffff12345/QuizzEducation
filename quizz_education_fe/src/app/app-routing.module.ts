@@ -17,7 +17,7 @@ const routes: Routes = [
     path: 'user',
     component: MainUserComponent,
     children: [
-      { path: 'about', component: AboutComponent },
+      { path: 'exam', component: AboutComponent },
       { path: 'home', component: HomeComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'history', component: HistoryComponent },
