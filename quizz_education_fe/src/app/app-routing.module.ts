@@ -13,6 +13,11 @@ import { ContactComponent } from './User/pages/contact/contact.component';
 import { DefaultLayoutTeacherComponent } from './Teacher/containers-teacher/index-teacher';
 import { HistoryComponent } from './User/pages/history/history.component';
 const routes: Routes = [
+   {
+    path: '',
+    redirectTo: '/user/home',
+    pathMatch: 'full'
+  },
   {
     path: 'user',
     component: MainUserComponent,
@@ -24,19 +29,10 @@ const routes: Routes = [
       { path: 'login', component: ContactComponent },
     ]
   }
-  , {
-    path: '',
-    redirectTo: 'contest',
-    pathMatch: 'full'
-  },
+ ,
   {
-    path: '',
+    path: 'admin',
     component: DefaultLayoutComponent,
-    data: {
-
-      title: 'Admin'
-
-    },
     children: [
 
       {
@@ -54,9 +50,6 @@ const routes: Routes = [
   {
     path: 'teacher',
     component: DefaultLayoutTeacherComponent,
-    data: {
-      title: 'Admin'
-    },
     children: [
 
       {
