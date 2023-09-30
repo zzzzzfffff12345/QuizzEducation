@@ -51,6 +51,8 @@ import { HomeHeaderComponent } from './User/pages/home/home-header/home-header.c
 import { HomeContentComponent } from './User/pages/home/home-content/home-content.component';
 import { TeacherComponent } from './Admin/views/account/teacher/teacher.component';
 import { UserComponent } from './Admin/views/account/user/user.component';
+// import { LoginComponent } from './Admin/views/pages/login/Login.component';
+import { LoginComponent } from './User/pages/login/login.component';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -60,7 +62,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, MainUserComponent, NavbarComponent, FooterComponent, HomeComponent, AboutComponent, ContactComponent, TeacherHeaderComponent, TeacherFooterComponent, HistoryComponent, HomeHeaderComponent, HomeContentComponent, TeacherComponent, UserComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, MainUserComponent, NavbarComponent, FooterComponent, HomeComponent, AboutComponent, ContactComponent, TeacherHeaderComponent, TeacherFooterComponent, HistoryComponent, HomeHeaderComponent, HomeContentComponent, TeacherComponent, UserComponent, LoginComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'history', component: HistoryComponent },
-      { path: 'login', component: ContactComponent },
+      { path: 'login', component: LoginComponent },
     ]
   }
  ,
@@ -93,7 +93,7 @@ const routes: Routes = [
       title: 'Register Page'
     }
   },
-  // {path: '**', redirectTo: 'dashboard'}
+  {path: '**', redirectTo: 'dashboard'}
 ];
 
 @NgModule({
