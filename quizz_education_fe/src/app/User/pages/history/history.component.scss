@@ -96,3 +96,26 @@
     text-align: center;
     margin: 20px 0px;
 }
+
+#test{
+    width:100%;
+    height: auto;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+.content-left{
+    height: 100%;
+    padding-bottom: 30px;
+}
+// .content-left {
+//     position: fixed;
+//     top: 100;
+//     left: 0;
+//     height: 100%;
+//     overflow-y: auto;
+// }
+
+// .content-right {
+//     margin-left: 390px;
+//     padding: 20px; 
+// }

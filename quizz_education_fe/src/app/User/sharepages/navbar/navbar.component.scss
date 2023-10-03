@@ -28,3 +28,112 @@ nav{
 .nav-link{
     margin-left: 20px;
 }
+
+// Account của học sinh khi đăng nhập
+ .nav-account .avarta-footer{
+    width: 50px; 
+    height: 50px;
+}
+
+ .nav-account .avarta-footer img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.nav-account-info {
+  margin-left: 10px;
+}
+
+
+/*----------------------------- Profile modal ----------------------------- */
+
+.profile-header {
+    width: 100%;
+    height: fit-content;
+}
+
+.profile-header .background_profile {
+    width: 100%;
+    height: 150px;
+}
+
+.profile-header .background_profile .background_profile_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+}
+
+.profile-header .role_avata {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    align-items: center;
+    margin-top: -50px;
+}
+
+.profile-header .avata_profile {
+    width: 150px;
+    height: 150px;
+    /* position: relative;
+    top: -50px;
+    left: 40px; */
+    padding: 6px; 
+    border-radius: 50%;
+    background-color: #F2F4F7;
+}
+
+.profile-header .avata_profile .avata_profile_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-header .role_profile {
+    margin-top: 40px;
+}
+
+.profile-header .role_profile .badge-purple {
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-family: "Inter";
+
+}
+.profile-body {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.profile-body .profile-body-content {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.profile-body .profile-body-content .profile-body-content-header,
+.profile-body .profile-body-content .profile-body-content-body {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px ;
+    border-bottom: 1px solid #101828;
+}
+
+.profile-body-content-header-icon {
+    background-color: var(--primary_25);
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+.profile-body .profile-body-content .profile-body-content-body {
+    border-bottom:none;
+}
+
+
