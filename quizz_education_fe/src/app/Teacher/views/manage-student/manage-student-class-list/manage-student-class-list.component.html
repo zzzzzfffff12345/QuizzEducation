@@ -1,0 +1,18 @@
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+    <tr>
+      <th>Mã Lớp</th>
+      <th>Tên lớp</th>
+      <th>Số Lượng tối đa</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let class of classList">
+      <td>{{ class.maLopThi }}</td>
+      <td>{{ class.tenLop }}</td>
+      <td>{{ class.soLuongToiDa }}</td>
+      <td><button class="btn btn-primary" [routerLink]="getRouteLink(id,id2,class.maLopThi)">Chi tiết</button></td>
+    </tr>
+  </tbody>
+</table>

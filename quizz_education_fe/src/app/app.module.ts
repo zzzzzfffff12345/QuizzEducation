@@ -55,6 +55,7 @@ import { HomeHeaderComponent } from './User/pages/home/home-header/home-header.c
 import { HomeComponent } from './User/pages/home/home.component';
 import { FooterComponent } from './User/sharepages/footer/footer.component';
 import { NavbarComponent } from './User/sharepages/navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -108,6 +109,7 @@ const APP_CONTAINERS = [
     ListGroupModule,
     CardModule,
     NgScrollbarModule,
+    HttpClientModule
   ],
   providers: [
     {

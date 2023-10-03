@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vnpt.quizz_education_be.DAO.ChiTietKiThiDAO;
 import com.vnpt.quizz_education_be.DAO.LopThiDAO;
 import com.vnpt.quizz_education_be.Entity.LopThi;
 
@@ -22,14 +24,17 @@ import com.vnpt.quizz_education_be.Entity.LopThi;
 @CrossOrigin(origins = "*")
 @RequestMapping("/quizzeducation/api")
 public class LopThiRestController {
-   
+
     @Autowired
     LopThiDAO lopThiDAO;
 
-    @GetMapping("lopthi")
-    public ResponseEntity<List<LopThi>> findAll() {
-        return ResponseEntity.ok(lopThiDAO.findAll());
-    }
+    @Autowired
+    ChiTietKiThiDAO chiTietKiThiDAO;
+
+    // @GetMapping("lopthi")
+    // public ResponseEntity<List<LopThi>> findAll() {
+    //     return ResponseEntity.ok(lopThiDAO.findAll());
+    // }
 
     // Get 1 đối tượng thông qua id
     @GetMapping("lopthi/{id}")
@@ -70,5 +75,10 @@ public class LopThiRestController {
 
         return ResponseEntity.ok().build();
     }
-}
 
+    @GetMapping("lopthi")
+    public List<LopThi> getLopThiByKyThiAndMonThi(@RequestParam("kithi") Integer kithiId,
+            @RequestParam("monthi") Integer monThiId) {
+        return chiTietKiThiDAO.getLopThiByKiThiAndMonThi(kithiId, monThiId);
+    }
+}

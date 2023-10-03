@@ -92,6 +92,13 @@ const routes: Routes = [
             (m) => m.TestKitModule
           ),
       },
+      {
+        path: 'manage-student',
+        loadChildren: () =>
+          import('./Teacher/views/manage-student/manage-student.module').then(
+            (m) => m.ManageStudentModule
+          ),
+      },
     ],
   },
   {

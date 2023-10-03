@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vnpt.quizz_education_be.DAO.ChiTietKiThiDAO;
 import com.vnpt.quizz_education_be.DAO.MonThiDAO;
 import com.vnpt.quizz_education_be.Entity.MonThi;
 
@@ -26,9 +28,12 @@ public class MonThiRestController {
     @Autowired
     MonThiDAO monThiDAO;
 
+    @Autowired
+    ChiTietKiThiDAO chiTietKiThiDAO;
+
     @GetMapping("monthi")
-    public ResponseEntity<List<MonThi>> findAll() {
-        return ResponseEntity.ok(monThiDAO.findAll());
+    public List<MonThi> findMonThiByKiThiId(@RequestParam("kithi") Integer kiThiId) {
+        return chiTietKiThiDAO.getMonThiInKiThi(kiThiId);
     }
 
     // Get 1 đối tượng thông qua id
