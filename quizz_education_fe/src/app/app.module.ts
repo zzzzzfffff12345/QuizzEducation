@@ -50,7 +50,7 @@ import { HistoryComponent } from './User/pages/history/history.component';
 import { HomeHeaderComponent } from './User/pages/home/home-header/home-header.component';
 import { HomeContentComponent } from './User/pages/home/home-content/home-content.component';
 import { ReportComponent } from './Admin/views/report/report.component';
-import { ServiceComponent } from './Admin/service/Api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -87,7 +87,8 @@ const APP_CONTAINERS = [
     BadgeModule,
     ListGroupModule,
     CardModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    HttpClientModule,
   ],
   providers: [
     {

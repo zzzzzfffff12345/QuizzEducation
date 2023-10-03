@@ -14,7 +14,7 @@ import com.vnpt.quizz_education_be.DAO.VaiTroDAO;
 import com.vnpt.quizz_education_be.Entity.TaiKhoan;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/quizzeducation/api")
 public class TaiKhoanRestController {
     @Autowired

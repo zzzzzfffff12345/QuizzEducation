@@ -1,0 +1,41 @@
+<h3>Tạo Kỳ Thi</h3>
+<form>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="tenKyThi" class="form-label">Tên kỳ thi</label>
+                    <input type="text" class="form-control" id="tenKyThi" name="tenKyThi" [(ngModel)]="name"
+                        placeholder="Nhập tên kỳ thi" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="trangthai" class="form-label">Trang thái</label>
+                    <input type="text" class="form-control disabled" id="trangthai" name="trangthai" value="Chưa Thi"
+                        disabled>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="formattedStartTime" class="form-label">Thời gian bắt đầu</label>
+                    <input type="datetime-local" class="form-control" id="formattedStartTime" name="formattedStartTime"
+                        [(ngModel)]="formattedStartTime" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="formattedEndTime" class="form-label">Thời gian kết thúc</label>
+                    <input type="datetime-local" class="form-control" id="formattedEndTime" name="formattedEndTime"
+                        [(ngModel)]="formattedEndTime" required>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="error-message text-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+    <div class="modal-footer ">
+        <button class="btn btn-secondary m-lg-2" type="submit" (click)="onSubmitNew()">Làm mới</button>
+        <button type="submit" class="btn btn-primary" (click)="onSubmitCreate()">Tại kỳ thi</button>
+    </div>
+</form>
