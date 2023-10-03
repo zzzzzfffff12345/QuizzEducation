@@ -20,7 +20,6 @@ import {
   BadgeModule,
   BreadcrumbModule,
   ButtonGroupModule,
-  ButtonModule,
   CardModule,
   DropdownModule,
   FooterModule,
@@ -53,7 +52,8 @@ import { TeacherComponent } from './Admin/views/account/teacher/teacher.componen
 import { UserComponent } from './Admin/views/account/user/user.component';
 // import { LoginComponent } from './Admin/views/pages/login/Login.component';
 import { LoginComponent } from './User/pages/login/login.component';
-
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,

@@ -1,5 +1,5 @@
 *{
-    font-family: "Handlee", cursive;
+    // font-family: "Handlee", cursive;
     text-decoration: none;
 }
 .bg-primary {
@@ -8,10 +8,41 @@
 .router{
     margin-top: 10px;
 }
- /* Định dạng các mục trong lịch sử câu hỏi đã làm */
- .history-item {
+.content-left{
+    border-radius: 10px;
+}
+
+.bg-blue1{
+    background-color: #007bff;
+}
+
+.question-footer{
+    border-top: 1px solid black;
     padding: 10px;
-    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+.question-footer button{
+    padding: 3px 10px;
+    border-radius: 5px;
+    margin: 2px;
+}
+.question1 {
+    font-size: 18px;
     margin-bottom: 10px;
-    background-color: #f9f9f9;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+.options{
+    margin-bottom: 20px;
+}
+.options label {
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    font-size: 16px;
+
 }
