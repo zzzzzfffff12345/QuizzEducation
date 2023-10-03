@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'history', component: HistoryComponent },
-      { path: 'login', component: LoginComponent },
+      // { path: 'login1', component: LoginComponent },
     ]
   }
  ,
@@ -87,13 +87,13 @@ const routes: Routes = [
     }
   },
   {
-    path: 'register',
+    path: 'changepassword',
     component: RegisterComponent,
     data: {
       title: 'Register Page'
     }
   },
-  {path: '**', redirectTo: 'dashboard'}
+  {path: '**', redirectTo: '404'}
 ];
 
 @NgModule({
