@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vnpt.quizz_education_be.DAO.ChiTietKiThiDAO;
 import com.vnpt.quizz_education_be.DAO.KiThiDAO;
 import com.vnpt.quizz_education_be.Entity.ChiTietKyThi;
+import com.vnpt.quizz_education_be.Entity.LichSuThi;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -86,14 +87,15 @@ public class ChiTietKyThiRestController {
     }
 
     @PutMapping("chitietkythi/{id}")
-    public ResponseEntity<ChiTietKyThi> put(@PathVariable("id") Integer maChiTietKyThi,
-            @RequestBody ChiTietKyThi chitietkythi) {
+    public ResponseEntity<ChiTietKyThi> put(@PathVariable("id") Integer maChiTietKyThi,@RequestBody ChiTietKyThi chitietkythi) {
         if (!chiTietKyThiDAO.existsById(maChiTietKyThi)) {
             return ResponseEntity.notFound().build();
         }
         chiTietKyThiDAO.save(chitietkythi);
         return ResponseEntity.ok(chitietkythi);
     }
+
+
 
     @DeleteMapping("chitietkythi/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Integer maChiTietKyThi) {

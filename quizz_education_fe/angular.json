@@ -38,6 +38,7 @@
             ],
             "styles": [
               "src/scss/styles.scss",
+<<<<<<< HEAD
               "node_modules/datatables.net-dt/css/jquery.dataTables.min.css",
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css"
@@ -45,6 +46,10 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/datatables.net/js/jquery.dataTables.min.js"
+=======
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
+>>>>>>> origin/Dev_Thao
             ],
             "allowedCommonJsDependencies": [
               "chart.js"

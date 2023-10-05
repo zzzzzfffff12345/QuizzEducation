@@ -20,7 +20,6 @@ import {
   BadgeModule,
   BreadcrumbModule,
   ButtonGroupModule,
-  ButtonModule,
   CardModule,
   DropdownModule,
   FooterModule,
@@ -52,6 +51,10 @@ import { HomeContentComponent } from './User/pages/home/home-content/home-conten
 import { ReportComponent } from './Admin/views/report/report.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { TeacherComponent } from './Admin/views/account/teacher/teacher.component';
+import { UserComponent } from './Admin/views/account/user/user.component';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,

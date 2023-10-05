@@ -6,10 +6,12 @@ import { ExamSubjectsComponent } from './exam-subjects/exam-subjects.component';
 
 
 const routes: Routes = [
+
   {
     path: '',
     data: {
       title: 'Kì thi'
+
     },
     children: [
       {

@@ -14,29 +14,29 @@ import { DefaultLayoutTeacherComponent } from './Teacher/containers-teacher/inde
 import { HistoryComponent } from './User/pages/history/history.component';
 const routes: Routes = [
   {
-    path: 'user',
-    component: MainUserComponent,
-    children: [
-      { path: 'about', component: AboutComponent },
-      { path: 'home', component: HomeComponent },
-      { path: 'contact', component: ContactComponent },
-      { path: 'history', component: HistoryComponent },
-      { path: 'login', component: ContactComponent },
-    ]
-  }
-  , {
     path: '',
-    redirectTo: 'contest',
+    redirectTo: '/user/home',
     pathMatch: 'full'
   },
   {
-    path: '',
+    path: 'user',
+    component: MainUserComponent,
+    children: [
+      { path: 'exam', component: AboutComponent },
+      { path: 'home', component: HomeComponent },
+      { path: 'contact', component: ContactComponent },
+      { path: 'history', component: HistoryComponent },
+      // { path: 'login1', component: LoginComponent },
+    ]
+  }
+  ,
+  {
+    path: 'admin',
     component: DefaultLayoutComponent,
     data: {
       title: 'Admin'
     },
     children: [
-
       {
         path: 'exam',
         loadChildren: () =>
@@ -67,9 +67,6 @@ const routes: Routes = [
   {
     path: 'teacher',
     component: DefaultLayoutTeacherComponent,
-    data: {
-      title: 'Home'
-    },
     children: [
 
       {
@@ -107,13 +104,13 @@ const routes: Routes = [
     }
   },
   {
-    path: 'register',
+    path: 'changepassword',
     component: RegisterComponent,
     data: {
       title: 'Register Page'
     }
   },
-  // {path: '**', redirectTo: 'dashboard'}
+  { path: '**', redirectTo: '404' }
 ];
 
 @NgModule({
