@@ -44,10 +44,31 @@ public class ChiTietKyThiRestController {
         return ResponseEntity.ok(optional.get());
     }
 
-    // Get 1 đối tượng thông qua id
+    // Get 1 đối tượng thông qua id kì thi
     @GetMapping("chitietkythi/kythi/{id}")
     public ResponseEntity<List<ChiTietKyThi>> findByMaKyThi(@PathVariable("id") int maKyThi) {
         List<ChiTietKyThi> resultList = chiTietKyThiDAO.findByMaKyThi(maKyThi);
+        if (resultList.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(resultList);
+    }
+
+    
+    // Get 1 đối tượng thông qua id của môn thi
+    @GetMapping("chitietkythi/monthi/{id}")
+    public ResponseEntity<List<ChiTietKyThi>> findByMaMon(@PathVariable("id") int maMon) {
+        List<ChiTietKyThi> resultList = chiTietKyThiDAO.findByMaMon(maMon);
+        if (resultList.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(resultList);
+    }
+
+        // Get 1 đối tượng thông qua id của môn thi
+    @GetMapping("chitietkythi/lopthi/{id}")
+    public ResponseEntity<List<ChiTietKyThi>> findByMaLopThi(@PathVariable("id") int maLop) {
+        List<ChiTietKyThi> resultList = chiTietKyThiDAO.findByMaLopThi(maLop);
         if (resultList.isEmpty()) {
             return ResponseEntity.notFound().build();
         }

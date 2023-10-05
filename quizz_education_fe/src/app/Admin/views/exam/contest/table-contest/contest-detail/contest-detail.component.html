@@ -1,53 +1,95 @@
-<h3>Chi tiết kì thi</h3>
-<form>
-  <div class="row">
-   
+<!-- <div class="card">
+  <p-table
+    [value]="listkyThi"
+    dataKey="tenKyThi"
+    [tableStyle]="{ 'min-width': '60rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 20%">Tên Kỳ Thi</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-kyThi let-expanded="expanded">
+      <tr>
+        <td>
+          <button
+            type="button"
+            pButton
+            pRipple
+            [pRowToggler]="kyThi"
+            class="btn btn-info p-button-text p-button-rounded p-button-plain"
+            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+          ></button>
+        </td>
+        <td>{{ kyThi.tenKyThi }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-kyThi>
+      <tr>
+        <td colspan="7">
+          <div class="p-3">
+            <p-table [value]="maKyThi" dataKey="maKyThi">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th pSortableColumn="id">
+                    Mã Chi Tiết Kỳ Thi<p-sortIcon field="price"></p-sortIcon>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-listChiTietkyThi>
+                <tr>
+                  <td>{{listChiTietkyThi.maChiTietKyThi}}</td>
+                  <td></td></tr>
+                </ng-template>
+            </p-table>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div> -->
+<div class="card">
+  <p-table [value]="listChiTietKyThi" dataKey="maChiTietKyThi" [tableStyle]="{ 'min-width': '60rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 20%">Tên Kỳ Thi</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-ChiTietkyThi let-expanded="expanded">
+      <tr>
+        <td>
+          <button type="button" pButton pRipple [pRowToggler]="ChiTietkyThi"
+            class="btn btn-info p-button-text p-button-rounded p-button-plain"
+            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+        </td>
+        <td>{{ ChiTietkyThi.kyThi.tenKyThi }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-ChiTietkyThi>
+      <tr>
+        <td colspan="7">
+          <div class="p-3">
+            <p-table [value]="[ChiTietkyThi.monThi]" dataKey="maMon">
+              <ng-template pTemplate="header">
+      <tr>
+        <th>Tên Môn Thi</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-MonThi>
+      <tr>
+        <td>{{ MonThi.tenMon }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="6">There are no items available.</td>
+      </tr>
+    </ng-template>
+  </p-table>
 
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="select1">Lựa chọn 1</label>
-        <select class="form-control" id="select1" name="select1">
-          <option value="option1">Tùy chọn 1</option>
-          <option value="option2">Tùy chọn 2</option>
-          <option value="option3">Tùy chọn 3</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="select2">Lựa chọn 2</label>
-        <select class="form-control" id="select2" name="select2">
-          <option value="option1">Tùy chọn 1</option>
-          <option value="option2">Tùy chọn 2</option>
-          <option value="option3">Tùy chọn 3</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="input1">Trường 1</label>
-        <input type="text" class="form-control" id="input1" name="input1">
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="input2">Trường 2</label>
-        <input type="text" class="form-control" id="input2" name="input2">
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="select3">Lựa chọn 3</label>
-        <select class="form-control" id="select3" name="select3">
-          <option value="option1">Tùy chọn 1</option>
-          <option value="option2">Tùy chọn 2</option>
-          <option value="option3">Tùy chọn 3</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Gửi</button>
-</form>
-
-
-<!-- <table datatable [dtOptions]="dtOptions" class="row-border hover w-100"></table> -->
+</div>
+</td>
+</tr>
+</ng-template>
+</p-table>
+</div>

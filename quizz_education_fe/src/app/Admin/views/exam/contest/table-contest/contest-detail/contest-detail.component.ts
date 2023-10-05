@@ -1,71 +1,52 @@
 import { OnDestroy, Component, OnInit, Renderer2 } from '@angular/core';
 import { Subject } from 'rxjs';
+import { HttpSvService } from '../../../../../../service/API.service';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-contest-detail',
   templateUrl: './contest-detail.component.html',
   styleUrls: ['./contest-detail.component.scss']
 })
 export class ContestDetailComponent implements OnInit {
-  constructor(private renderer: Renderer2, private http: HttpClient) { }
+  constructor(private renderer: Renderer2, private httpService: HttpSvService, private http: HttpClient,
+    private formBuilder: FormBuilder,) { }
 
-  dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject();
-  dataTable: any[] | undefined; // Khai báo biến dataTable
-
+  listChiTietKyThi: any;
+  listkyThi: any;
   ngOnInit(): void {
-
-    this.dtOptions = {
-      ajax: {
-        url: 'http://localhost:8080/quizzeducation/api/chitietkythi',
-        type: 'GET',
-        dataType: 'json',
-        dataSrc: '',
-      },
-      columns: [{
-        title: 'Mã chi tiết kì thi',
-        data: 'maChiTietKyThi'
-      },
-      {
-        title: 'Thời gian bất đầu',
-        data: 'thoiGianBatDau',
-        render: function (data, type, full) {
-          return moment(data).format('DD/MM/YYYY HH:mm:ss');
-        }
-      }, {
-        title: 'Thời gian kết thúc',
-        data: 'thoiGianKetThuc',
-        render: function (data, type, full) {
-          return moment(data).format('DD/MM/YYYY HH:mm:ss');
-        }
-      },
-      {
-        title: 'Actions',
-        orderable: false,
-        render: function (data, type, full) {
-          const id = full.maKyThi;
-          const name = full.tenKyThi;
-
-          return `<div class="d-flex">
-            <a class="btn btn-primary btn-sm view-button m-xl-1" data-id="${id}" data-name="${name}"  data-bs-toggle="modal" data-bs-target="#exampleModal">Sửa</a>
-            </div>
-          `;
-        }
-      }
-      ]
-
-    };
-
-
-    this.renderer.listen('document', 'click', (event) => {
-      if (event.target.classList.contains('view-button')) {
-        const id = event.target.getAttribute('data-id');
-        const name = event.target.getAttribute('data-name');
-
-      }
-    });
-
+    this.getDataKyThi();
+    this.getData();
+    this.getDataKyThi2();
 
   }
+  public getData() {
+    this.httpService.getList('chitietkythi').subscribe(response => {
+      this.listChiTietKyThi = response;
+    })
+  }
+  public getDataKyThi() {
+    this.httpService.getList('kythi').subscribe(response => {
+      this.listkyThi = response;
+    })
+  }
+
+  public getDataKyThi2() {
+    const url = `http://localhost:8080/quizzeducation/api/chitietkythi/kythi/11`;
+    this.http.get(url).subscribe(
+      (response: any) => {
+        this.listkyThi = response;
+        console.log(this.listkyThi); // In dữ liệu lấy được từ API ra console
+      },
+      (error: any) => {
+        console.error('Lỗi khi gọi API:', error);
+      }
+    );
+  }
+
+  // test chơi chơi
+  
+
+
 }

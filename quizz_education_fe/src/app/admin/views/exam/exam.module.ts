@@ -20,16 +20,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsRoutingModule } from './exam-routing.module';
 import { ExamSubjectsComponent } from './exam-subjects/exam-subjects.component';
+import { ExamClassComponent } from './exam-class/exam-class.component';
 import { TableContestComponent } from './contest/table-contest/table-contest.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { ContestComponent } from './contest/contest.component';
 import { ContestCreateComponent } from './contest/table-contest/contest-create/contest-create.component';
 import { ContestDetailComponent } from './contest/table-contest/contest-detail/contest-detail.component';
-import { TableContestNGComponent } from './contest/table-contest/table-contest-ng/table-contest-ng.component';
 
 import { PaginatorModule } from 'primeng/paginator';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
+import { TabViewModule } from 'primeng/tabview';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ExamSubjectCreateComponent } from './exam-subjects/exam-subject-create/exam-subject-create.component';
+import { ExamClassCreateComponent } from './exam-class/exam-class-create/exam-class-create.component';
 @NgModule({
   declarations: [
     TableContestComponent,
@@ -37,7 +45,9 @@ import { ButtonModule } from 'primeng/button';
     ContestComponent,
     ContestCreateComponent,
     ContestDetailComponent,
-    TableContestNGComponent,
+    ExamClassComponent,
+    ExamSubjectCreateComponent,
+    ExamClassCreateComponent,
   ],
   imports: [
     CommonModule,
@@ -56,7 +66,13 @@ import { ButtonModule } from 'primeng/button';
     ListGroupModule, DataTablesModule,
     HttpClientModule,
     TableModule,
-    PaginatorModule
+    PaginatorModule,
+    CalendarModule,
+    TabViewModule,
+    BsDatepickerModule.forRoot(),
+    InputTextModule,
+    ToastModule,
+    ConfirmDialogModule
   ]
 })
 export class CoreUIExamModule {

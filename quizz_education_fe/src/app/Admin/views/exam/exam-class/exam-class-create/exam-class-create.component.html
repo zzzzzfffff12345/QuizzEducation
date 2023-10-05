@@ -1,0 +1,33 @@
+<h3>Tạo lớp Thi</h3>
+<form>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="tenMonThi" class="form-label">Tên lớp thi</label>
+                    <input type="text" class="form-control" id="tenLopThi" name="tenLopThi"
+                        placeholder="Nhập tên kỳ thi" [(ngModel)]="tenLopThi" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="input1" class="form-label">Số lượng học sinh</label>
+
+                    <div class="p-inputgroup">
+                        <input class="form-control" id="soLuongHocSinh" name="soLuongHocSinh"
+                            [(ngModel)]="soLuongHocSinh" pInputText placeholder="Nhập thời gian làm bài" required>
+                   
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal-footer ">
+        <button class="btn btn-secondary m-lg-2" type="submit" (click)="clear()">Làm mới</button>
+        <button type="submit" class="btn btn-primary" pButton pRipple (click)="createLopThi()">Tại lớp thi</button>
+        <p-toast></p-toast>
+    </div>
+</form>

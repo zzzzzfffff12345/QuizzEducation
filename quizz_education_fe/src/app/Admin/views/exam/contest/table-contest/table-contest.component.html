@@ -15,98 +15,79 @@
     <!-- <table datatable [dtOptions]="dtOptions" class="row-border hover"></table> -->
 
     <!-- test -->
-    <div class="list-body">
-      <div class="table-responsive">
-        <p-table #dt1 dataKey="materialNoteId" styleClass="p-datatable-striped p-datatable-sm"
-          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-          [globalFilterFields]="['materialNoteId','product.productName','productionQuantity','materialNoteStatus']"
-          [selectionPageOnly]="false">
-          <ng-template pTemplate="header" class="thead">
-            <tr>
-              <th scope="col" class="colum-header" style="text-align: left;" pSortableColumn="materialNoteId">
-                Phiếu nguyên vật liệu
-              
-                <p-sortIcon field="materialNoteId"></p-sortIcon>
-              </th>
-              <th scope="col" pSortableColumn="product.productName">
-                Sản phẩm sản xuất
-                <p-sortIcon field="product.productName"></p-sortIcon>
-              </th>
-              <th scope="col" pSortableColumn="productionQuantity">
-                Số lượng sản xuất
-                <p-sortIcon field="productionQuantity"></p-sortIcon>
-              </th>
-              <th scope="col" pSortableColumn="materialNoteCreationDate" class="d-none d-lg-table-cell">
-                Ngày tạo
-                <p-sortIcon field="materialNoteCreationDate"></p-sortIcon>
-              </th>
-              <th scope="col" pSortableColumn="materialNoteStatus" class="d-none d-xl-table-cell">
-                Trạng thái
-                <p-sortIcon field="materialNoteStatus"></p-sortIcon>
-              </th>
-              <th scope="col" class="">Thao tác</th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" class="tbody" let-listContest let-rowIndex="rowIndex">
-            <tr [pSelectableRow]="listContest" [pSelectableRowIndex]="rowIndex">
-              <!-- <td scope="row" class="colum-header" style="display: flex; align-items: center;">
-                <p-tableCheckbox [value]="listMaterial_Note"></p-tableCheckbox>
-                <div class="text-group">
-                  <h4 class="text-title text-title">{{listMaterial_Note.materialNoteId}}</h4>
-                </div>
-              </td>
-              <td>{{listMaterial_Note.product.productName}}</td>
-              <td>{{listMaterial_Note.productionQuantity}}</td>
-              <td class="d-none d-lg-table-cell moPhai">
-                {{listMaterial_Note.materialNoteCreationDate | date: 'dd/MM/yyyy'}}</td>
-              <td class="moPhai add-dot d-none d-xl-table-cell text-center">
-                <span [ngClass]="{
-                                        'body-content-body-body-table-active-success': listMaterial_Note.materialNoteStatus === 'Successful',
-                                        'body-content-body-body-table-active-primary': listMaterial_Note.materialNoteStatus === 'Pending',
-                                        'body-content-body-body-table-active-danger': listMaterial_Note.materialNoteStatus === 'Cancelled'
-                                      }">
-                  {{ listMaterial_Note.materialNoteStatus === 'Successful' ? 'Đã hoàn thành' :
-                  listMaterial_Note.materialNoteStatus === 'Pending' ? 'Đang tiến hành' :
-                  listMaterial_Note.materialNoteStatus === 'Cancelled' ? 'Đã hủy' : 'Không xác
-                  định'}}
-                </span>
-
-              </td>
-              <td>
-                <button class="btn" style="color: var(--gray_600);" data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"><i class="bi bi-pen"></i></button>
-              </td> -->
-              <td>{{listContest.maKyThi}}</td>
-              <td>{{listContest.tenKyThi}}</td>
-              <td>{{listContest.daDienRa}}</td>
-              <td>{{listContest.thoiGianBatDau}}</td>
-              <td>{{listContest.thoiGianKetThuc}}</td>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="footer" class="tfoot">
-            <tr>
-              <td style="text-align: left; display: flex;">
-                <button class="btn-style btn-prev d-none d-md-block" [disabled]="">Trước đó</button>
-                <button class="btn-style btn-next d-none d-md-block" style="margin: 0 10px;" [disabled]="">Kế
-                  tiếp</button>
-                <button class="btn-style btn-prev d-block d-md-none" [disabled]=""><i
-                    class="bi bi-arrow-left-square"></i></button>
-                <button class="btn-style btn-next d-block d-md-none" style="margin: 0 10px;" [disabled]=""><i
-                    class="bi bi-arrow-right-square"></i></button>
-              </td>
-              <td class="d-none d-xl-table-cell"></td>
-              <td class="d-none d-lg-table-cell"></td>
-              <td></td>
-              <td></td>
-              <td>
-                <!-- Trang {{pagination.numberPage}} của {{pagination.totalPage}} -->
-              </td>
-            </tr>
-          </ng-template>
-        </p-table>
+    <div class="group-header-table ">
+      <div class="inport">
+        <button class="btn ">Xuất file</button>
       </div>
+      <div class="form-search">
+        <form class="w-100" [formGroup]="formFilter">
+          <div class="input-group mb-3">
+            <button (click)="dt1.filterGlobal(getValueSearch(), 'contains')"
+              class="btn btn-outline-secondary box-shadow-none" type="button" id="button-search"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M17.5 17.5L13.875 13.875M15.8333 9.16667C15.8333 12.8486 12.8486 15.8333 9.16667 15.8333C5.48477 15.8333 2.5 12.8486 2.5 9.16667C2.5 5.48477 5.48477 2.5 9.16667 2.5C12.8486 2.5 15.8333 5.48477 15.8333 9.16667Z"
+                  stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+              </svg></button>
+            <input pInputText type="text" (change)="dt1.filterGlobal(getValueSearch(), 'contains')"
+              formControlName="search" class="form-control box-shadow-none" placeholder="Tìm kiếm"
+              aria-label="Example text with button addon" aria-describedby="button-search">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="list-body">
+      <p-table [value]="listContest" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" #dt1 dataKey="maKyThi"
+        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['maKyThi', 'tenKyThi']">
+
+        <ng-template pTemplate="header" class="theader">
+          <tr>
+            <th pSortableColumn="maKyThi" style="width:15%">Mã kỳ thi <p-sortIcon field="maKyThi"></p-sortIcon> </th>
+            <th pSortableColumn="tenKyThi" style="width:30% ">Tên kỳ thi <p-sortIcon field="tenKyThi"></p-sortIcon></th>
+            <th style="width:15%; text-align: center;">Trạng thái
+            </th>
+            <th pSortableColumn="thoiGianBatDau" style="width:15%;  text-align: center;">Thời gian bắt đầu <p-sortIcon
+                field="thoiGianBatDau"></p-sortIcon></th>
+            <th pSortableColumn="thoiGianKetThuc" style="width:17%;text-align: center;">Thời gian kết thúc <p-sortIcon
+                field="thoiGianKetThuc"></p-sortIcon>
+            </th>
+            <th style="width:8%">Thao tác</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" class="tbody" let-listContest let-rowIndex="rowIndex">
+          <tr>
+            <td>
+              {{listContest.maKyThi}}
+            </td>
+            <td>{{listContest.tenKyThi}}</td>
+            <td class="text-center" [ngClass]="{
+              'contest-status-chua-thi': getContestStatus(listContest.thoiGianBatDau, listContest.thoiGianKetThuc) === 'Chưa thi',
+              'contest-status-dang-thi': getContestStatus(listContest.thoiGianBatDau, listContest.thoiGianKetThuc) === 'Đang thi',
+              'contest-status-da-thi': getContestStatus(listContest.thoiGianBatDau, listContest.thoiGianKetThuc) === 'Đã thi'
+            }">
+              {{ getContestStatus(listContest.thoiGianBatDau, listContest.thoiGianKetThuc) }}
+            </td>
 
 
+            <td class="d-none d-lg-table-cell moPhai text-center">
+              {{listContest.thoiGianBatDau | date: 'dd/MM/yyyy'}}</td>
+
+            <td class="d-none d-lg-table-cell moPhai text-center">
+              {{listContest.thoiGianKetThuc | date: 'dd/MM/yyyy'}}</td>
+            <td class="text-center"><button class="btn btn-info text-light" data-bs-toggle="modal"
+                data-bs-target="#exampleModal" (click)="getEditKyThi(listContest.maKyThi)">Sửa</button></td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+          <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+          <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+      </p-table>
 
     </div>
 
@@ -124,7 +105,6 @@
 </div>
 
 
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -136,19 +116,13 @@
         <div class="modal-body">
 
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
               <div class="mb-3">
                 <label for="input1" class="form-label">Tên kỳ thi</label>
                 <input type="text" class="form-control" id="tenKyThi" name="tenKyThi" [(ngModel)]="name">
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="input2" class="form-label">Trang thái</label>
-                <input type="text" class="form-control disabled " id="trangthai" name="trangthai"
-                  [(ngModel)]="contestStatus" disabled>
-              </div>
-            </div>
+
             <div class="col-md-6">
               <div class="mb-3">
                 <label for="input2" class="form-label">Thời gian bất đầu</label>
@@ -156,6 +130,7 @@
                   [(ngModel)]="formattedStartTime">
 
               </div>
+              <span class="text-danger" *ngIf="messageEdit">{{messageEdit}}</span>
             </div>
             <div class="col-md-6">
               <div class="mb-3">
@@ -163,7 +138,6 @@
                 <input type="datetime-local" class="form-control" id="formattedEndTime" name="formattedEndTime"
                   [(ngModel)]="formattedEndTime">
               </div>
-
             </div>
 
           </div>

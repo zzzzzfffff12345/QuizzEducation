@@ -17,4 +17,10 @@ public interface ChiTietKiThiDAO extends JpaRepository<ChiTietKyThi, Integer> {
     @Query("SELECT ct FROM ChiTietKyThi ct WHERE ct.kyThi.maKyThi = :maKyThi")
     List<ChiTietKyThi> findByMaKyThi(@Param("maKyThi") int maKyThi);
 
+     @Query("SELECT ct FROM ChiTietKyThi ct WHERE ct.monThi.maMon = :maMon")
+    List<ChiTietKyThi> findByMaMon(@Param("maMon") int maMon);
+    
+     @Query("SELECT ct FROM ChiTietKyThi ct WHERE ct.lopThi.maLopThi = :maLopThi")
+    List<ChiTietKyThi> findByMaLopThi(@Param("maLopThi") int maLopThi);
+
 }
