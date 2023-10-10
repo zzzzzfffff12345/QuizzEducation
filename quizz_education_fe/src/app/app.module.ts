@@ -40,12 +40,17 @@ import {
   UtilitiesModule,
 } from '@coreui/angular';
 
+import { HttpClientModule } from '@angular/common/http';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { TableModule } from 'primeng/table';
 import { ExamClassComponent } from './Admin/views/exam/exam-class/exam-class.component';
 import { ExamSubjectsComponent } from './Admin/views/exam/exam-subjects/exam-subjects.component';
 import { DefaultLayoutTeacherComponent } from './Teacher/containers-teacher/default-layout-teacher/default-layout-teacher.component';
 import { TeacherFooterComponent } from './Teacher/containers-teacher/default-layout-teacher/teacher-footer/teacher-footer.component';
 import { TeacherHeaderComponent } from './Teacher/containers-teacher/default-layout-teacher/teacher-header/teacher-header.component';
+import { ManageStudentClassComponent } from './Teacher/views/manage-student/manage-student-class/manage-student-class.component';
+import { ManageStudentHomeComponent } from './Teacher/views/manage-student/manage-student-event/manage-student-event.component';
+import { ManageStudentSubjectComponent } from './Teacher/views/manage-student/manage-student-subject/manage-student-subject.component';
 import { MainUserComponent } from './User/main-user/main-user.component';
 import { AboutComponent } from './User/pages/about/about.component';
 import { ContactComponent } from './User/pages/contact/contact.component';
@@ -55,13 +60,18 @@ import { HomeHeaderComponent } from './User/pages/home/home-header/home-header.c
 import { HomeComponent } from './User/pages/home/home.component';
 import { FooterComponent } from './User/sharepages/footer/footer.component';
 import { NavbarComponent } from './User/sharepages/navbar/navbar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { ManageStudentPupilComponent } from './Teacher/views/manage-student/manage-student-pupil/manage-student-pupil.component';
+
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
   DefaultLayoutComponent,
   DefaultLayoutTeacherComponent,
+  ManageStudentHomeComponent,
+  ManageStudentSubjectComponent,
+  ManageStudentClassComponent,
+  ManageStudentPupilComponent
 ];
 
 @NgModule({
@@ -109,7 +119,8 @@ const APP_CONTAINERS = [
     ListGroupModule,
     CardModule,
     NgScrollbarModule,
-    HttpClientModule
+    HttpClientModule,
+    TableModule
   ],
   providers: [
     {
@@ -121,4 +132,4 @@ const APP_CONTAINERS = [
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

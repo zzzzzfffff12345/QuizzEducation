@@ -1,6 +1,5 @@
 package com.vnpt.quizz_education_be.RestController;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vnpt.quizz_education_be.DAO.ChiTietKiThiDAO;
@@ -33,7 +31,7 @@ public class LopThiRestController {
 
     // @GetMapping("lopthi")
     // public ResponseEntity<List<LopThi>> findAll() {
-    //     return ResponseEntity.ok(lopThiDAO.findAll());
+    // return ResponseEntity.ok(lopThiDAO.findAll());
     // }
 
     // Get 1 đối tượng thông qua id
@@ -70,15 +68,7 @@ public class LopThiRestController {
         if (!lopThiDAO.existsById(maLopThi)) {
             return ResponseEntity.notFound().build();
         }
-
         lopThiDAO.deleteById(maLopThi);
-
         return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("lopthi")
-    public List<LopThi> getLopThiByKyThiAndMonThi(@RequestParam("kithi") Integer kithiId,
-            @RequestParam("monthi") Integer monThiId) {
-        return chiTietKiThiDAO.getLopThiByKiThiAndMonThi(kithiId, monThiId);
     }
 }

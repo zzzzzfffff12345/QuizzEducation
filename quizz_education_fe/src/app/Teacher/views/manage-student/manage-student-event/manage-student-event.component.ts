@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { KyThi } from 'src/app/models/KyThi.entity';
 
@@ -11,16 +11,11 @@ import { KyThi } from 'src/app/models/KyThi.entity';
 })
 export class ManageStudentHomeComponent implements OnInit, OnInit {
   public listKyThi: KyThi[];
-  dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-  constructor(private renderer: Renderer2, private router: Router, private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private formBuilder: FormBuilder,) { }
 
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 10
-    }
     this.httpClient.get<KyThi[]>(`http://localhost:8080/quizzeducation/api/kythi`)
       .subscribe(data => {
         this.listKyThi = data
@@ -30,5 +25,13 @@ export class ManageStudentHomeComponent implements OnInit, OnInit {
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
+
+  public getValueSearch() {
+    return this.formFilter.get('search')?.value;
+  }
+  public formFilter = this.formBuilder.group({
+    setRows: new FormControl(5),
+    search: new FormControl('')
+  })
 
 }

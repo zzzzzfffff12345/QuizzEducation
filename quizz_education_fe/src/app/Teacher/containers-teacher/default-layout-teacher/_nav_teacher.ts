@@ -43,8 +43,8 @@ export const navTeacherItems: INavData[] = [
     ]
   },
   {
-    name: 'Quản lý bộ đề',
-    url: 'test-kit',
+    name: 'Quản lý học sinh',
+    url: 'manage-student',
     iconComponent: {name: 'cil-list'}
   },
   // {

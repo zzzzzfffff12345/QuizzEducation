@@ -1,9 +1,9 @@
+import { ManageStudentPupilComponent } from './manage-student-pupil/manage-student-pupil.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ManageStudentClassComponent } from './manage-student-class/manage-student-class.component';
 import { ManageStudentHomeComponent } from './manage-student-event/manage-student-event.component';
-import { ManageStudentListComponent } from './manage-student-subject-list/manage-student-subject-list.component';
-import { ManageStudentClassListComponent } from './manage-student-class-list/manage-student-class-list.component';
-import { ManageStudentPupilsListComponent } from './manage-student-pupils-list/manage-student-pupils-list.component';
+import { ManageStudentSubjectComponent } from './manage-student-subject/manage-student-subject.component';
 
 const routes: Routes = [
   {
@@ -20,15 +20,15 @@ const routes: Routes = [
       },
       {
         path: 'event/:id/subject',
-        component: ManageStudentListComponent,
+        component: ManageStudentSubjectComponent,
       },
       {
         path: 'event/:id/subject/:id2/class',
-        component: ManageStudentClassListComponent
+        component: ManageStudentClassComponent
       },
       {
         path: 'event/:id/subject/:id2/class/:id3/student',
-        component: ManageStudentPupilsListComponent
+        component: ManageStudentPupilComponent
       }
     ],
   },

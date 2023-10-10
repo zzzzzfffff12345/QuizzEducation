@@ -86,13 +86,6 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'test-kit',
-        loadChildren: () =>
-          import('./Teacher/views/test-kit/test-kit.module').then(
-            (m) => m.TestKitModule
-          ),
-      },
-      {
         path: 'manage-student',
         loadChildren: () =>
           import('./Teacher/views/manage-student/manage-student.module').then(
