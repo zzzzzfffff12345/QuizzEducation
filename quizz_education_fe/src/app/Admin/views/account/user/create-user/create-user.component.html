@@ -1,0 +1,71 @@
+<h3>Tạo tài khoản học sinh</h3>
+<form>
+    <div class="modal-body">
+        <form class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="tenKyThi" class="form-label">Tên đăng nhập</label>
+                    <input type="text" class="form-control" id="tenDangNhap" name="tenDangNhap"
+                        placeholder="Nhập tên đăng nhập" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <label for="trangthai" class="form-label">Mật khẩu</label>
+                <div class="mb-3 card flex justify-content-center">
+                    <p-password [toggleMask]="true" placeholder="Nhập mật khẩu"></p-password>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="formattedStartTime" class="form-label">Tên học sinh</label>
+                    <input class="form-control" id="tenHocSinh" name="tenHocSinh" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="formattedEndTime" class="form-label">Năm sinh</label>
+                    <input type="date" class="form-control" id="namSinh" name="namSinh" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="formattedEndTime" class="form-label">Giới tính</label>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="flex align-items-center">
+                            <p-radioButton name="pizza" value="Cheese" inputId="ingredient1"></p-radioButton>
+                            <label for="ingredient1" class="ml-2">Cheese</label>
+                        </div>
+
+                        <div class="flex align-items-center">
+                            <p-radioButton name="pizza" value="Mushroom" + inputId="ingredient2"></p-radioButton>
+                            <label for="ingredient2" class="ml-2">Mushroom</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="formattedEndTime" class="form-label">Địa chỉ</label>
+                    <input type="datetime-local" class="form-control" id="formattedEndTime" name="formattedEndTime"
+                        required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="formattedEndTime" class="form-label">Số điện thoại</label>
+                    <input type="datetime-local" class="form-control" id="formattedEndTime" name="formattedEndTime"
+                        required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Tại kỳ thi</button>
+        </form>
+    </div>
+
+    <div class="modal-footer ">
+        <button class="btn btn-secondary m-lg-2" type="submit">Làm mới</button>
+        <button type="submit" class="btn btn-primary">Tại kỳ thi</button>
+    </div>
+</form>

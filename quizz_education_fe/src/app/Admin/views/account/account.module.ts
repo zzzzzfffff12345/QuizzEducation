@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { PasswordModule } from 'primeng/password';
+import { RadioButtonModule } from 'primeng/radiobutton';
 import {
   ButtonGroupModule,
   ButtonModule,
@@ -25,11 +26,13 @@ import { TabViewModule } from 'primeng/tabview';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { CreateUserComponent } from './user/create-user/create-user.component';
 
 @NgModule({
   declarations: [
     TeacherComponent,
-    UserComponent
+    UserComponent,
+    CreateUserComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +55,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     CalendarModule,
     TabViewModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    PasswordModule,
+    RadioButtonModule
   ]
 })
 export class UIAccountModule {

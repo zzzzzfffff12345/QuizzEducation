@@ -8,24 +8,24 @@
             <button class="nav-link text-dark" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
                 type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Tạo học sinh</button>
             <button class="nav-link text-dark" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
-                type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Danh sách điểm học sinh</button>
+                type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Danh sách điểm học
+                sinh</button>
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active mt-4" id="nav-danh-sach" role="tabpanel"
             aria-labelledby="nav-danh-sach-tab">
 
-            <!-- <table datatable [dtOptions]="dtOptions" class="row-border hover"></table> -->
 
             <!-- test -->
             <div class="group-header-table ">
                 <div class="inport">
-                    <!-- <button type="button" pButton pRipple (click)="exportExcel()"
+                    <button type="button" pButton pRipple (click)="exportExcel()"
                         class="btn btn-success mr-2 text-light" pTooltip="XLS" tooltipPosition="bottom">Xuất file
-                        Excel</button> -->
+                        Excel</button>
                 </div>
                 <div class="form-search">
-                    <!-- <form class="w-100" [formGroup]="formFilter">
+                    <form class="w-100" [formGroup]="formFilter">
                         <div class="input-group mb-3">
                             <button (click)="dt1.filterGlobal(getValueSearch(), 'contains')"
                                 class="btn btn-outline-secondary box-shadow-none" type="button" id="button-search"><svg
@@ -40,51 +40,12 @@
                                 formControlName="search" class="form-control box-shadow-none" placeholder="Tìm kiếm"
                                 aria-label="Example text with button addon" aria-describedby="button-search">
                         </div>
-                    </form> -->
+                    </form>
                 </div>
             </div>
 
             <div class="list-body">
-                <!-- <p-table [value]="listStudent" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" #dt1
-                    dataKey="maKyThi" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
-                    [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                    [globalFilterFields]="['maKyThi', 'tenKyThi']">
 
-                    <ng-template pTemplate="header" class="theader">
-                        <th style="min-width:150px">Tên đăng nhập</th>
-                        <th style="min-width:150px">Mật khẩu</th>
-                        <th style="min-width:150px">Trạng thái</th>
-                        <th style="min-width:150px">Tên học sinh</th>
-                        <th style="min-width:150px">Lớp</th>
-                        <th style="min-width:150px">Năm sinh</th>
-                        <th style="min-width:150px">Giới tính</th>
-                        <th style="min-width:150px">Địa chỉ</th>
-                        <th style="min-width:150px">Số điện thoại</th>
-                        <th style="min-width:150px">Ngày tạo</th>
-                        <th style="min-width:150px">Thao tác</th>
-                    </ng-template>
-                    <ng-template pTemplate="body" class="tbody" let-student let-rowIndex="rowIndex">
-                        <tr>
-                            <td class="text-center">{{student.tenDangNhap}}</td>
-                            <td class="text-center">{{student.matKhau}}</td>
-                            <td class="text-center">{{student.trangThai}}</td>
-                            <td class="text-center">{{student.hoVaTen}}</td>
-                            <td class="text-center">{{student.lopThi.tenLop}}</td>
-                            <td class="text-center">{{student.ngaySinh}}</td>
-                            <td class="text-center">{{student.gioiTinh}}</td>
-                            <td class="text-center">{{student.diaChi}}</td>
-                            <td class="text-center">{{student.soDienThoai}}</td>
-                            <td class="text-center">{{student.ngayTaoTaiKhoan}}</td>
-                            <td class="text-center" class="text-center"><button class="btn btn-info text-light" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">Sửa</button>
-                            </td>
-                            <td class="text-center" class="text-center"><button class="btn btn-info text-light" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">Xóa</button>
-                            </td>
-                        </tr>
-                    </ng-template> -->
-
-                <!-- </p-table> -->
                 <p-table [value]="listStudent" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" #dt1
                     dataKey="maKyThi" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
                     [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -123,11 +84,11 @@
                                 {{student.trangThai ? 'Còn hoạt động' : 'Dừng hoạt động'}}</td>
                             <td class="text-center">{{student.hoVaTen}}</td>
                             <td class="text-center">{{ student.lopThi ? student.lopThi.tenLop : '' }}</td>
-                            <td class="text-center">{{student.ngaySinh}}</td>
+                            <td class="text-center">{{student.ngaySinh | date: 'dd/MM/yyyy'}}</td>
                             <td class="text-center">{{student.gioiTinh ? 'Nam' : 'Nữ'}}</td>
                             <td class="text-center">{{student.diaChi}}</td>
                             <td class="text-center">{{student.soDienThoai}}</td>
-                            <td class="text-center">{{student.ngayTaoTaiKhoan}}</td>
+                            <td class="text-center">{{student.ngayTaoTaiKhoan | date: 'dd/MM/yyyy'}}</td>
                             <td class="text-center" class="text-center"><button class="btn btn-info text-light"
                                     data-bs-toggle="modal" data-bs-target="#exampleModal">Sửa</button>
                             </td>
@@ -142,7 +103,7 @@
 
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <h3>Tab2</h3>
+            <app-create-user></app-create-user>
 
         </div>
         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
