@@ -1,6 +1,7 @@
 package com.vnpt.quizz_education_be.Entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

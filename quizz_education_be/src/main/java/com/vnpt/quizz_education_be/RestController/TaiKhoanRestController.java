@@ -42,7 +42,6 @@ public class TaiKhoanRestController {
         return ResponseEntity.ok(taiKhoanDAO.findByHocSinh());
     }
 
-
     // Get 1 đối tượng thông qua id
     @GetMapping("taikhoan/{id}")
     public ResponseEntity<TaiKhoan> findById(@PathVariable("id") String tenDangNhap) {
