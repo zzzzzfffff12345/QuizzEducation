@@ -4,6 +4,7 @@ import { HttpSvService } from '../../../../../service/API.service';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import * as FileSaver from 'file-saver';
 @Component({
   selector: 'app-table-contest',
   templateUrl: './table-contest.component.html',
@@ -113,7 +114,7 @@ export class TableContestComponent implements OnInit {
   public getData() {
     this.httpService.getList('kythi').subscribe(response => {
       this.listContest = response;
-
+      
     })
   }
 
@@ -152,4 +153,23 @@ export class TableContestComponent implements OnInit {
   }
 
   date: Date | undefined;
+
+
+  // Xuất excel
+  exportExcel() {
+    import('xlsx').then((xlsx) => {
+      const worksheet = xlsx.utils.json_to_sheet(this.listContest);
+      const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+      const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
+      this.saveAsExcelFile(excelBuffer, 'Kỳ thi');
+    });
+  }
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    let EXCEL_EXTENSION = '.xlsx';
+    const data: Blob = new Blob([buffer], {
+      type: EXCEL_TYPE
+    });
+    FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+  }
 }

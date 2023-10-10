@@ -1,3 +1,4 @@
+import { examClass } from './../../../../classes/Admin/exam/exam-class';
 import { OnDestroy, Component, OnInit, Renderer2 } from '@angular/core';
 import { HttpSvService } from '../../../../service/API.service';
 import { HttpClient } from '@angular/common/http';
@@ -15,8 +16,8 @@ export class ExamClassComponent {
   constructor(private messageService: MessageService, private httpService: HttpSvService, private confirmationService: ConfirmationService,
     private formBuilder: FormBuilder,) { }
   //Khai báo các biến ở đây
-  listLopHoc: any;
-
+  listLopHoc!: examClass[];
+  
   //Sửa lại chổ tìm kiếm trong thư viện
   public getValueSearch() {
     return this.formFilter.get('search')?.value;

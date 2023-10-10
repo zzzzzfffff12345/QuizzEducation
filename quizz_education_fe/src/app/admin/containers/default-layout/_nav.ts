@@ -9,20 +9,20 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Quản lý kỳ thi',
-    url: '/exam',
+    url: '/admin/exam',
     iconComponent: { name: 'cil-notes' },
     children: [
       {
         name: 'Quản lý đợt thi',
-        url: '/exam/contest'
+        url: '/admin/exam/contest'
       },
       {
         name: 'Quản lý môn thi',
-        url: '/exam/exam-subjects'
+        url: '/admin/exam/exam-subjects'
       },
       {
         name: 'Quản lý lớp thi',
-        url: '/exam/exam-class'
+        url: '/admin/exam/exam-class'
       }
     ]
   },
@@ -32,16 +32,16 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Quản lý người dùng',
-    url: '/account',
+    url: '/admin/account',
     iconComponent: { name: 'cil-star' },
     children: [
       {
         name: 'Quản lý giáo viên',
-        url: '/account/teacher'
+        url: '/admin/account/teacher'
       },
       {
         name: 'Quản lý học sinh',
-        url: '/account/user'
+        url: '/admin/account/user'
       },
     ]
   }, {
@@ -50,20 +50,20 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Quản lý đề thi',
-    url: '/exam-papers-main',
+    url: '/admin/exam-papers-main',
     iconComponent: { name: 'cil-star' },
     children: [
       {
         name: 'Quản lý đề thi',
-        url: '/exam-papers-main/exam-papers'
+        url: '/admin/exam-papers-main/exam-papers'
       },
       {
         name: 'Quản lý câu hỏi',
-        url: '/exam-papers-main/exam-request'
+        url: '/admin/exam-papers-main/exam-request'
       },
       {
         name: 'Quản lý câu trả lời',
-        url: '/exam-papers-main/exam-answer'
+        url: '/admin/exam-papers-main/exam-answer'
       },
     ]
   },

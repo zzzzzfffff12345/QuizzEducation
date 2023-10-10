@@ -110,7 +110,7 @@ const routes: Routes = [
       title: 'Register Page'
     }
   },
-  { path: '**', redirectTo: '404' }
+  // { path: '**', redirectTo: '404' }
 ];
 
 @NgModule({

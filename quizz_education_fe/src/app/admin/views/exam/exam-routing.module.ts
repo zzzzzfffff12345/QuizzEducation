@@ -40,7 +40,7 @@ const routes: Routes = [
           title: 'Exam Class'
         }
       }
-     
+
     ]
   }
 ];

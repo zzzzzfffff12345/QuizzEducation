@@ -1,3 +1,4 @@
+import { examSubject } from '../../../../classes/Admin/exam/exam-subject';
 import { OnDestroy, Component, OnInit, Renderer2 } from '@angular/core';
 import { HttpSvService } from '../../../../service/API.service';
 import { HttpClient } from '@angular/common/http';
@@ -15,8 +16,7 @@ export class ExamSubjectsComponent {
   constructor(private messageService: MessageService, private httpService: HttpSvService, private confirmationService: ConfirmationService,
     private formBuilder: FormBuilder,) { }
   //Khai báo các biến ở đây
-  listMonHoc: any;
-
+  ListexamClass!: examSubject[];
   //Sửa lại chổ tìm kiếm trong thư viện
   public getValueSearch() {
     return this.formFilter.get('search')?.value;
@@ -33,7 +33,7 @@ export class ExamSubjectsComponent {
   //Lấy data về từ API
   public getData() {
     this.httpService.getList('monthi').subscribe(response => {
-      this.listMonHoc = response;
+      this.ListexamClass = response;
     })
   }
 
@@ -134,7 +134,7 @@ export class ExamSubjectsComponent {
   // Xuất excel
   exportExcel() {
     import('xlsx').then((xlsx) => {
-      const worksheet = xlsx.utils.json_to_sheet(this.listMonHoc);
+      const worksheet = xlsx.utils.json_to_sheet(this.ListexamClass);
       const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
       const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
       this.saveAsExcelFile(excelBuffer, 'Môn thi');
