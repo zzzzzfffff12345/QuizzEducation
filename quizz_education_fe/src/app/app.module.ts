@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -61,7 +62,8 @@ import { HomeComponent } from './User/pages/home/home.component';
 import { FooterComponent } from './User/sharepages/footer/footer.component';
 import { NavbarComponent } from './User/sharepages/navbar/navbar.component';
 import { ManageStudentPupilComponent } from './Teacher/views/manage-student/manage-student-pupil/manage-student-pupil.component';
-
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -120,7 +122,9 @@ const APP_CONTAINERS = [
     CardModule,
     NgScrollbarModule,
     HttpClientModule,
-    TableModule
+    TableModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
   ],
   providers: [
     {
