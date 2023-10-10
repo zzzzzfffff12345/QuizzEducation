@@ -1,0 +1,20 @@
+*{
+    // font-family: "Handlee", cursive;
+    text-decoration: none;
+}
+.bg-primary {
+    background-color: #17a2b8 !important;
+}
+
+.btn-export{
+    margin-bottom: 10px;
+    
+}
+.btn-export button{
+    border: none;
+    padding: 3px 10px;
+    margin-top: 50px;
+}
+.btn-export button:hover{
+    background-color: rgb(218, 216, 216);
+}

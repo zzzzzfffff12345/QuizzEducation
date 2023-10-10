@@ -1,9 +1,9 @@
-import { environment } from './../environments/environment';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from './../environments/environment';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
@@ -25,7 +25,6 @@ import {
   BadgeModule,
   BreadcrumbModule,
   ButtonGroupModule,
-  ButtonModule,
   CardModule,
   DropdownModule,
   FooterModule,
@@ -42,29 +41,29 @@ import {
 } from '@coreui/angular';
 
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { TableModule } from 'primeng/table';
-import { ExamClassComponent } from './Admin/views/exam/exam-class/exam-class.component';
-import { ExamSubjectsComponent } from './Admin/views/exam/exam-subjects/exam-subjects.component';
+import { ReportComponent } from './Admin/views/report/report.component';
 import { DefaultLayoutTeacherComponent } from './Teacher/containers-teacher/default-layout-teacher/default-layout-teacher.component';
 import { TeacherFooterComponent } from './Teacher/containers-teacher/default-layout-teacher/teacher-footer/teacher-footer.component';
 import { TeacherHeaderComponent } from './Teacher/containers-teacher/default-layout-teacher/teacher-header/teacher-header.component';
 import { ManageStudentClassComponent } from './Teacher/views/manage-student/manage-student-class/manage-student-class.component';
 import { ManageStudentHomeComponent } from './Teacher/views/manage-student/manage-student-event/manage-student-event.component';
+import { ManageStudentPupilComponent } from './Teacher/views/manage-student/manage-student-pupil/manage-student-pupil.component';
 import { ManageStudentSubjectComponent } from './Teacher/views/manage-student/manage-student-subject/manage-student-subject.component';
 import { MainUserComponent } from './User/main-user/main-user.component';
 import { AboutComponent } from './User/pages/about/about.component';
-import { ContactComponent } from './User/pages/contact/contact.component';
 import { HistoryComponent } from './User/pages/history/history.component';
 import { HomeContentComponent } from './User/pages/home/home-content/home-content.component';
 import { HomeHeaderComponent } from './User/pages/home/home-header/home-header.component';
 import { HomeComponent } from './User/pages/home/home.component';
 import { FooterComponent } from './User/sharepages/footer/footer.component';
 import { NavbarComponent } from './User/sharepages/navbar/navbar.component';
-import { ManageStudentPupilComponent } from './Teacher/views/manage-student/manage-student-pupil/manage-student-pupil.component';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
+import { ButtonModule } from 'primeng/button';
+import { ScoreComponent } from './User/pages/score/score.component';
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
@@ -85,15 +84,13 @@ const APP_CONTAINERS = [
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    ContactComponent,
+    ScoreComponent,
     TeacherHeaderComponent,
     TeacherFooterComponent,
     HistoryComponent,
     HomeHeaderComponent,
     HomeContentComponent,
-    ExamSubjectsComponent,
-    ExamClassComponent,
-  ],
+    ReportComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -128,8 +125,8 @@ const APP_CONTAINERS = [
   ],
   providers: [
     {
-      provide: LocationStrategy,
-      useClass: HashLocationStrategy,
+      provide: PathLocationStrategy,
+      useClass: HashLocationStrategy
     },
     IconSetService,
     Title,

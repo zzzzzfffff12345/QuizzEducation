@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vnpt.quizz_education_be.DAO.KiThiDAO;
 import com.vnpt.quizz_education_be.Entity.KyThi;
-
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200") // Cho phép yêu cầu từ origin http://localhost:4200
 @RequestMapping("/quizzeducation/api")
 public class KyThiRestController {
 
     @Autowired
     KiThiDAO kyThiDAO;
 
+    
     @GetMapping("kythi")
     public ResponseEntity<List<KyThi>> findAll() {
         return ResponseEntity.ok(kyThiDAO.findAll());

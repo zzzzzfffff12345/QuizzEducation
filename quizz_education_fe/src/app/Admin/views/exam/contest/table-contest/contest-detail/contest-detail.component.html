@@ -1,0 +1,95 @@
+<!-- <div class="card">
+  <p-table
+    [value]="listkyThi"
+    dataKey="tenKyThi"
+    [tableStyle]="{ 'min-width': '60rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 20%">Tên Kỳ Thi</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-kyThi let-expanded="expanded">
+      <tr>
+        <td>
+          <button
+            type="button"
+            pButton
+            pRipple
+            [pRowToggler]="kyThi"
+            class="btn btn-info p-button-text p-button-rounded p-button-plain"
+            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+          ></button>
+        </td>
+        <td>{{ kyThi.tenKyThi }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-kyThi>
+      <tr>
+        <td colspan="7">
+          <div class="p-3">
+            <p-table [value]="maKyThi" dataKey="maKyThi">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th pSortableColumn="id">
+                    Mã Chi Tiết Kỳ Thi<p-sortIcon field="price"></p-sortIcon>
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-listChiTietkyThi>
+                <tr>
+                  <td>{{listChiTietkyThi.maChiTietKyThi}}</td>
+                  <td></td></tr>
+                </ng-template>
+            </p-table>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div> -->
+<div class="card">
+  <p-table [value]="listChiTietKyThi" dataKey="maChiTietKyThi" [tableStyle]="{ 'min-width': '60rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 20%">Tên Kỳ Thi</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-ChiTietkyThi let-expanded="expanded">
+      <tr>
+        <td>
+          <button type="button" pButton pRipple [pRowToggler]="ChiTietkyThi"
+            class="btn btn-info p-button-text p-button-rounded p-button-plain"
+            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+        </td>
+        <td>{{ ChiTietkyThi.kyThi.tenKyThi }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-ChiTietkyThi>
+      <tr>
+        <td colspan="7">
+          <div class="p-3">
+            <p-table [value]="[ChiTietkyThi.monThi]" dataKey="maMon">
+              <ng-template pTemplate="header">
+      <tr>
+        <th>Tên Môn Thi</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-MonThi>
+      <tr>
+        <td>{{ MonThi.tenMon }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="6">There are no items available.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>
+</td>
+</tr>
+</ng-template>
+</p-table>
+</div>

@@ -21,7 +21,7 @@ import com.vnpt.quizz_education_be.DAO.VaiTroDAO;
 import com.vnpt.quizz_education_be.Entity.TaiKhoan;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/quizzeducation/api")
 public class TaiKhoanRestController {
     @Autowired
@@ -35,6 +35,13 @@ public class TaiKhoanRestController {
     public ResponseEntity<List<TaiKhoan>> findAll() {
         return ResponseEntity.ok(taiKhoanDAO.findAll());
     }
+
+    // Get danh sách tất cả tài khoản thuộc học sinh
+    @GetMapping("taikhoan/hocsinh")
+    public ResponseEntity<List<TaiKhoan>> findByHocSinh() {
+        return ResponseEntity.ok(taiKhoanDAO.findByHocSinh());
+    }
+
 
     // Get 1 đối tượng thông qua id
     @GetMapping("taikhoan/{id}")

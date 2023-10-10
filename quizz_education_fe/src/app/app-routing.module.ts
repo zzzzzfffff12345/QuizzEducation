@@ -9,53 +9,55 @@ import { RegisterComponent } from './Admin/views/pages/register/register.compone
 import { DefaultLayoutTeacherComponent } from './Teacher/containers-teacher/index-teacher';
 import { MainUserComponent } from './User/main-user/main-user.component';
 import { AboutComponent } from './User/pages/about/about.component';
-import { ContactComponent } from './User/pages/contact/contact.component';
 import { HistoryComponent } from './User/pages/history/history.component';
 import { HomeComponent } from './User/pages/home/home.component';
+import { ScoreComponent } from './User/pages/score/score.component';
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/user/home',
+    pathMatch: 'full'
+  },
   {
     path: 'user',
     component: MainUserComponent,
     children: [
-      { path: 'about', component: AboutComponent },
-      { path: '', component: HomeComponent },
-      { path: 'contact', component: ContactComponent },
-      { path: 'history', component: HistoryComponent },
-      { path: 'login', component: ContactComponent },
-    ],
-  },
-  {
-    path: '',
-    redirectTo: 'user',
-    pathMatch: 'full',
-  },
+      { path: 'exam', component: AboutComponent },
+      { path: 'home', component: HomeComponent },
+      { path: 'score', component: ScoreComponent },
+      { path: 'history', component: HistoryComponent }
+    ]
+  }
+  ,
   {
     path: 'admin',
     component: DefaultLayoutComponent,
     data: {
-      title: 'Trang chủ',
+      title: 'Admin'
     },
     children: [
       {
-        path: '',
-        redirectTo: 'contest',
-        pathMatch: 'full',
-      },
-      {
-        path: 'contest',
+        path: 'exam',
         loadChildren: () =>
           import('./Admin/views/exam/exam.module').then(
             (m) => m.CoreUIExamModule
           ),
       },
       {
-        path: 'forms',
+        path: 'account',
         loadChildren: () =>
-          import('./Admin/views/forms/forms.module').then(
-            (m) => m.CoreUIFormsModule
-          ),
+          import('./Admin/views/account/account.module').then((m) => m.UIAccountModule)
       },
-
+      {
+        path: 'exam-papers-main',
+        loadChildren: () =>
+          import('./Admin/views/exam-papers-main/exam-papers-main.module').then((m) => m.CoreUIExamPaperMainModule)
+      },
+      {
+        path: 'report',
+        loadChildren: () =>
+          import('./Admin/views/report/report.module').then((m) => m.CoreUIReportModule)
+      },
       {
         path: 'pages',
         loadChildren: () =>
@@ -116,13 +118,13 @@ const routes: Routes = [
     },
   },
   {
-    path: 'register',
+    path: 'changepassword',
     component: RegisterComponent,
     data: {
       title: 'Register Page',
     },
   },
-  // {path: '**', redirectTo: 'dashboard'}
+  // { path: '**', redirectTo: '404' }
 ];
 
 @NgModule({

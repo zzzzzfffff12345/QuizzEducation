@@ -1,0 +1,64 @@
+.tab-content {
+    padding: 0 15px 0 15px;
+}
+
+table {
+    font-size: 14px;
+}
+
+
+:host ::ng-deep tbody {
+    border-radius: var(--8, 8px);
+    border: 1px solid var(--gray-200, #EAECF0);
+    background: var(--white-100, #FFF);
+}
+
+:host ::ng-deep p-table th {
+    font-size: 14px;
+    border-radius: var(--8, 8px);
+    border-top: 1px solid var(--gray-200, #EAECF0);
+    background: var(--white-100, #FFF);
+}
+
+:host ::ng-deep tbody tr td {
+    border-bottom: 1px solid var(--gray-200, #EAECF0);
+    background: var(--gray-50, #F9FAFB);
+    font-size: 14px;
+}
+
+:host ::ng-deep thead {
+    border-radius: var(--8, 8px);
+    border: 1px solid var(--gray-200, #EAECF0);
+    background: var(--white-100, #FFF);
+}
+
+// định dạng màu cho trạng thái
+.contest-status-chua-thi {
+    color: red;
+}
+
+.contest-status-dang-thi {
+    color: blue;
+}
+
+.contest-status-da-thi {
+    color: green;
+}
+
+:host ::ng-deep p-dropdown ul {
+    margin: 0;
+    padding: 0;
+}
+
+//Form Search 
+.group-header-table {
+    display: flex;
+    justify-content: space-between;
+}
+
+// .inport button{
+//     border-radius: 5px;
+//     border: 1px solid var(--gray-600, #475467);
+//     background: var(--gray-25, #FCFCFD);
+//     box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+// }
