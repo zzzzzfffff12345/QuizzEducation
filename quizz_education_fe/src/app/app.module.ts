@@ -41,7 +41,7 @@ import { NavbarComponent } from './User/sharepages/navbar/navbar.component';
 import { FooterComponent } from './User/sharepages/footer/footer.component';
 import { HomeComponent } from './User/pages/home/home.component';
 import { AboutComponent } from './User/pages/about/about.component';
-import { ContactComponent } from './User/pages/contact/contact.component';
+import { ScoreComponent } from './User/pages/score/score.component';
 import { DefaultLayoutTeacherComponent } from './Teacher/containers-teacher/default-layout-teacher/default-layout-teacher.component';
 import { TeacherHeaderComponent } from './Teacher/containers-teacher/default-layout-teacher/teacher-header/teacher-header.component';
 import { TeacherFooterComponent } from './Teacher/containers-teacher/default-layout-teacher/teacher-footer/teacher-footer.component';
@@ -63,7 +63,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, MainUserComponent, NavbarComponent, FooterComponent, HomeComponent, AboutComponent, ContactComponent, TeacherHeaderComponent, TeacherFooterComponent, HistoryComponent, HomeHeaderComponent, HomeContentComponent, ReportComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, MainUserComponent, NavbarComponent, FooterComponent, HomeComponent, AboutComponent, ScoreComponent, TeacherHeaderComponent, TeacherFooterComponent, HistoryComponent, HomeHeaderComponent, HomeContentComponent, ReportComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -95,7 +95,8 @@ const APP_CONTAINERS = [
   ],
   providers: [
     {
-      provide: LocationStrategy,
+      // provide: LocationStrategy,
+      provide: PathLocationStrategy,
       useClass: HashLocationStrategy
     },
     IconSetService,

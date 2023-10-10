@@ -43,10 +43,6 @@ public class ChiTietKyThi implements Serializable {
     KyThi kyThi;
 
     @ManyToOne
-    @JoinColumn(name = "ma_de_thi")
-    DeThi deThi;
-
-    @ManyToOne
     @JoinColumn(name = "ma_mon")
     MonThi monThi;
 

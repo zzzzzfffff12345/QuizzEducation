@@ -9,7 +9,7 @@ import { RegisterComponent } from './Admin/views/pages/register/register.compone
 import { MainUserComponent } from './User/main-user/main-user.component';
 import { AboutComponent } from './User/pages/about/about.component';
 import { HomeComponent } from './User/pages/home/home.component';
-import { ContactComponent } from './User/pages/contact/contact.component';
+import { ScoreComponent } from './User/pages/score/score.component';
 import { DefaultLayoutTeacherComponent } from './Teacher/containers-teacher/index-teacher';
 import { HistoryComponent } from './User/pages/history/history.component';
 const routes: Routes = [
@@ -24,9 +24,8 @@ const routes: Routes = [
     children: [
       { path: 'exam', component: AboutComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'contact', component: ContactComponent },
-      { path: 'history', component: HistoryComponent },
-      // { path: 'login1', component: LoginComponent },
+      { path: 'score', component: ScoreComponent },
+      { path: 'history', component: HistoryComponent }
     ]
   }
   ,

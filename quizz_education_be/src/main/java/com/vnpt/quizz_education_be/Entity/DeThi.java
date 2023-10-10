@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
+import com.vnpt.quizz_education_be.DAO.ChiTietKiThiDAO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -35,6 +37,10 @@ public class DeThi implements Serializable {
     private Boolean daSuDung;
 
     // Relationship N - 1
+
+    @ManyToOne 
+    @JoinColumn(name = "ma_chi_tiet_ky_thi")
+    ChiTietKyThi ChiTietKyThi;
 
     @ManyToOne
     @JoinColumn(name = "ten_dang_nhap")
