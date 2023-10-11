@@ -10,5 +10,5 @@ import com.vnpt.quizz_education_be.Entity.VaiTro;
 import java.util.List;
 
 public interface VaiTroDAO extends JpaRepository<VaiTro, Integer> {
- 
+    VaiTro findByTenVaiTro(String tenVaiTro);
 }
