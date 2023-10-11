@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vnpt.quizz_education_be.DAO.ChiTietKiThiDAO;
 import com.vnpt.quizz_education_be.DAO.LopThiDAO;
 import com.vnpt.quizz_education_be.Entity.LopThi;
 
@@ -22,13 +23,16 @@ import com.vnpt.quizz_education_be.Entity.LopThi;
 @CrossOrigin(origins = "*")
 @RequestMapping("/quizzeducation/api")
 public class LopThiRestController {
-   
+
     @Autowired
     LopThiDAO lopThiDAO;
 
+    @Autowired
+    ChiTietKiThiDAO chiTietKiThiDAO;
+
     @GetMapping("lopthi")
     public ResponseEntity<List<LopThi>> findAll() {
-        return ResponseEntity.ok(lopThiDAO.findAll());
+    return ResponseEntity.ok(lopThiDAO.findAll());
     }
 
       // Get 1 đối tượng thông qua id
@@ -65,10 +69,7 @@ public class LopThiRestController {
         if (!lopThiDAO.existsById(maLopThi)) {
             return ResponseEntity.notFound().build();
         }
-
         lopThiDAO.deleteById(maLopThi);
-
         return ResponseEntity.ok().build();
     }
 }
-

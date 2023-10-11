@@ -1,71 +1,109 @@
 <h3>Tạo tài khoản học sinh</h3>
 <form>
     <div class="modal-body">
-        <form class="row">
+        <div class="row">
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="tenKyThi" class="form-label">Tên đăng nhập</label>
                     <input type="text" class="form-control" id="tenDangNhap" name="tenDangNhap"
-                        placeholder="Nhập tên đăng nhập" required>
+                        placeholder="Nhập tên đăng nhập" required [(ngModel)]="tenDangNhap">
                 </div>
             </div>
             <div class="col-md-6">
 
                 <label for="trangthai" class="form-label">Mật khẩu</label>
                 <div class="mb-3 card flex justify-content-center">
-                    <p-password [toggleMask]="true" placeholder="Nhập mật khẩu"></p-password>
+                    <p-password [toggleMask]="true" [(ngModel)]="matKhau" id="matKhau" name="matKhau"
+                        placeholder="Nhập mật khẩu"></p-password>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="formattedStartTime" class="form-label">Tên học sinh</label>
-                    <input class="form-control" id="tenHocSinh" name="tenHocSinh" required>
+                    <input class="form-control" id="tenHocSinh" name="tenHocSinh" [(ngModel)]="tenHocSinh"
+                        placeholder="Nhập tên học sinh" required>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="formattedEndTime" class="form-label">Năm sinh</label>
-                    <input type="date" class="form-control" id="namSinh" name="namSinh" required>
-                </div>
-            </div>
+
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="formattedEndTime" class="form-label">Giới tính</label>
-                    <div class="flex flex-wrap gap-3">
+                    <div class="form-checkbox">
                         <div class="flex align-items-center">
-                            <p-radioButton name="pizza" value="Cheese" inputId="ingredient1"></p-radioButton>
-                            <label for="ingredient1" class="ml-2">Cheese</label>
+                            <p-radioButton name="gioiTinh" value="1" [(ngModel)]="gioiTinh"
+                                inputId="ingredient1"></p-radioButton>
+                            <label for="ingredient1">Nam</label>
                         </div>
-
-                        <div class="flex align-items-center">
-                            <p-radioButton name="pizza" value="Mushroom" + inputId="ingredient2"></p-radioButton>
-                            <label for="ingredient2" class="ml-2">Mushroom</label>
+                        <div class="flex align-items-center checkbox">
+                            <p-radioButton name="gioiTinh" value="2" [(ngModel)]="gioiTinh"
+                                inputId="ingredient2"></p-radioButton>
+                            <label for="ingredient2">Nữ</label>
                         </div>
-
                     </div>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="mb-3">
-                    <label for="formattedEndTime" class="form-label">Địa chỉ</label>
-                    <input type="datetime-local" class="form-control" id="formattedEndTime" name="formattedEndTime"
-                        required>
+                    <label for="formattedEndTime" class="form-label">Địa chỉ (tỉnh / thành phố)</label>
+                    <input class="form-control" id="diaChi" name="diaChi" [(ngModel)]="diaChi"
+                        placeholder="Nhập địa chỉ" required>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="formattedEndTime" class="form-label">Số điện thoại</label>
-                    <input type="datetime-local" class="form-control" id="formattedEndTime" name="formattedEndTime"
-                        required>
+                    <div class="card flex justify-content-center">
+                        <p-inputMask mask="9999 999 999" id="soDienThoai" name="soDienThoai" [(ngModel)]="soDienThoai"
+                            placeholder="Nhập số điện thoại"></p-inputMask>
+                    </div>
+
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="formattedEndTime" class="form-label">Năm sinh</label>
+                    <div class="card flex justify-content-center ngaySinh">
+                        <p-calendar id="namSinh" name="namSinh" [(ngModel)]="namSinh" dateFormat="dd/mm/yy"
+                            [showIcon]="true" placeholder="Chọn ngày sinh"></p-calendar>
+                    </div>
 
-            <button type="submit" class="btn btn-primary">Tại kỳ thi</button>
-        </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="formattedEndTime" class="form-label">Email</label>
+                    <input class="form-control" type="email" id="email" name="email" [(ngModel)]="email"
+                        placeholder="Nhập email" required>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="modal-footer ">
         <button class="btn btn-secondary m-lg-2" type="submit">Làm mới</button>
-        <button type="submit" class="btn btn-primary">Tại kỳ thi</button>
+        <button type="submit" class="btn btn-primary" (click)="createUer()">Tại tài khoản</button>
     </div>
+
+</form>
+
+<form [formGroup]="form" (ngSubmit)="createUser()">
+    <div class="form-group">
+        <label for="tenDangNhap">Tên đăng nhập</label>
+        <p-inputMask  id="tenDangNhap" name="tenDangNhap" class="form-control" formControlName="tenDangNhap"></p-inputMask>
+        <!-- Hiển thị thông báo lỗi nếu có lỗi và đã gửi form -->
+        <div *ngIf="submitted && form.get('tenDangNhap').hasError('required')">
+            Tên đăng nhập là trường bắt buộc.
+        </div>
+        <div *ngIf="submitted && form.get('tenDangNhap').hasError('minlength')">
+            Tên đăng nhập phải có ít nhất 6 ký tự.
+        </div>
+        <div *ngIf="submitted && form.get('tenDangNhap').hasError('pattern')">
+            Tên đăng nhập chỉ được chứa chữ và số.
+        </div>
+    </div>
+
+    <!-- Khai báo các trường dữ liệu khác ở đây -->
+
+    <button type="submit">Tạo tài khoản</button>
 </form>

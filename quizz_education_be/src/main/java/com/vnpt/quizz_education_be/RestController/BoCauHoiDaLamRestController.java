@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vnpt.quizz_education_be.DAO.BoCauHoiDaLamDAO;
-import com.vnpt.quizz_education_be.DAO.CauHoiDAO;
 import com.vnpt.quizz_education_be.Entity.BoCauHoiDaLam;
-import com.vnpt.quizz_education_be.Entity.CauHoi;
 
 
 @RestController

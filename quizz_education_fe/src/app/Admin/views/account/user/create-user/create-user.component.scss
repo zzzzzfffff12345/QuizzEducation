@@ -1,13 +1,41 @@
-h3{
-    margin:  20px 0 20px;
-    font-family: 600;
-    font-size: 26px;
+h3 {
+   margin: 20px 0 20px;
+   font-family: 600;
+   font-size: 26px;
 }
 
-:host ::ng-deep .card p-password .p-password{
+:host ::ng-deep .card p-password .p-password {
    width: 100%;
    height: 37px;
 }
-:host ::ng-deep .card p-password input{
-    width: 100%;
- }
+
+:host ::ng-deep .card p-password input {
+   width: 100%;
+}
+
+.form-checkbox {
+   display: flex;
+   justify-content: left;
+}
+
+.form-checkbox label {
+   margin-left: 10px;
+}
+
+.form-checkbox .checkbox {
+   margin-left: 15px;
+}
+
+:host ::ng-deep .ngaySinh p-calendar span {
+   width: 100%;
+   height: 37px;
+}
+:host ::ng-deep .p-datepicker-calendar{
+   text-align: center;
+}
+
+
+:host ::ng-deep .card p-inputMask input {
+   width: 100%;   
+   height: 37px;
+}

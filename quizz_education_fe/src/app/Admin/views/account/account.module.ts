@@ -27,7 +27,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { CreateUserComponent } from './user/create-user/create-user.component';
-
+import { InputMaskModule } from 'primeng/inputmask';
 @NgModule({
   declarations: [
     TeacherComponent,
@@ -57,7 +57,8 @@ import { CreateUserComponent } from './user/create-user/create-user.component';
     ToastModule,
     ConfirmDialogModule,
     PasswordModule,
-    RadioButtonModule
+    RadioButtonModule,
+    InputMaskModule
   ]
 })
 export class UIAccountModule {
