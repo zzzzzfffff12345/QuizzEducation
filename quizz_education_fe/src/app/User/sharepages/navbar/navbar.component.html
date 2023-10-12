@@ -12,18 +12,20 @@
         <a routerLink="exam" routerLinkActive="active-link" class="nav-item nav-link">Thi Ngay</a>
         <a routerLink="score" routerLinkActive="active-link" class="nav-item nav-link">Điểm Thi</a>
         <a routerLink="history" routerLinkActive="active-link" class="nav-item nav-link">Lịch Sử Thi</a>
+        <button (click)="setUserData()">SetUserData</button>
       </div>
+      
       <!-- <a class="btn" style="background-color: rgb(211, 240, 255);" routerLink="login" routerLinkActive="active-link">Đăng nhập</a> -->
     
         <div class="nav-account d-flex" data-bs-toggle="modal" data-bs-target="#profile">
           <div class="avarta-footer">
-            <img
-                  src="https://firebasestorage.googleapis.com/v0/b/vietfurniture-38c34.appspot.com/o/image%2FhoangThao.jpg?alt=media&token=ce883bde-7cca-4b08-af61-08c5f222a142"
-                  alt="" class="avata_profile_img">
+            <!-- <img src="https://firebasestorage.googleapis.com/v0/b/vietfurniture-38c34.appspot.com/o/image%2FhoangThao.jpg?alt=media&token=ce883bde-7cca-4b08-af61-08c5f222a142"
+                  alt="" class="avata_profile_img"> -->
+                  <img [src]="user.anhDaiDien ? user.anhDaiDien : defaultImage" alt="" class="avata_profile_img">
               </div>
             <div class="nav-account-info">
-                <h6 class="nav-account-info-name">Lê Hoàng Thảo</h6>
-                <p class="nav-account-info-email">thaolh@gmail.com</p>
+                <h6 class="nav-account-info-name">{{ user.hoVaTen }}</h6>
+                <p class="nav-account-info-email">{{ user.email }}</p>
              
             </div>
       </div>
@@ -54,12 +56,11 @@
             </div>
             <div class="role_avata">
               <div class="avata_profile">
-                <img
-                  src="https://firebasestorage.googleapis.com/v0/b/vietfurniture-38c34.appspot.com/o/image%2FhoangThao.jpg?alt=media&token=ce883bde-7cca-4b08-af61-08c5f222a142"
-                  alt="" class="avata_profile_img">
+                <img [src]="user.anhDaiDien ? user.anhDaiDien : defaultImage" alt="" class="avata_profile_img">
+              
               </div>
               <div class="role_profile">
-                <p class="badge-purple">Lớp 11A1</p>
+                <p class="badge-purple">{{ user.lopThi ? user.lopThi : 'Chưa có lớp' }}</p>
               </div>
             </div>
           </div>
@@ -67,8 +68,8 @@
             <div class="profile-body-content">
               <div class="profile-body-content-header">
                 <div class="profile-body-content-header-text">
-                  <h5 class="profile-body-content-header-text-name">Lê Hoàng Thảo</h5>
-                  <p class="profile-body-content-header-text-email">thaolh@gmail.com</p>
+                  <h5 class="profile-body-content-header-text-name">{{user.hoVaTen}}</h5>
+                  <p class="profile-body-content-header-text-email">{{user.email}}</p>
                 </div>
                 <div class="profile-body-content-header-icon">
                   <i class="bi bi-info-circle"></i>       
@@ -76,11 +77,11 @@
               </div>
               <div class="profile-body-content-body" style="margin-top: 20px;">
                 <div class="profile-body-content-body-left">
-                  <h5 class="profile-body-content-body-gender">Nam</h5>
-                  <p class="profile-body-content-body-numberphone">0328142887</p>
+                  <h5 class="profile-body-content-body-gender">{{user.gioiTinh? 'Nam' : 'Nữ'}}</h5>
+                  <p class="profile-body-content-body-numberphone">0{{user.soDienThoai}}</p>
                 </div>
                 <div class="profile-body-content-body-right">
-                  <h5 class="profile-body-content-body-right-age">20 tuổi</h5>
+                  <h5 class="profile-body-content-body-right-age">{{ calculateAge(user.ngaySinh) }} tuổi</h5>
                 </div>
               </div>
             </div>
