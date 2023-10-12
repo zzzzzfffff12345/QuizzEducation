@@ -1,6 +1,7 @@
 *{
     font-family: "Nunito", sans-serif;
 }
+
 nav{
     background-color: #f8f9fa !important;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
@@ -50,13 +51,17 @@ nav{
 /*----------------------------- Profile modal ----------------------------- */
 
 .profile-header {
-    width: 100%;
+    margin: 10px auto;
+    width: 90%;
     height: fit-content;
+    border-radius: 10px;
+    // background-color: #00afef;
+    background: linear-gradient(to right, #0158d2, #00afef);
 }
 
 .profile-header .background_profile {
     width: 100%;
-    height: 150px;
+    height: 90px;
 }
 
 .profile-header .background_profile .background_profile_img {
@@ -71,20 +76,23 @@ nav{
     display: flex;
     justify-content: space-between;
     width: 90%;
+    height: 110px;
     margin: 0 auto;
     align-items: center;
-    margin-top: -50px;
+    // padding-top: -50px;
 }
 
 .profile-header .avata_profile {
-    width: 150px;
-    height: 150px;
+    width: 110px;
+    height: 110px;
     /* position: relative;
     top: -50px;
     left: 40px; */
-    padding: 6px; 
+    // padding: 6px; 
+    margin: 0px 0px 20px 0px;
     border-radius: 50%;
     background-color: #F2F4F7;
+    
 }
 
 .profile-header .avata_profile .avata_profile_img {
@@ -137,3 +145,44 @@ nav{
 }
 
 
+// danh sách của setting
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    position: relative;
+    // margin: 5px 0;
+}
+
+li ul {
+    display: none;
+    position: absolute;
+    left: 40%; /* Hiển thị bên phải của mục cha */
+    top: 0;
+    background-color: #f1f1f1;
+    padding: 5px;
+}
+
+li:hover ul {
+    display: block;
+}
+li ul li:hover{
+    background-color: rgb(188, 247, 255);
+    display: block;
+}
+li ul li{
+    width: 160px;
+    font-size: 16px;
+}
+li ul li a{
+    text-decoration: none;
+}
+.disabled-input {
+    pointer-events: none; /* Ngăn chặn sự tương tác của người dùng */
+    background-color: #e9ecef;
+    color: black;
+    opacity: 1;
+  }
+  
