@@ -1,4 +1,5 @@
 package com.vnpt.quizz_education_be.RestController;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,7 @@ import com.vnpt.quizz_education_be.Entity.DapAn;
 @CrossOrigin(origins = "*")
 @RequestMapping("/quizzeducation/api")
 public class DapAnRestController {
-      @Autowired
+    @Autowired
     DapAnDAO dapAnDAO;
 
     @GetMapping("dapan")
@@ -29,7 +30,6 @@ public class DapAnRestController {
         return ResponseEntity.ok(dapAnDAO.findAll());
     }
 
-    
     // Get 1 đối tượng thông qua id
     @GetMapping("dapan/{id}")
     public ResponseEntity<DapAn> findById(@PathVariable("id") Integer maDapAn) {
