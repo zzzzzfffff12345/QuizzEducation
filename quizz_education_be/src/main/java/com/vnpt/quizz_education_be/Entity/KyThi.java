@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -22,7 +24,7 @@ import lombok.Data;
 @Entity
 @Table(name = "Kythi")
 public class KyThi implements Serializable {
-    
+
     @Id
     @Column(name = "ma_ky_thi")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,9 +47,9 @@ public class KyThi implements Serializable {
 
     // Relationship N - 1
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ten_dang_nhap")
     TaiKhoan taiKhoan;
-
 
 }

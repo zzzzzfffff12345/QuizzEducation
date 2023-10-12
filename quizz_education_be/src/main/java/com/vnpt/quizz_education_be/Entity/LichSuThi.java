@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -22,20 +24,22 @@ import lombok.Data;
 @Entity
 @Table(name = "Lichsuthi")
 public class LichSuThi implements Serializable {
-    
-    @Id
-    @Column(name = "ma_lich_su_thi")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int maLichSuThi;
 
-      // Relationship N - 1
+  @Id
+  @Column(name = "ma_lich_su_thi")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int maLichSuThi;
 
-    @ManyToOne
-    @JoinColumn(name = "ma_bo_cau_hoi_da_lam")
-    BoCauHoiDaLam boCauHoiDaLam;
+  // Relationship N - 1
 
-    @ManyToOne
-    @JoinColumn(name = "ma_dap_an_da_chon")
-    DapAn dapAn;
-   
+  @JsonIgnore
+  @ManyToOne
+  @JoinColumn(name = "ma_bo_cau_hoi_da_lam")
+  BoCauHoiDaLam boCauHoiDaLam;
+
+  @JsonIgnore
+  @ManyToOne
+  @JoinColumn(name = "ma_dap_an_da_chon")
+  DapAn dapAn;
+
 }

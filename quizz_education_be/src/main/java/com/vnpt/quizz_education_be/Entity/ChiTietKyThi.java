@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.format.datetime.standard.DateTimeContext;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -24,7 +26,7 @@ import lombok.Data;
 @Entity
 @Table(name = "Chitietkythi")
 public class ChiTietKyThi implements Serializable {
-    
+
     @Id
     @Column(name = "ma_chi_tiet_ky_thi")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,17 +40,19 @@ public class ChiTietKyThi implements Serializable {
 
     // Relationship N - 1
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ma_ky_thi")
     KyThi kyThi;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ma_mon")
     MonThi monThi;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ma_lop")
     LopThi lopThi;
 
-    
 }

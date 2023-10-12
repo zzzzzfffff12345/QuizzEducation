@@ -33,7 +33,6 @@ public class TaiKhoan implements Serializable {
     @Column(name = "mat_khau")
     private String matKhau;
 
-
     @Column(name = "trang_thai")
     private Boolean trangThai;
 
@@ -64,13 +63,14 @@ public class TaiKhoan implements Serializable {
     @Column(name = "anh_dai_dien")
     private String anhDaiDien;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ma_lop")
     LopThi lopThi;
 
-    
     // Relationship 1-N
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ma_vai_tro")
     VaiTro vaiTro;

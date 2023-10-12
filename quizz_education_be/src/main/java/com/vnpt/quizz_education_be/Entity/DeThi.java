@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vnpt.quizz_education_be.DAO.ChiTietKiThiDAO;
 
 import jakarta.persistence.Column;
@@ -41,14 +42,17 @@ public class DeThi implements Serializable {
 
     // Relationship N - 1
 
-    @ManyToOne 
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "ma_chi_tiet_ky_thi")
     ChiTietKyThi ChiTietKyThi;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ten_dang_nhap")
     TaiKhoan taiKhoan;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ma_mon")
     MonThi monThi;
