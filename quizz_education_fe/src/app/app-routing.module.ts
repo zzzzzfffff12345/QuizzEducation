@@ -7,7 +7,7 @@ import { Page500Component } from './Admin/views/pages/page500/page500.component'
 import { LoginComponent } from './Admin/views/pages/login/login.component';
 import { RegisterComponent } from './Admin/views/pages/register/register.component';
 import { MainUserComponent } from './User/main-user/main-user.component';
-import { AboutComponent } from './User/pages/about/about.component';
+import { ExamComponent } from './User/pages/exam/exam.component';
 import { HomeComponent } from './User/pages/home/home.component';
 import { ScoreComponent } from './User/pages/score/score.component';
 import { DefaultLayoutTeacherComponent } from './Teacher/containers-teacher/index-teacher';
@@ -22,7 +22,7 @@ const routes: Routes = [
     path: 'user',
     component: MainUserComponent,
     children: [
-      { path: 'exam', component: AboutComponent },
+      { path: 'exam', component: ExamComponent },
       { path: 'home', component: HomeComponent },
       { path: 'score', component: ScoreComponent },
       { path: 'history', component: HistoryComponent }

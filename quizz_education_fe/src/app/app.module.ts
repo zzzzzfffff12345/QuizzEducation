@@ -40,7 +40,7 @@ import { MainUserComponent } from './User/main-user/main-user.component';
 import { NavbarComponent } from './User/sharepages/navbar/navbar.component';
 import { FooterComponent } from './User/sharepages/footer/footer.component';
 import { HomeComponent } from './User/pages/home/home.component';
-import { AboutComponent } from './User/pages/about/about.component';
+import { ExamComponent } from './User/pages/exam/exam.component';
 import { ScoreComponent } from './User/pages/score/score.component';
 import { DefaultLayoutTeacherComponent } from './Teacher/containers-teacher/default-layout-teacher/default-layout-teacher.component';
 import { TeacherHeaderComponent } from './Teacher/containers-teacher/default-layout-teacher/teacher-header/teacher-header.component';
@@ -63,7 +63,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ...APP_CONTAINERS, MainUserComponent, NavbarComponent, FooterComponent, HomeComponent, AboutComponent, ScoreComponent, TeacherHeaderComponent, TeacherFooterComponent, HistoryComponent, HomeHeaderComponent, HomeContentComponent, ReportComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS, MainUserComponent, NavbarComponent, FooterComponent, HomeComponent, ExamComponent, ScoreComponent, TeacherHeaderComponent, TeacherFooterComponent, HistoryComponent, HomeHeaderComponent, HomeContentComponent, ReportComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
