@@ -79,14 +79,14 @@ public class ChiTietKyThi implements Serializable {
     public int getIdTrangThai() {
         Date now = new Date();
         if (this.getThoiGianBatDau() == null || this.getThoiGianBatDau() == null) {
-            return 0;
+            return 3;// Chưa có thông tin cụ thể
         }
         if (now.before(this.getThoiGianBatDau())) {
-            return 1;
+            return 1;// Chưa diễn ra
         } else if (now.after(this.getThoiGianBatDau()) && now.before(this.getThoiGianKetThuc())) {
-            return 2;
+            return 0;// Đang diễn ra
         } else {
-            return 3;
+            return 2;// Đã kết thúc
         }
     }
 
@@ -95,36 +95,6 @@ public class ChiTietKyThi implements Serializable {
             return this.getList_DeThi().get(0);
         } catch (Exception e) {
             return null;
-        }
-    }
-
-    public Object getTrangThai(boolean layMa) {
-        Date now = new Date();
-        if (this.getThoiGianBatDau() == null || this.getThoiGianBatDau() == null) {
-            if (layMa) {
-                return 0;
-            } else {
-                return "Chưa có thông tin cụ thể";
-            }
-        }
-        if (now.before(this.getThoiGianBatDau())) {
-            if (layMa) {
-                return 1;
-            } else {
-                return "Chưa diễn ra";
-            }
-        } else if (now.after(this.getThoiGianBatDau()) && now.before(this.getThoiGianKetThuc())) {
-            if (layMa) {
-                return 2;
-            } else {
-                return "Đang diễn ra";
-            }
-        } else {
-            if (layMa) {
-                return 2;
-            } else {
-                return "Đã kết thúc";
-            }
         }
     }
 }

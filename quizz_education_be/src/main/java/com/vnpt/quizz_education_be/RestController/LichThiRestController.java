@@ -1,5 +1,7 @@
 package com.vnpt.quizz_education_be.RestController;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +43,8 @@ public class LichThiRestController {
         if (taiKhoan.getVaiTro().getMaVaiTro() != 1) {
             return ResponseEntity.badRequest().body("Không thể tham gia kì thi! Do bạn không phải sinh viên");
         }
+        Integer maLopThi = taiKhoan.getLopThi().getMaLopThi();
 
-        Integer maLopThi;
         // Lỗi sinh viên chưa được sắp lớp
         try {
             maLopThi = taiKhoan.getLopThi().getMaLopThi();
@@ -50,7 +52,8 @@ public class LichThiRestController {
             return ResponseEntity.badRequest().body("Sinh viên chưa được sắp lớp!");
         }
 
-        List<ChiTietKyThi> list = chiTietKiThiDAO.getAll(taiKhoan.getLopThi().getMaLopThi());
+        List<ChiTietKyThi> list = chiTietKiThiDAO.getAll(maLopThi);
+        Collections.sort(list, Comparator.comparingInt(ChiTietKyThi::getIdTrangThai));
 
         return ResponseEntity.ok(list);
     }
