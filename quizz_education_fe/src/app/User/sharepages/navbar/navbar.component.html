@@ -13,7 +13,7 @@
         <a routerLink="score" routerLinkActive="active-link" class="nav-item nav-link">Điểm Thi</a>
         <a routerLink="history" routerLinkActive="active-link" class="nav-item nav-link">Lịch Sử Thi</a>
         <button (click)="setUserData()">SetUserData</button>
-        
+
       </div>
 
       <!-- <a class="btn" style="background-color: rgb(211, 240, 255);" routerLink="login" routerLinkActive="active-link">Đăng nhập</a> -->
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="nav-account-logout">
-        
+
         <div class="row">
           <div class="col-md-12 ml-3">
 
@@ -45,16 +45,20 @@
                 </svg>
                 <ul>
                   <li>
-                    <a href="#/changepassword"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                      <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-                    </svg>  Đổi mật khẩu</a>
-                    </li>
+                    <a href="#/changepassword"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                      </svg> Đổi mật khẩu</a>
+                  </li>
                   <li>
-                    <a href="#/login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-                      <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                    </svg>  Đăng xuất</a>
-                    </li>
+                    <a href="#/login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                          d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+                        <path fill-rule="evenodd"
+                          d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                      </svg> Đăng xuất</a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -89,75 +93,107 @@
         <div class="modal-body bg-light">
           <div class="profile-header">
             <div class="background_profile">
+              <p class="text-center text-white pt-1">HỆ THỐNG THI TRẮC NGHIỆM <br><b>QUIZZ EDUCATION</b></p>
+              <p class="text-center"></p>
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/quizzeducation-eaea3.appspot.com/o/images%2Fcard-blue.jpg?alt=media&token=6ac72c20-9041-40dd-a8e9-ab0e5f8c7d5c"
                 alt="" class="background_profile_img">
             </div>
             <div class="role_avata">
               <div class="avata_profile">
+                
                 <img [src]="user.anhDaiDien ? user.anhDaiDien : defaultImage" alt="" class="avata_profile_img">
 
 
               </div>
-
+             
               <div class="role_profile">
-                <h5>Thẻ Học Sinh</h5>
-                <h6>Có giá trị đến: 12/09/2024 </h6>
-                <p>{{ user.lopThi.tenLop ? user.lopThi.tenLop : 'Chưa có lớp' }}</p>
-                
+                <p class="title-card">THẺ HỌC SINH</p>
+                <div class="d-flex"><label>
+                    <i>Họ và tên/Name:</i></label>
+                  <h5>  {{user.hoVaTen}}</h5>
+                </div>
+
+                <div class="d-flex"><label>
+                  <i>Ngày sinh/DateOfBirth:</i></label>
+                  <p>  {{user.ngaySinh}}</p>
+                </div>
+
+                <div class="d-flex">
+                  <label> <i>Lớp/Class:</i></label>
+                  <p>  {{user.lopThi.tenLop}}</p>
+                  <div class="khung-qr">
+                    <img class="QR" src="https://firebasestorage.googleapis.com/v0/b/quizzeducation-eaea3.appspot.com/o/images%2FQR_Chau_Manh_Tan.png?alt=media&token=cf326965-2283-478c-b27e-043eb3c6afb9" alt="">
+              
+                  </div>
+                  </div>
+                  <p class="footer-card">www.quizz.edu.vn</p>
               </div>
             </div>
           </div>
           <div class="profile-body">
             <div class="profile-body-content">
               <div class="title-content d-flex">
-              <h2>Thông tin cá nhân</h2>
-              <input type="file" accept="images/*" id="fileInput" style="display: none;">
-              <button style="margin-left: 70px; border-radius: 10px; border: none; " (click)="openFileInput()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-              </svg>  Đổi ảnh</button>
-            </div>
+                <h2>Thông tin cá nhân</h2>
+                <input type="file" accept="images/*" id="fileInput" style="display: none;">
+                <button style="margin-left: 70px; border-radius: 10px; border: none; " (click)="openFileInput()"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path
+                      d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                    <path fill-rule="evenodd"
+                      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                  </svg> Đổi ảnh</button>
+              </div>
               <div class="profile-body-content-header">
 
                 <div class="row g-3 grid p-fluid">
 
                   <div class="field col-12">
                     <label for="hoVanTen" class="form-label">Họ và tên</label>
-                    <input type="text" id="hoVanTen" class="form-control box-shadow-none disabled-input" [value]="user.hoVaTen">
+                    <input type="text" id="hoVanTen" class="form-control box-shadow-none disabled-input"
+                      [value]="user.hoVaTen">
                   </div>
                   <div class="field col-12">
                     <label for="cccd" class="form-label">Căn cước công dân</label>
-                    <input type="text" id="cccd" class="form-control box-shadow-none disabled-input"[value]="user.canCuocCongDan">
+                    <input type="text" id="cccd" class="form-control box-shadow-none disabled-input"
+                      [value]="user.canCuocCongDan">
                   </div>
                   <div class="field col-12">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" id="email" class="form-control box-shadow-none disabled-input"[value]="user.email">
+                    <input type="text" id="email" class="form-control box-shadow-none disabled-input"
+                      [value]="user.email">
                   </div>
                   <div class="field col-12">
                     <label for="ngaySinh" class="form-label">Ngày sinh</label>
-                    <input type="text" id="ngaySinh" class="form-control box-shadow-none disabled-input"[value]="user.ngaySinh">
+                    <input type="text" id="ngaySinh" class="form-control box-shadow-none disabled-input"
+                      [value]="user.ngaySinh">
                   </div>
                   <div class="field col-12">
                     <label for="gioiTinh" class="form-label">Giới tính</label>
-                    <input type="text" id="gioiTinh" class="form-control box-shadow-none disabled-input"[value]="user.gioiTinh? 'Nam':'Nữ' ">
+                    <input type="text" id="gioiTinh" class="form-control box-shadow-none disabled-input"
+                      [value]="user.gioiTinh? 'Nam':'Nữ' ">
                   </div>
                   <div class="field col-12">
                     <label for="soDienThoai" class="form-label">Số điện thoại</label>
-                    <input type="text" id="soDienThoai" class="form-control box-shadow-none disabled-input"[value]="user.soDienThoai">
+                    <input type="text" id="soDienThoai" class="form-control box-shadow-none disabled-input"
+                      [value]="user.soDienThoai">
                   </div>
                   <div class="field col-12">
                     <label for="diaChi" class="form-label">Địa chỉ</label>
-                    <input type="text" id="diaChi" class="form-control box-shadow-none disabled-input"[value]="user.diaChi">
+                    <input type="text" id="diaChi" class="form-control box-shadow-none disabled-input"
+                      [value]="user.diaChi">
                   </div>
                   <div class="field col-12">
                     <label for="lopThi" class="form-label">Lớp</label>
-                    <input type="text" id="lopThi" class="form-control box-shadow-none disabled-input"[value]="user.lopThi.tenLop">
+                    <input type="text" id="lopThi" class="form-control box-shadow-none disabled-input"
+                      [value]="user.lopThi.tenLop">
                   </div>
 
                   <div class="field col-12">
                     <label for="trangThai" class="form-label">Trạng thái</label>
-                    <input type="text" id="trangThai" class="form-control box-shadow-none disabled-input"[value]="user.trangThai? 'DHOC (Đang Học)':'NHOC (Nghĩ Học)'">
+                    <input type="text" id="trangThai" class="form-control box-shadow-none disabled-input"
+                      [value]="user.trangThai? 'DHOC (Đang Học)':'NHOC (Nghĩ Học)'">
                   </div>
                 </div>
 
@@ -171,6 +207,3 @@
 
       </div>
     </div>
-   
-
-

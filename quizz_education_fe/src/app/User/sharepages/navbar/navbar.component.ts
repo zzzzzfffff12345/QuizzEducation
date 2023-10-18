@@ -10,8 +10,8 @@ export class NavbarComponent {
 
 // SetDATA nhe
  
-  private userKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5EYW5nTmhhcCI6IkNoYXVNYW5oVGFuIiwibWF0S2hhdSI6IjEyMyIsInRyYW5nVGhhaSI6dHJ1ZSwiZW1haWwiOiJDaGF1TWFuaFRhbkBnbWFpbC5jb20iLCJjYW5DdW9jQ29uZ0RhbiI6IjIzMTg4ODQ0NDU1NSIsImhvVmFUZW4iOiJDaMOidSBN4bqhbmggVOG6pW4iLCJnaW9pVGluaCI6dHJ1ZSwibmdheVNpbmgiOiIyMDAxLTAyLTE2IiwiZGlhQ2hpIjoiQ-G6p24gVGjGoSIsInNvRGllblRob2FpIjoiMDkxNzc3Nzc3NyIsIm5nYXlUYW9UYWlLaG9hbiI6IjIwMjMtMDktMzAiLCJhbmhEYWlEaWVuIjoiaHR0cHM6Ly9maXJlYmFzZXN0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vdjAvYi9xdWl6emVkdWNhdGlvbi1lYWVhMy5hcHBzcG90LmNvbS9vL2ltYWdlcyUyRkNoYXVNYW5oVGFuLmpwZz9hbHQ9bWVkaWEmdG9rZW49OGYwZGM5OWYtOTI3Zi00NDBlLTlhNTAtYTA1NWUwZDg5OWUyIiwibG9wVGhpIjp7Im1hTG9wVGhpIjoxLCJ0ZW5Mb3AiOiJM4bubcCA4QTEiLCJzb0x1b25nVG9pRGEiOjMwfSwidmFpVHJvIjp7Im1hVmFpVHJvIjoxLCJ0ZW5WYWlUcm8iOiJI4buNYyBzaW5oIn19.NxjI1-Ni2S8p3YHJ-1VXXttS6BcepYBqZdf8sLNSrKU'
-  private sessionUser: any;
+  private userKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5EYW5nTmhhcCI6IkNoYXVNYW5oVGFuIiwibWF0S2hhdSI6IjEyMyIsInRyYW5nVGhhaSI6dHJ1ZSwiZW1haWwiOiJDaGF1TWFuaFRhbkBnbWFpbC5jb20iLCJjYW5DdW9jQ29uZ0RhbiI6IjIzMTg4ODQ0NDU1NSIsImhvVmFUZW4iOiJDaMOidSBN4bqhbmggVOG6pW4iLCJnaW9pVGluaCI6dHJ1ZSwibmdheVNpbmgiOiIyMDAxLTAyLTE2IiwiZGlhQ2hpIjoiQ-G6p24gVGjGoSIsInNvRGllblRob2FpIjoiMDkxNzc3Nzc3NyIsIm5nYXlUYW9UYWlLaG9hbiI6IjIwMjMtMDktMzAiLCJhbmhEYWlEaWVuIjoiaHR0cHM6Ly9maXJlYmFzZXN0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vdjAvYi9xdWl6emVkdWNhdGlvbi1lYWVhMy5hcHBzcG90LmNvbS9vL2ltYWdlcyUyRkNoYXVNYW5oVGFuLmpwZz9hbHQ9bWVkaWEmdG9rZW49OGYwZGM5OWYtOTI3Zi00NDBlLTlhNTAtYTA1NWUwZDg5OWUyIiwibG9wVGhpIjp7Im1hTG9wVGhpIjoxLCJ0ZW5Mb3AiOiI4QTEiLCJzb0x1b25nVG9pRGEiOjMwfSwidmFpVHJvIjp7Im1hVmFpVHJvIjoxLCJ0ZW5WYWlUcm8iOiJI4buNYyBzaW5oIn19.-3zAKmM6vzWfWzgBiSGjURtIP0bdAJGkIDKe-b6IMqA' 
+   private sessionUser: any;
   constructor() {this.sessionUser = this.getSessionUser();}
   
  // Lưu dữ liệu người dùng vào Local Storage
@@ -65,7 +65,7 @@ setSessionUser(user: any): void {
     "anhDaiDien": "https://firebasestorage.googleapis.com/v0/b/quizzeducation-eaea3.appspot.com/o/images%2FChauManhTan.jpg?alt=media&token=8f0dc99f-927f-440e-9a50-a055e0d899e2",
     "lopThi": {
         "maLopThi": 1,
-        "tenLop": "Lớp 8A1",
+        "tenLop": "8A1",
         "soLuongToiDa": 30
     },
     "vaiTro": {
