@@ -111,7 +111,7 @@
 
                 <div class="d-flex"><label>
                   <i>Ngày sinh/DateOfBirth:</i></label>
-                  <p>  {{user.ngaySinh}}</p>
+                  <p>  {{user.ngaySinh | date:'dd/MM/yyyy'}}</p>
                 </div>
 
                 <div class="d-flex">
@@ -162,7 +162,7 @@
                   <div class="field col-12">
                     <label for="ngaySinh" class="form-label">Ngày sinh</label>
                     <input type="text" id="ngaySinh" class="form-control box-shadow-none disabled-input"
-                      [value]="user.ngaySinh">
+                      [value]="user.ngaySinh | date:'dd/MM/yyyy'">
                   </div>
                   <div class="field col-12">
                     <label for="gioiTinh" class="form-label">Giới tính</label>

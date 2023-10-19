@@ -16,7 +16,6 @@ export class NavbarComponent {
 
 
   public user : any;
-  public userD : any;
   ngOnInit(): void {
     this.getTokenFromLocalStorage();
     }
@@ -34,10 +33,9 @@ export class NavbarComponent {
         // Lấy dữ liệu từ Local Storage và gán cho biến user
         this.user = JSON.parse(decodedToken.sub);
          
+        //Đi tìm trong DB lấy ra đối tượng
         this.httpSvService.getItem('taikhoan',this.user.tenDangNhap).subscribe((userData) => {
-          console.log(userData)
           this.user = userData;
-          console.log(this.user)
          });
       }
       

@@ -64,12 +64,6 @@ export class LoginComponent implements OnInit {
           const helper = new JwtHelperService();
           localStorage.setItem('token', response.token);
           const data = JSON.parse(helper.decodeToken(response.token).sub);
-
-          this.httpSvService.getItem('taikhoan',data.tenDangNhap).subscribe((userData) => {
-          //  console.log(userData)
-          });
-          
-
           // Chuyển hướng đến trang chính hoặc làm bất kỳ điều gì cần thiết.
           if(data.vaiTro.tenVaiTro === 'Học sinh'){
               this.router.navigate(['user/home'])
