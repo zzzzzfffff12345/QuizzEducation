@@ -33,7 +33,7 @@ export class LoginComponent {
 
   ngOnInit(): void {
     this.autoLogin();
-    console.log(this.data)
+   
   }
 
   public autoLogin() {
@@ -51,10 +51,7 @@ export class LoginComponent {
 
   public data="";
   public loginMethod() {
-
-    
-
-    if (this.formLogin.valid) {
+   if (this.formLogin.valid) {
       const API_LOGIN = 'http://localhost:8080/quizzeducation/api/login';
 
       const request = this.httpClient.post<any>(API_LOGIN,this.formLogin.value);
@@ -63,12 +60,17 @@ export class LoginComponent {
         if (response.token != '191003') {
           const helper = new JwtHelperService();
           localStorage.setItem('token', response.token);
-          this.data = JSON.parse(helper.decodeToken(response.token).sub);
+          const data = JSON.parse(helper.decodeToken(response.token).sub);
 
           // Chuyển hướng đến trang chính hoặc làm bất kỳ điều gì cần thiết.
-          this.router.navigate(['/user/home']);
-
-          
+          if(data.vaiTro.tenVaiTro === 'Học sinh'){
+              this.router.navigate(['user/home'])
+          } else if(data.vaiTro.tenVaiTro === 'Giáo viên'){
+            this.router.navigate(['teacher'])
+          } else if(data.vaiTro.tenVaiTro === 'Admin'){
+            this.router.navigate(['admin'])
+          }  
+        
         }
         
 

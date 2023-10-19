@@ -29,7 +29,7 @@ export class NavbarComponent {
       if (decodedToken.sub) {
         // Lấy dữ liệu từ Local Storage và gán cho biến user
         this.user = JSON.parse(decodedToken.sub);
-        console.log(this.user.tenDangNhap)
+        console.log("Navbar "+this.user.vaiTro.tenVaiTro)
       }
       
         return decodedToken; // Trả về đối tượng JSON
