@@ -2,18 +2,21 @@ import { LoginComponent } from './../../../Teacher/views/pages/login/login.compo
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
+import { HttpSvService } from 'src/app/service/API.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  constructor(private router: Router){}
+  constructor(
+    private router: Router,
+    private httpSvService : HttpSvService,
+    ){}
 
 
-  public user: any;
+  public user : any;
+  public userD : any;
   ngOnInit(): void {
     this.getTokenFromLocalStorage();
     }
@@ -26,10 +29,16 @@ export class NavbarComponent {
       try {
         const decodedToken = helper.decodeToken(token);
         // Trích xuất dữ liệu từ trường 'sub'
+       
       if (decodedToken.sub) {
         // Lấy dữ liệu từ Local Storage và gán cho biến user
         this.user = JSON.parse(decodedToken.sub);
-        console.log("Navbar "+this.user.vaiTro.tenVaiTro)
+         
+        this.httpSvService.getItem('taikhoan',this.user.tenDangNhap).subscribe((userData) => {
+          console.log(userData)
+          this.user = userData;
+          console.log(this.user)
+         });
       }
       
         return decodedToken; // Trả về đối tượng JSON

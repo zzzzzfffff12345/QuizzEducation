@@ -18,12 +18,18 @@
                   </span>
                   <input formControlName="tenDangNhap" autoComplete="username" cFormControl placeholder="Tên đăng nhập" />
                 </c-input-group>
-                <c-input-group class="mb-4">
+                <c-input-group class="mb-2">
                   <span cInputGroupText>
                     <svg cIcon name="cilLockLocked"></svg>
                   </span>
                   <input formControlName="matKhau" autoComplete="current-password" cFormControl placeholder="Mật khẩu" type="password" />
                 </c-input-group>
+                <c-col class="text-right mb-3" xs="6">
+                  <label>
+                    <input formControlName="remember" type="checkbox">
+                    Ghi nhớ đăng nhập
+                  </label>
+                </c-col>
                 <c-row>
                   <c-col xs="6">
                     <button cButton class="px-3" color="primary" type="submit">

@@ -3,23 +3,25 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpSvService } from '../../../../service/API.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
     private httpClient: HttpClient,
-    private router: Router
+    private router: Router,
+    private httpSvService : HttpSvService,
   ) {}
 
   public formLogin = this.formBuilder.group({
     tenDangNhap: new FormControl('', [Validators.required]),
     matKhau: new FormControl('', [Validators.required]),
-    // remember: new FormControl(false, [Validators.required]),
+    remember: new FormControl(false, [Validators.required]),
   });
 
   
@@ -54,6 +56,7 @@ export class LoginComponent {
    if (this.formLogin.valid) {
       const API_LOGIN = 'http://localhost:8080/quizzeducation/api/login';
 
+      console.log(typeof this.formLogin.value.remember);
       const request = this.httpClient.post<any>(API_LOGIN,this.formLogin.value);
       request.subscribe((response) => {
         // Khi token không phải mã 191003 có nghĩ nó không fail đăng nhập
@@ -61,6 +64,11 @@ export class LoginComponent {
           const helper = new JwtHelperService();
           localStorage.setItem('token', response.token);
           const data = JSON.parse(helper.decodeToken(response.token).sub);
+
+          this.httpSvService.getItem('taikhoan',data.tenDangNhap).subscribe((userData) => {
+          //  console.log(userData)
+          });
+          
 
           // Chuyển hướng đến trang chính hoặc làm bất kỳ điều gì cần thiết.
           if(data.vaiTro.tenVaiTro === 'Học sinh'){

@@ -55,6 +55,7 @@ import { TeacherComponent } from './Admin/views/account/teacher/teacher.componen
 import { UserComponent } from './Admin/views/account/user/user.component';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { HttpSvService } from './service/API.service';
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
