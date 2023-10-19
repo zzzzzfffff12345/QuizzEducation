@@ -3,11 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-  BsModalService,
-  BsModalRef,
-  ModalDirective,
-} from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +11,6 @@ import {
 export class LoginComponent {
 
   constructor(
-    private modalService: BsModalService,
     private formBuilder: FormBuilder,
     private httpClient: HttpClient,
     private router: Router
@@ -39,6 +33,7 @@ export class LoginComponent {
 
   ngOnInit(): void {
     this.autoLogin();
+    console.log(this.data)
   }
 
   public autoLogin() {
@@ -48,13 +43,17 @@ export class LoginComponent {
       let validateToken = this.httpClient.post<string>('http://localhost:8080/quizzeducation/api/validatetoken', { 'token': token });
       validateToken.subscribe(response => {
         if (response) {
-          this.router.navigate(['#/user/home']);
+          this.router.navigate(['/user/home']);
         }
       });
     }
   }
 
+  public data="";
   public loginMethod() {
+
+    
+
     if (this.formLogin.valid) {
       const API_LOGIN = 'http://localhost:8080/quizzeducation/api/login';
 
@@ -64,15 +63,12 @@ export class LoginComponent {
         if (response.token != '191003') {
           const helper = new JwtHelperService();
           localStorage.setItem('token', response.token);
-          const data = JSON.parse(helper.decodeToken(response.token).sub);
+          this.data = JSON.parse(helper.decodeToken(response.token).sub);
 
-          if(data) {
-            // Lưu thông tin người dùng vào localStorage hoặc biến trạng thái ứng dụng.
-            localStorage.setItem('userData', JSON.stringify(data));
-
-            // Chuyển hướng đến trang chính hoặc làm bất kỳ điều gì cần thiết.
+          // Chuyển hướng đến trang chính hoặc làm bất kỳ điều gì cần thiết.
           this.router.navigate(['/user/home']);
-          }
+
+          
         }
         
 

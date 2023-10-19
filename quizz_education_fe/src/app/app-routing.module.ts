@@ -15,7 +15,7 @@ import { HistoryComponent } from './User/pages/history/history.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/user/home',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {

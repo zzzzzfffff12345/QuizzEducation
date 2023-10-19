@@ -1,4 +1,7 @@
+import { LoginComponent } from './../../../Teacher/views/pages/login/login.component';
 import { Component} from '@angular/core';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,86 +10,47 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  constructor(private router: Router){}
 
-// SetDATA nhe
+
+  public user: any;
+  ngOnInit(): void {
+    this.getTokenFromLocalStorage();
+    }
  
-  private userKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5EYW5nTmhhcCI6IkNoYXVNYW5oVGFuIiwibWF0S2hhdSI6IjEyMyIsInRyYW5nVGhhaSI6dHJ1ZSwiZW1haWwiOiJDaGF1TWFuaFRhbkBnbWFpbC5jb20iLCJjYW5DdW9jQ29uZ0RhbiI6IjIzMTg4ODQ0NDU1NSIsImhvVmFUZW4iOiJDaMOidSBN4bqhbmggVOG6pW4iLCJnaW9pVGluaCI6dHJ1ZSwibmdheVNpbmgiOiIyMDAxLTAyLTE2IiwiZGlhQ2hpIjoiQ-G6p24gVGjGoSIsInNvRGllblRob2FpIjoiMDkxNzc3Nzc3NyIsIm5nYXlUYW9UYWlLaG9hbiI6IjIwMjMtMDktMzAiLCJhbmhEYWlEaWVuIjoiaHR0cHM6Ly9maXJlYmFzZXN0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vdjAvYi9xdWl6emVkdWNhdGlvbi1lYWVhMy5hcHBzcG90LmNvbS9vL2ltYWdlcyUyRkNoYXVNYW5oVGFuLmpwZz9hbHQ9bWVkaWEmdG9rZW49OGYwZGM5OWYtOTI3Zi00NDBlLTlhNTAtYTA1NWUwZDg5OWUyIiwibG9wVGhpIjp7Im1hTG9wVGhpIjoxLCJ0ZW5Mb3AiOiI4QTEiLCJzb0x1b25nVG9pRGEiOjMwfSwidmFpVHJvIjp7Im1hVmFpVHJvIjoxLCJ0ZW5WYWlUcm8iOiJI4buNYyBzaW5oIn19.-3zAKmM6vzWfWzgBiSGjURtIP0bdAJGkIDKe-b6IMqA' 
-   private sessionUser: any;
-  constructor() {this.sessionUser = this.getSessionUser();}
+  // Lấy dữ liệu người dùng từ Local Storage
+  public getTokenFromLocalStorage(): any {
+    const token = localStorage.getItem('token'); // Lấy token từ localStorage
+    if (token) {
+      const helper = new JwtHelperService();
+      try {
+        const decodedToken = helper.decodeToken(token);
+        // Trích xuất dữ liệu từ trường 'sub'
+      if (decodedToken.sub) {
+        // Lấy dữ liệu từ Local Storage và gán cho biến user
+        this.user = JSON.parse(decodedToken.sub);
+        console.log(this.user.tenDangNhap)
+      }
+      
+        return decodedToken; // Trả về đối tượng JSON
+      } catch (error) {
+        console.error('Lỗi giải mã token:', error);
+        return null;
+      }
+    }
+    return null; // Không tìm thấy token trong localStorage
+  }
   
- // Lưu dữ liệu người dùng vào Local Storage
- setLocalUser(user: any): void {
-   localStorage.setItem(this.userKey, JSON.stringify(user));
- }
-// Lưu dữ liệu người dùng vào Session Storage
-setSessionUser(user: any): void {
- sessionStorage.setItem(this.userKey, JSON.stringify(user));
- this.sessionUser = user;
-}
- // Lấy dữ liệu người dùng từ Local Storage
- getLocalUser(): any {
-   const userString = localStorage.getItem(this.userKey);
-   return userString ? JSON.parse(userString) : null;
- }
-
- // Lấy dữ liệu người dùng từ Session Storage
- getSessionUser(): any {
-   if (this.sessionUser) {
-     return this.sessionUser;
-   }
-   const userString = sessionStorage.getItem(this.userKey);
-   return userString ? JSON.parse(userString) : null;
- }
 
  // Xóa dữ liệu người dùng khỏi Local Storage
- removeLocalUser(): void {
-   localStorage.removeItem(this.userKey);
- }
-
- // Xóa dữ liệu người dùng khỏi Session Storage
- removeSessionUser(): void {
-   sessionStorage.removeItem(this.userKey);
-   this.sessionUser = null;
- }
-
- setUserData(): void {
-   const user = {
-    "tenDangNhap": "ChauManhTan",
-    "matKhau": "123",
-    "trangThai": true,
-    "email": "ChauManhTan@gmail.com",
-    "canCuocCongDan": "231888444555",
-    "hoVaTen": "Châu Mạnh Tấn",
-    "gioiTinh": true,
-    "ngaySinh": "2001-02-16",
-    "diaChi": "Cần Thơ",
-    "soDienThoai": "0917777777",
-    "ngayTaoTaiKhoan": "2023-09-30",
-    "anhDaiDien": "https://firebasestorage.googleapis.com/v0/b/quizzeducation-eaea3.appspot.com/o/images%2FChauManhTan.jpg?alt=media&token=8f0dc99f-927f-440e-9a50-a055e0d899e2",
-    "lopThi": {
-        "maLopThi": 1,
-        "tenLop": "8A1",
-        "soLuongToiDa": 30
-    },
-    "vaiTro": {
-        "maVaiTro": 1,
-        "tenVaiTro": "Học sinh"
-    }
-};
-
-   // Set cứng vào Local Storage
-   this.setLocalUser(user);
-   // Set cứng vào Session Storage
-   this.setSessionUser(user);
- }
-// SetDATA nhe
-
-
-
+logout() {
+  localStorage.removeItem('token'); // Xóa token từ localStorage
+  this.router.navigate(['/login']); // Chuyển hướng người dùng đến trang đăng nhập
+}
 //-------------------------------------------------------- MAIN--------------------------------------------------------------------------------------
 
 // Nếu chưa có ảnh thì set ảnh default
-defaultImage: string = 'https://firebasestorage.googleapis.com/v0/b/quizzeducation-eaea3.appspot.com/o/images%2Fdefault-user.png?alt=media&token=9242ab38-66aa-4764-a726-bceb152ff1e4';
+ defaultImage: string = 'https://firebasestorage.googleapis.com/v0/b/quizzeducation-eaea3.appspot.com/o/images%2Fdefault-user.png?alt=media&token=9242ab38-66aa-4764-a726-bceb152ff1e4';
   
 // Hàm tính tuổi từ ngày tháng năm sinh
 calculateAge(dateOfBirth: string): number {
@@ -109,11 +73,6 @@ calculateAge(dateOfBirth: string): number {
   }
 }
 
-user: any;
-ngOnInit(): void {
-  // Lấy dữ liệu từ Local Storage và gán cho biến user
-  this.user = this.getLocalUser();
-  }
 
 //Đổi ảnh
 selectedImage: File | undefined;

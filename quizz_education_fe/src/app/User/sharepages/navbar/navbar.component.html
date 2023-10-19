@@ -12,16 +12,11 @@
         <a routerLink="exam" routerLinkActive="active-link" class="nav-item nav-link">Thi Ngay</a>
         <a routerLink="score" routerLinkActive="active-link" class="nav-item nav-link">Điểm Thi</a>
         <a routerLink="history" routerLinkActive="active-link" class="nav-item nav-link">Lịch Sử Thi</a>
-        <button (click)="setUserData()">SetUserData</button>
-
+      
       </div>
-
-      <!-- <a class="btn" style="background-color: rgb(211, 240, 255);" routerLink="login" routerLinkActive="active-link">Đăng nhập</a> -->
 
       <div class="nav-account d-flex" data-bs-toggle="modal" data-bs-target="#profile">
         <div class="avarta-footer">
-          <!-- <img src="https://firebasestorage.googleapis.com/v0/b/vietfurniture-38c34.appspot.com/o/image%2FhoangThao.jpg?alt=media&token=ce883bde-7cca-4b08-af61-08c5f222a142"
-                  alt="" class="avata_profile_img"> -->
           <img [src]="user.anhDaiDien ? user.anhDaiDien : defaultImage" alt="" class="avata_profile_img">
         </div>
         <div class="nav-account-info">
@@ -48,23 +43,23 @@
                     <a href="#/changepassword"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-                      </svg> Đổi mật khẩu</a>
+                      </svg>  Đổi mật khẩu</a>
                   </li>
                   <li>
-                    <a href="#/login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    <a  (click)="logout()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
                           d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
                         <path fill-rule="evenodd"
                           d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-                      </svg> Đăng xuất</a>
+                      </svg>  Đăng xuất</a>
                   </li>
                 </ul>
               </li>
             </ul>
           </div>
           <div class="col-md-12 ml-1">
-            <a href="#/login"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+            <a (click)="logout()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                 class="bi bi-box-arrow-right ml-3" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                   d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
@@ -207,3 +202,5 @@
 
       </div>
     </div>
+  </div>
+</div>

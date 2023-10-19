@@ -41,9 +41,6 @@ public class AuthController {
     @Autowired
     private TaiKhoanDAO accountDAO;
 
-    @Autowired
-    private VaiTroDAO vaiTroDAO;
-
     // phương thức để đăng nhập
     @PostMapping("login")
     public ResponseEntity<TaiKhoan> LoginMethod(@RequestBody TaiKhoan account) throws JsonProcessingException {
