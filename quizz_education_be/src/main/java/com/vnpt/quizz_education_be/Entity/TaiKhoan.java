@@ -6,15 +6,15 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -32,7 +32,6 @@ public class TaiKhoan implements Serializable {
 
     @Column(name = "mat_khau")
     private String matKhau;
-
 
     @Column(name = "trang_thai")
     private Boolean trangThai;
@@ -64,11 +63,13 @@ public class TaiKhoan implements Serializable {
     @Column(name = "anh_dai_dien")
     private String anhDaiDien;
 
+    @Column(name = "token")
+    private String token;
+
     @ManyToOne
     @JoinColumn(name = "ma_lop")
     LopThi lopThi;
 
-    
     // Relationship 1-N
 
     @ManyToOne
