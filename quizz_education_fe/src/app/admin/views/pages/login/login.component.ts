@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
    if (this.formLogin.valid) {
       const API_LOGIN = 'http://localhost:8080/quizzeducation/api/login';
 
-      console.log(typeof this.formLogin.value.remember);
+      // console.log(typeof this.formLogin.value.remember);
       const request = this.httpClient.post<any>(API_LOGIN,this.formLogin.value);
       request.subscribe((response) => {
         // Khi token không phải mã 191003 có nghĩ nó không fail đăng nhập
@@ -72,13 +72,14 @@ export class LoginComponent implements OnInit {
           } else if(data.vaiTro.tenVaiTro === 'Admin'){
             this.router.navigate(['admin'])
           }  
+          alert("Bạn đã đăng nhập thành công!")
+        }else{alert("Uiss bạn ơi, tài khoản hoặc mật khẩu không đúng rùi?");}
         
-        }
         
-
       },
         (error) => {
           console.error(error);
+          alert("Uiss bạn ơi, tài khoản hoặc mật khẩu không đúng rùi?");
         })
 
     }

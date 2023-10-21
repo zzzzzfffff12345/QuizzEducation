@@ -6,13 +6,14 @@ import { DefaultLayoutComponent } from './Admin/containers';
 import { Page404Component } from './Admin/views/pages/page404/page404.component';
 import { Page500Component } from './Admin/views/pages/page500/page500.component';
 import { LoginComponent } from './Admin/views/pages/login/login.component';
-import { RegisterComponent } from './Admin/views/pages/register/register.component';
+import { ChangePasswordComponent } from './Admin/views/pages/change-password/change-password.component';
 import { MainUserComponent } from './User/main-user/main-user.component';
 import { ExamComponent } from './User/pages/exam/exam.component';
 import { HomeComponent } from './User/pages/home/home.component';
 import { ScoreComponent } from './User/pages/score/score.component';
 import { DefaultLayoutTeacherComponent } from './Teacher/containers-teacher/index-teacher';
 import { HistoryComponent } from './User/pages/history/history.component';
+import { ForgotPasswordComponent } from './Admin/views/pages/forgot-password/forgot-password.component';
 const routes: Routes = [
   {
     path: '',
@@ -108,9 +109,16 @@ const routes: Routes = [
   },
   {
     path: 'changepassword',
-    component: RegisterComponent,
+    component: ChangePasswordComponent,
     data: {
-      title: 'Register Page'
+      title: 'ChangePassword Page'
+    }
+  },
+  {
+    path: 'forgotpassword',
+    component: ForgotPasswordComponent,
+    data: {
+      title: 'ForgotPassword Page'
     }
   },
  { path: '**', redirectTo: '404' }

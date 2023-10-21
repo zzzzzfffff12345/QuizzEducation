@@ -30,6 +30,7 @@ export class NavbarComponent {
         // Trích xuất dữ liệu từ trường 'sub'
        
       if (decodedToken.sub) {
+        
         // Lấy dữ liệu từ Local Storage và gán cho biến user
         this.user = JSON.parse(decodedToken.sub);
          
@@ -79,7 +80,6 @@ calculateAge(dateOfBirth: string): number {
     return age;
   }
 }
-
 
 //Đổi ảnh
 selectedImage: File | undefined;
