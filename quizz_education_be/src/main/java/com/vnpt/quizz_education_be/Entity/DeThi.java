@@ -24,6 +24,9 @@ public class DeThi implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int maDeThi;
 
+    @Column(name = "ten_de_thi")
+    private String tenDeThi;
+
     @Column(name = "ngay_tao")
     private Date ngayTao;
 

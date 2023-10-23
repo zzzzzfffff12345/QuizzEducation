@@ -1,9 +1,10 @@
-import { HashLocationStrategy, PathLocationStrategy } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from './../environments/environment';
+import { ManageStudentResultComponent } from './Teacher/views/manage-student/manage-student-result/manage-student-result.component';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
@@ -63,6 +64,8 @@ import { FooterComponent } from './User/sharepages/footer/footer.component';
 import { NavbarComponent } from './User/sharepages/navbar/navbar.component';
 
 import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { ManageClassComponent } from './Teacher/views/manage-class/manage-class.component';
 import { ScoreComponent } from './User/pages/score/score.component';
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -72,7 +75,8 @@ const APP_CONTAINERS = [
   ManageStudentHomeComponent,
   ManageStudentSubjectComponent,
   ManageStudentClassComponent,
-  ManageStudentPupilComponent
+  ManageStudentPupilComponent,
+  ManageStudentResultComponent
 ];
 
 @NgModule({
@@ -90,7 +94,8 @@ const APP_CONTAINERS = [
     HistoryComponent,
     HomeHeaderComponent,
     HomeContentComponent,
-    ReportComponent],
+    ReportComponent,
+    ManageClassComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -122,10 +127,11 @@ const APP_CONTAINERS = [
     TableModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
+    ToastModule
   ],
   providers: [
     {
-      provide: PathLocationStrategy,
+      provide: LocationStrategy,
       useClass: HashLocationStrategy
     },
     IconSetService,

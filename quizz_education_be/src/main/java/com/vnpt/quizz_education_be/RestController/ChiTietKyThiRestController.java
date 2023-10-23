@@ -20,7 +20,6 @@ import com.vnpt.quizz_education_be.DAO.ChiTietKiThiDAO;
 import com.vnpt.quizz_education_be.DAO.KiThiDAO;
 import com.vnpt.quizz_education_be.Entity.ChiTietKyThi;
 import com.vnpt.quizz_education_be.Entity.LopThi;
-import com.vnpt.quizz_education_be.Entity.MonThi;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -108,10 +107,6 @@ public class ChiTietKyThiRestController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("monthi")
-    public ResponseEntity<List<MonThi>> findMonThiByKiThiId(@RequestParam("kithi") Integer kiThiId) {
-        return ResponseEntity.ok(chiTietKyThiDAO.getMonThiInKiThi(kiThiId));
-    }
 
     @GetMapping("lopthi")
     public ResponseEntity<List<LopThi>> getLopThiByKyThiAndMonThi(@RequestParam("kithi") Integer kithiId,

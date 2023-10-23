@@ -12,6 +12,7 @@ import { AboutComponent } from './User/pages/about/about.component';
 import { HistoryComponent } from './User/pages/history/history.component';
 import { HomeComponent } from './User/pages/home/home.component';
 import { ScoreComponent } from './User/pages/score/score.component';
+import { ManageClassComponent } from './Teacher/views/manage-class/manage-class.component';
 const routes: Routes = [
   {
     path: '',
@@ -94,6 +95,10 @@ const routes: Routes = [
             (m) => m.ManageStudentModule
           ),
       },
+      {
+        path: 'manage-class',
+        component: ManageClassComponent
+      }
     ],
   },
   {
@@ -138,4 +143,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
