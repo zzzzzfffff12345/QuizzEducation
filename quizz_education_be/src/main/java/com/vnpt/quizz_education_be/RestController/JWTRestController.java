@@ -1,4 +1,4 @@
-package com.vnpt.quizz_education_be.Controller;
+package com.vnpt.quizz_education_be.RestController;
 
 import java.io.Console;
 import java.util.List;
@@ -34,7 +34,7 @@ import com.vnpt.quizz_education_be.Login.JwtTokenProvider;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/quizzeducation/api")
-public class AuthController {
+public class JWTRestController {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
