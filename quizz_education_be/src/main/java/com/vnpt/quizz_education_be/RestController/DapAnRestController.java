@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vnpt.quizz_education_be.DAO.DapAnDAO;
@@ -64,9 +65,12 @@ public class DapAnRestController {
         if (!dapAnDAO.existsById(maDapAn)) {
             return ResponseEntity.notFound().build();
         }
-
         dapAnDAO.deleteById(maDapAn);
-
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("dapanDeThi")
+    public ResponseEntity<List<DapAn>> getDapAnInDeThi(@RequestParam("maDeThi") Integer maDeThi) {
+        return ResponseEntity.ok(dapAnDAO.getDapAnInDeThi(maDeThi));
     }
 }

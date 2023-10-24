@@ -1,0 +1,68 @@
+<!-- <table datatable [dtOptions]="dtOptions" class="row-border hover">
+  <thead>
+    <tr>
+      <th>Mã kì thi</th>
+      <th>Tên kì thi</th>
+      <th>Mô tả</th>
+      <th>Thời gian bắt đầu</th>
+      <th>Thời gian kết thúc</th>
+      <th>Trạng thái</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let event of listKyThi">
+      <td>{{ event.maKyThi }}</td>
+      <td>{{ event.tenKyThi }}</td>
+      <td>{{ event.moTa }}</td>
+      <td>{{ event.thoiGianBatDau }}</td>
+      <td>{{ event.thoiGianKetThuc }}</td>
+      <td>{{ event.daDienRa }}</td>
+      <td><button class="btn btn-primary"
+          [routerLink]="['/teacher/manage-student/event/' + event.maKyThi + '/subject']">Chi tiết</button></td>
+    </tr>
+  </tbody>
+</table> -->
+<div class="card">
+  <p-table #dt1 [value]="listKyThi" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['maKyThi', 'tenKyThi']" [rowsPerPageOptions]="[10, 25, 50]">
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <form [formGroup]="formFilter">
+          <span class="p-input-icon-left ml-auto">
+            <input pInputText type="text" (change)="dt1.filterGlobal(getValueSearch(), 'contains')"
+              formControlName="search" class="form-control box-shadow-none" placeholder="Tìm kiếm"
+              aria-label="Example text with button addon" aria-describedby="button-search">
+          </span>
+        </form>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header" class="theader">
+      <tr>
+        <th pSortableColumn="maKyThi" style="width:10%">Mã kì thi<p-sortIcon field="maKyThi"></p-sortIcon></th>
+        <th pSortableColumn="tenKyThi" style="width:20%">Tên kì thi<p-sortIcon field="tenKyThi"></p-sortIcon></th>
+        <th pSortableColumn="moTa" style="width:15%">Mô tả<p-sortIcon field="moTa"></p-sortIcon></th>
+        <th pSortableColumn="thoiGianBatDau" style="width:15%">Thời gian bắt đầu<p-sortIcon
+            field="thoiGianBatDau"></p-sortIcon></th>
+        <th pSortableColumn="thoiGianKetThuc" style="width:15%">Thời gian kết thúc<p-sortIcon
+            field="thoiGianKetThuc"></p-sortIcon></th>
+        <th pSortableColumn="daDienRa" style="width:15%">Trạng thái<p-sortIcon field="daDienRa"></p-sortIcon></th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" class="tbody" let-event>
+      <tr>
+        <td>{{ event.maKyThi }}</td>
+        <td>{{ event.tenKyThi }}</td>
+        <td>{{ event.moTa }}</td>
+        <td>{{ event.thoiGianBatDau | date: 'HH:mm | yyyy-MM-dd'}}</td>
+        <td>{{ event.thoiGianKetThuc| date: 'HH:mm | yyyy-MM-dd'}}</td>
+        <td>{{ event.daDienRa }}</td>
+        <td><button class="btn btn-primary"
+            [routerLink]="['/teacher/manage-student/event/' + event.maKyThi + '/subject']">Chi tiết</button></td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

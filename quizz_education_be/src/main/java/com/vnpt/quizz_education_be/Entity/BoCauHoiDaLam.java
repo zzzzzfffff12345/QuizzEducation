@@ -4,25 +4,26 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import lombok.Data;
 
 @SuppressWarnings("serial")
 @Data
 @Entity
 @Table(name = "Bocauhoidalam")
 public class BoCauHoiDaLam implements Serializable {
-    
+
     @Id
     @Column(name = "ma_bo_cau_hoi_da_lam")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +38,7 @@ public class BoCauHoiDaLam implements Serializable {
     @Column(name = "diem_so")
     private Float diemSo;
 
-     // Relationship N - 1
+    // Relationship N - 1
 
     @ManyToOne
     @JoinColumn(name = "ma_de_thi")
@@ -46,7 +47,5 @@ public class BoCauHoiDaLam implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ten_dang_nhap")
     TaiKhoan taiKhoan;
-
-
 
 }

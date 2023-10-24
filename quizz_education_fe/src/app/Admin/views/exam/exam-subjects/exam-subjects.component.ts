@@ -53,7 +53,7 @@ export class ExamSubjectsComponent {
     })
   }
 
-  // Cập nhật môn thi 
+  // Cập nhật môn thi
   messageerror: string = "";
   updateMonThi() {
     const data = {

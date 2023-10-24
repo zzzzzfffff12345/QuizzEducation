@@ -15,9 +15,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
+
 @SuppressWarnings("serial")
-@Data
 @Entity
+@Data
 @Table(name = "Kythi")
 public class KyThi implements Serializable {
 
