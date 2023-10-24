@@ -1,4 +1,4 @@
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -67,7 +67,6 @@ import {
   TabsModule,
   UtilitiesModule,
 } from '@coreui/angular';
-
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
