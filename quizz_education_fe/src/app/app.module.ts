@@ -68,6 +68,9 @@ import {
   UtilitiesModule,
 } from '@coreui/angular';
 
+import { ExamComponent } from './User/pages/exam/exam.component';
+import { ForgotPasswordComponent } from './Admin/views/pages/forgot-password/forgot-password.component';
+
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
@@ -96,7 +99,9 @@ const APP_CONTAINERS = [
     HomeHeaderComponent,
     HomeContentComponent,
     ReportComponent,
-    ManageClassComponent],
+    ManageClassComponent,
+    ForgotPasswordComponent,
+    ExamComponent,],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

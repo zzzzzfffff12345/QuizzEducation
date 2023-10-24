@@ -30,17 +30,18 @@ export class NavbarComponent {
       try {
         const decodedToken = helper.decodeToken(token);
         // Trích xuất dữ liệu từ trường 'sub'
-
-        if (decodedToken.sub) {
-          // Lấy dữ liệu từ Local Storage và gán cho biến user
-          this.user = JSON.parse(decodedToken.sub);
-
-          //Đi tìm trong DB lấy ra đối tượng
-          this.httpSvService.getItem('taikhoan', this.user.tenDangNhap).subscribe((userData) => {
-            this.user = userData;
-          });
-        }
-
+       
+      if (decodedToken.sub) {
+        
+        // Lấy dữ liệu từ Local Storage và gán cho biến user
+        this.user = JSON.parse(decodedToken.sub);
+         
+        //Đi tìm trong DB lấy ra đối tượng
+        this.httpSvService.getItem('taikhoan',this.user.tenDangNhap).subscribe((userData) => {
+          this.user = userData;
+         });
+      }
+      
         return decodedToken; // Trả về đối tượng JSON
       } catch (error) {
         console.error('Lỗi giải mã token:', error);
@@ -82,13 +83,12 @@ export class NavbarComponent {
     }
   }
 
-
-  //Đổi ảnh
-  selectedImage: File | undefined;
-  openFileInput() {
-    // Mở cửa sổ chọn tệp bằng cách kích hoạt input[type="file"]
-    document.getElementById('fileInput')?.click();
-  }
+//Đổi ảnh
+selectedImage: File | undefined;
+openFileInput() {
+  // Mở cửa sổ chọn tệp bằng cách kích hoạt input[type="file"]
+  document.getElementById('fileInput')?.click();
+}
 
   showSettings = false;
 

@@ -45,7 +45,7 @@ public class AuthController {
     @PostMapping("login")
     public ResponseEntity<TaiKhoan> LoginMethod(@RequestBody TaiKhoan account) throws JsonProcessingException {
         if (accountDAO.existsByTenDangNhap(account.getTenDangNhap())) {
-
+           
             // lấy tài khoản đăng nhập đi check với DB
             TaiKhoan accountLogin = accountDAO.findByTenDangNhap(account.getTenDangNhap());
             if (accountLogin.getTenDangNhap().trim().equals(account.getTenDangNhap())
