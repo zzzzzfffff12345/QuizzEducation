@@ -30,7 +30,6 @@ public class LichSuThiRestController {
         return ResponseEntity.ok(lichSuThiDAO.findAll());
     }
 
-    
     // Get 1 đối tượng thông qua id
     @GetMapping("lichsuthi/{id}")
     public ResponseEntity<LichSuThi> findById(@PathVariable("id") Integer maLichSuThi) {

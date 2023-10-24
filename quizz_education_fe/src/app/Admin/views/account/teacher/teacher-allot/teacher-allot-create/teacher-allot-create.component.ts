@@ -108,16 +108,15 @@ export class TeacherAllotCreateComponent implements OnInit {
     }
   }
 
-  //Thời hạn 
-  date: Date | undefined;
-
   // tạo phân công
   createPhanCong() {
-    this.myForm.get('tengiaovien').value,
-      this.myForm.get('tenkythi').value,
-      this.myForm.get('tenmonthi').value,
-      this.myForm.get('thoihan').value
+    const thoihan = this.myForm.get('thoihan').value;
+    const currentTime = new Date().getTime(); // Lấy thời gian hiện tại ở định dạng timestamp
 
+    if (thoihan < currentTime) {
+      console.log("Lỗi: Thời hạn đã chọn nhỏ hơn thời gian hiện tại.");
+      return;
+    }
     const dataPhanCong = {
       daTaoDe: 0,
       thoiHan: this.myForm.get('thoihan').value,
@@ -131,7 +130,7 @@ export class TeacherAllotCreateComponent implements OnInit {
         tenDangNhap: this.myForm.get('tengiaovien').value.value
       }
     }
-    console.log(dataPhanCong);
+
 
     this.httpService.postItem('phancong', dataPhanCong).subscribe(data => {
       this.showSussceCreate()
@@ -141,7 +140,6 @@ export class TeacherAllotCreateComponent implements OnInit {
     }, err => {
       this.showError();
     });
-
   }
 
   // reset form
