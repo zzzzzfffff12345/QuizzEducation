@@ -2,24 +2,14 @@ package com.vnpt.quizz_education_be.Entity;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @SuppressWarnings("serial")
 @Data
@@ -32,7 +22,6 @@ public class TaiKhoan implements Serializable {
 
     @Column(name = "mat_khau")
     private String matKhau;
-
 
     @Column(name = "trang_thai")
     private Boolean trangThai;
@@ -68,7 +57,6 @@ public class TaiKhoan implements Serializable {
     @JoinColumn(name = "ma_lop")
     LopThi lopThi;
 
-    
     // Relationship 1-N
 
     @ManyToOne
