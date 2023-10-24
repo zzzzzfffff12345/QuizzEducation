@@ -1,3 +1,4 @@
+
 .tabs {
     background-color: white;
     border-radius: 10px;
@@ -44,6 +45,7 @@
 .group-header-table {
     display: flex;
     justify-content: space-between;
+    margin-top: 25px;
 }
 
 .p-inputgroup {
@@ -203,6 +205,17 @@
 .btn-exitClass button{
     background-color: rgb(177, 81, 81);
     color: #fff;
+}
+
+:host ::ng-deep .columnFilterHovatee {
+    width: 250px;
+    height: 54px;
+}
+
+:host ::ng-deep .columnFilterTenKyThi {
+    margin-left: 20px;
+    width: 350px;
+    height: 54px;
 }
 .form-search form input{
     height: 51px;

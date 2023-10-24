@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { accountStudent } from './../../../../../classes/Admin/account/user';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { HttpSvService } from '../../../../../service/API.service';
-import { Observable, map, mergeMap } from 'rxjs';
 import { MessageService } from 'primeng/api';
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.scss'],
-  providers: [MessageService]
+  selector: 'app-create-teacher',
+  templateUrl: './create-teacher.component.html',
+  styleUrls: ['./create-teacher.component.scss']
 })
-export class CreateUserComponent {
+
+export class CreateTeacherComponent implements OnInit {
   myForm: FormGroup; // Khai báo FormGroup
 
   constructor(private fb: FormBuilder, private httpService: HttpSvService, private http: HttpClient, private messageService: MessageService) {
@@ -37,6 +35,7 @@ export class CreateUserComponent {
       soDienThoai: ['', [Validators.required]],
       namSinh: ['', [Validators.required, birthDateValidator]],
       email: ['', [Validators.required, Validators.pattern(/^\S+@\S+\.\S+$/)]],
+      selectedLopThi: ['', [Validators.required]]
     });
   }
   onSubmit() {
@@ -73,6 +72,37 @@ export class CreateUserComponent {
     );
   }
 
+  lopThiOptions!: any[];
+  lopThiList: any;
+  taiKhoanList: any;
+  selectedLopThi: any;
+
+  // Trong component của bạn
+  ngOnInit() {
+    // Gọi API để lấy danh sách tài khoản
+    this.httpService.getList('taikhoan/giaovien').subscribe(response => {
+      this.taiKhoanList = response;
+      this.initializeLopOptions();
+    });
+
+    // Gọi API để lấy danh sách lớp
+    this.httpService.getList('lopthi').subscribe(response => {
+      this.lopThiList = response;
+      this.initializeLopOptions();
+    });
+  }
+
+  initializeLopOptions() {
+    if (this.taiKhoanList && this.lopThiList) {
+      // Lọc lớp chưa có trong danh sách tài khoản
+      this.lopThiOptions = this.lopThiList.filter(lop => {
+        return !this.taiKhoanList.some(taiKhoan => taiKhoan.lopThi && taiKhoan.lopThi.maLopThi === lop.maLopThi);
+      }).map(lop => {
+        return { label: lop.tenLop, value: lop.maLopThi };
+      });
+    }
+  }
+
   // tạo học sinh mới 
   create() {
     const data = {
@@ -82,13 +112,18 @@ export class CreateUserComponent {
       email: this.myForm.get('email').value,
       hoVaTen: this.myForm.get('tenHocSinh').value,
       gioiTinh: this.myForm.get('gioiTinh').value,
+      canCuocCongDan: this.myForm.get('canCuocCongDan').value,
       diaChi: this.myForm.get('diaChi').value,
       ngaySinh: this.myForm.get('namSinh').value,
       soDienThoai: this.myForm.get('soDienThoai').value.toString().replace(/\s/g, ''),
       ngayTaoTaiKhoan: new Date(),
       vaiTro: {
-        maVaiTro: 1,
+        maVaiTro: 2,
+      },
+      lopThi: {
+        maLopThi: this.myForm.get('selectedLopThi').value.value,
       }
+
     }
     this.httpService.postItem('taikhoan', data).subscribe(
       (response) => {
@@ -101,9 +136,10 @@ export class CreateUserComponent {
         console.log('Lỗi tạo mới', error);
       }
     );
+  
+
   }
 
-  // Thông báo lỗi tài khoản đã tồn tại
   showSussce() {
     this.messageService.add({ severity: 'success', summary: 'Tạo thành công', detail: 'Tạo tài khoản thành công' });
   }

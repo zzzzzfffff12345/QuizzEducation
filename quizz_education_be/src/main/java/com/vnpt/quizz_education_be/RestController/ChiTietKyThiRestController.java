@@ -38,7 +38,7 @@ public class ChiTietKyThiRestController {
         return ResponseEntity.ok(chiTietKyThiDAO.findAll());
     }
 
-    // Get 1 đối tượng thông qua id
+    // Get 1 đối tượng thông qua id 
     @GetMapping("chitietkythi/{id}")
     public ResponseEntity<ChiTietKyThi> findById(@PathVariable("id") Integer maChiTietKyThi) {
         Optional<ChiTietKyThi> optional = chiTietKyThiDAO.findById(maChiTietKyThi);

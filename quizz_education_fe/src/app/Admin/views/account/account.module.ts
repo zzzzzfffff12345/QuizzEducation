@@ -28,11 +28,20 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { CreateUserComponent } from './user/create-user/create-user.component';
 import { InputMaskModule } from 'primeng/inputmask';
+import { TreeSelectModule } from 'primeng/treeselect';
+import { FilterService } from 'primeng/api';
+import { TagModule } from 'primeng/tag';
+import { CreateTeacherComponent } from './teacher/create-teacher/create-teacher.component';
+import { TeacherAllotComponent } from './teacher/teacher-allot/teacher-allot.component';
+import { TeacherAllotCreateComponent } from './teacher/teacher-allot/teacher-allot-create/teacher-allot-create.component';
 @NgModule({
   declarations: [
     TeacherComponent,
     UserComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    CreateTeacherComponent,
+    TeacherAllotComponent,
+    TeacherAllotCreateComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +67,9 @@ import { InputMaskModule } from 'primeng/inputmask';
     ConfirmDialogModule,
     PasswordModule,
     RadioButtonModule,
-    InputMaskModule
+    InputMaskModule,
+    TreeSelectModule,
+    TagModule
   ]
 })
 export class UIAccountModule {
