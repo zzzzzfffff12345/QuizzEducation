@@ -47,7 +47,6 @@ import { ToastModule } from 'primeng/toast';
 import { ManageClassComponent } from './Teacher/views/manage-class/manage-class.component';
 import { ScoreComponent } from './User/pages/score/score.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import {
   AvatarModule,
   BadgeModule,
@@ -91,7 +90,6 @@ const APP_CONTAINERS = [
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    // AboutComponent,
     ScoreComponent,
     TeacherHeaderComponent,
     TeacherFooterComponent,
@@ -101,7 +99,8 @@ const APP_CONTAINERS = [
     ReportComponent,
     ManageClassComponent,
     ForgotPasswordComponent,
-    ExamComponent,],
+    ExamComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

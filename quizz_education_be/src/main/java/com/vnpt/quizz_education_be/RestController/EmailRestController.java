@@ -18,20 +18,5 @@ import com.vnpt.quizz_education_be.Util.OtpGenerator;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200") // Chỉ định origin của ứng dụng Angular
 public class EmailRestController {
-    @Autowired
-    private TaiKhoan userService;
-    @Autowired
-    private EmailService emailService;
 
-    @Autowired
-    private OtpGenerator otpGenerator;
-
-    @PostMapping("/send-otp")
-    public ResponseEntity<?> sendOtp(@RequestBody EmailDTO request) {
-        String email = userService.getEmail();
-        String otp = otpGenerator.generateOtp(); // Hàm để tạo mã OTP
-        String content = request.getSubject();
-        emailService.sendEmail(email, content, otp);
-        return ResponseEntity.ok("Mã OTP đã được gửi qua email.");
-    }
 }
