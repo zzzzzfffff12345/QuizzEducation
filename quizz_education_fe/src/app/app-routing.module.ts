@@ -1,3 +1,4 @@
+import { InterceptorUrlGuard } from './config/interceptor-url.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -15,7 +16,7 @@ import { HistoryComponent } from './User/pages/history/history.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/user/home',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'score', component: ScoreComponent },
       { path: 'history', component: HistoryComponent }
-    ]
+    ],
+    canActivate: [InterceptorUrlGuard],
   }
   ,
   {
@@ -61,7 +63,8 @@ const routes: Routes = [
         loadChildren: () =>
           import('./Admin/views/pages/pages.module').then((m) => m.PagesModule)
       },
-    ]
+    ],
+    canActivate: [InterceptorUrlGuard],
   },
   {
     path: 'teacher',
@@ -79,7 +82,8 @@ const routes: Routes = [
         loadChildren: () =>
           import('./Teacher/views/pages/pages.module').then((m) => m.PagesModule)
       },
-    ]
+    ],
+    canActivate: [InterceptorUrlGuard],
   },
   {
     path: '404',
@@ -109,7 +113,7 @@ const routes: Routes = [
       title: 'Register Page'
     }
   },
-  // { path: '**', redirectTo: '404' }
+ { path: '**', redirectTo: '404' }
 ];
 
 @NgModule({

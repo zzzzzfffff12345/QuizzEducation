@@ -3,7 +3,7 @@ import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@a
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
 // Import routing module
@@ -55,6 +55,7 @@ import { TeacherComponent } from './Admin/views/account/teacher/teacher.componen
 import { UserComponent } from './Admin/views/account/user/user.component';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { HttpSvService } from './service/API.service';
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
@@ -92,11 +93,12 @@ const APP_CONTAINERS = [
     CardModule,
     NgScrollbarModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [
     {
-      // provide: LocationStrategy,
-      provide: PathLocationStrategy,
+      provide: LocationStrategy,
+      // provide: PathLocationStrategy,
       useClass: HashLocationStrategy
     },
     IconSetService,
