@@ -67,6 +67,7 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { ManageClassComponent } from './Teacher/views/manage-class/manage-class.component';
 import { ScoreComponent } from './User/pages/score/score.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
@@ -127,7 +128,8 @@ const APP_CONTAINERS = [
     TableModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
-    ToastModule
+    ToastModule,
+    NgbModule
   ],
   providers: [
     {

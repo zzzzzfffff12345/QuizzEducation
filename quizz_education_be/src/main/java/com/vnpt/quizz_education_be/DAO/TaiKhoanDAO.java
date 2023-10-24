@@ -12,6 +12,10 @@ import com.vnpt.quizz_education_be.Entity.TaiKhoan;
 public interface TaiKhoanDAO extends JpaRepository<TaiKhoan, String> {
     @Query("SELECT p FROM TaiKhoan p WHERE p.lopThi.maLopThi = ?1 AND p.vaiTro.maVaiTro = 1")
     List<TaiKhoan> getTaiKhoanInClass(Integer maLopThi);
+
+    @Query("SELECT p FROM TaiKhoan p WHERE p.lopThi = null")
+    List<TaiKhoan> getTaiKhoanNotHaveClass();
+
     @Query("SELECT tk FROM TaiKhoan tk WHERE tk.vaiTro.maVaiTro = 1")
     List<TaiKhoan> findByHocSinh();
 }

@@ -36,6 +36,8 @@
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-angular": "~4.5.16",
     "@coreui/utils": "^2.0.2",
+    "@ng-bootstrap/ng-bootstrap": "^15.1.1",
+    "@popperjs/core": "^2.11.6",
     "@types/moment": "^2.13.0",
     "angular-datatables": "^16.0.0",
     "bootstrap": "^5.2.3",

@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MessageService } from 'primeng/api';
+import { TaiKhoan } from './../../../models/TaiKhoan.entity';
 
 @Component({
   selector: 'app-manage-class',
@@ -10,13 +12,18 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService]
 })
 export class ManageClassComponent implements OnInit {
-
+  @ViewChild('confirmModal') confirmModal: ElementRef;
+  @ViewChild('noClassModal') noClassModal: ElementRef;
 
   constructor(
     private httpClient: HttpClient,
     private formBuilder: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private modalService: NgbModal
   ) { this.sessionUser = this.getSessionUser(); }
+
+  studentList: any[]
+  noClassStudentList: any[]
 
 
   private userKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5EYW5nTmhhcCI6IkNoYXVNYW5oVGFuIiwibWF0S2hhdSI6IjEyMyIsInRyYW5nVGhhaSI6dHJ1ZSwiZW1haWwiOiJDaGF1TWFuaFRhbkBnbWFpbC5jb20iLCJjYW5DdW9jQ29uZ0RhbiI6IjIzMTg4ODQ0NDU1NSIsImhvVmFUZW4iOiJDaMOidSBN4bqhbmggVOG6pW4iLCJnaW9pVGluaCI6dHJ1ZSwibmdheVNpbmgiOiIyMDAxLTAyLTE2IiwiZGlhQ2hpIjoiQ-G6p24gVGjGoSIsInNvRGllblRob2FpIjoiMDkxNzc3Nzc3NyIsIm5nYXlUYW9UYWlLaG9hbiI6IjIwMjMtMDktMzAiLCJhbmhEYWlEaWVuIjoiaHR0cHM6Ly9maXJlYmFzZXN0b3JhZ2UuZ29vZ2xlYXBpcy5jb20vdjAvYi9xdWl6emVkdWNhdGlvbi1lYWVhMy5hcHBzcG90LmNvbS9vL2ltYWdlcyUyRkNoYXVNYW5oVGFuLmpwZz9hbHQ9bWVkaWEmdG9rZW49OGYwZGM5OWYtOTI3Zi00NDBlLTlhNTAtYTA1NWUwZDg5OWUyIiwibG9wVGhpIjp7Im1hTG9wVGhpIjoxLCJ0ZW5Mb3AiOiJM4bubcCA4QTEiLCJzb0x1b25nVG9pRGEiOjMwfSwidmFpVHJvIjp7Im1hVmFpVHJvIjoxLCJ0ZW5WYWlUcm8iOiJI4buNYyBzaW5oIn19.yQ9FkTgZVPcme_W1NrpS3H6-b-qs9KXlp_9gJrgNgno'
@@ -25,14 +32,76 @@ export class ManageClassComponent implements OnInit {
   ngOnInit(): void {
     this.setUserData();
     this.user = this.getLocalUser();
-    this.httpClient.get<[]>(`http://localhost:8080/quizzeducation/api/taikhoan/lopthi?maLopThi=${this.user.lopThi.maLopThi}`).subscribe(data => {
-      this.studentList = data
-    });
+    this.getStudentList()
   }
 
-  deleteStudent(tenDangNhap: string): void {
-    this.messageService.clear();
-    this.messageService.add({ key: 'toast1', severity: 'success', summary: 'Success', detail: 'key: toast1' });
+  confirmDelete(account: TaiKhoan) {
+    this.modalService
+      .open(this.confirmModal, {
+        ariaLabelledBy: 'modal-basic-title',
+        size: 'xl',
+      })
+    document.querySelector('#confirmDelete').addEventListener('click', (e: Event) => this.deleteStudent(account));
+  }
+
+  getStudentList() {
+    this.httpClient.get<[]>(`http://localhost:8080/quizzeducation/api/taikhoan/lopThi?maLopThi=${this.user.lopThi.maLopThi}`).subscribe(
+      (response) => {
+        this.studentList = response
+      },
+      (error) => {
+        console.log(error)
+      }
+    );
+  }
+
+  openNoClass() {
+    this.modalService
+      .open(this.noClassModal, {
+        ariaLabelledBy: 'modal-basic-title',
+        size: 'xl',
+      })
+    this.getStudentNotHaveClass();
+  }
+
+  getStudentNotHaveClass() {
+    this.httpClient.get<[]>(`http://localhost:8080/quizzeducation/api/taikhoan/noClass`).subscribe(
+      (response) => {
+        this.noClassStudentList = response
+      },
+      (error) => {
+        console.log(error)
+      }
+    );
+  }
+
+  addStudent(account: TaiKhoan): void {
+    account.lopThi = this.user.lopThi
+    this.httpClient.put(`http://localhost:8080/quizzeducation/api/taikhoan/${account.tenDangNhap}`, account).subscribe(
+      (response) => {
+        this.getStudentNotHaveClass();
+        this.getStudentList();
+        this.messageService.clear();
+        this.messageService.add({ key: 'toast1', severity: 'success', summary: 'Thông báo', detail: 'Thêm thành công' });
+      },
+      (error) => {
+        console.log(error.message);
+      }
+    )
+  }
+
+  deleteStudent(account: TaiKhoan): void {
+    account.lopThi = null;
+    this.httpClient.put(`http://localhost:8080/quizzeducation/api/taikhoan/${account.tenDangNhap}`, account).subscribe(
+      (response) => {
+        this.getStudentList();
+        this.messageService.clear();
+        this.messageService.add({ key: 'toast1', severity: 'success', summary: 'Thông báo', detail: 'Xóa thành công' });
+      },
+      (error) => {
+        console.log(error.message);
+      }
+    )
   }
   // Lưu dữ liệu người dùng vào Local Storage
   setLocalUser(user: any): void {
@@ -96,10 +165,6 @@ export class ManageClassComponent implements OnInit {
     this.setLocalUser(user);
     this.setSessionUser(user);
   }
-
-
-
-  studentList: any[]
 
   public getValueSearch() {
     return this.formFilter.get('search')?.value;

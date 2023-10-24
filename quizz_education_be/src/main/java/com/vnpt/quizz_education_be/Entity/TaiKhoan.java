@@ -53,6 +53,9 @@ public class TaiKhoan implements Serializable {
     @Column(name = "anh_dai_dien")
     private String anhDaiDien;
 
+    @Column(name = "token")
+    private String token;
+
     @ManyToOne
     @JoinColumn(name = "ma_lop")
     LopThi lopThi;
