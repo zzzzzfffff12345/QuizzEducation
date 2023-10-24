@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vnpt.quizz_education_be.DAO.ChiTietKiThiDAO;
 import com.vnpt.quizz_education_be.DAO.KiThiDAO;
 import com.vnpt.quizz_education_be.Entity.ChiTietKyThi;
-import com.vnpt.quizz_education_be.Entity.LichSuThi;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -66,7 +65,7 @@ public class ChiTietKyThiRestController {
         return ResponseEntity.ok(resultList);
     }
 
-        // Get 1 đối tượng thông qua id của môn thi
+    // Get 1 đối tượng thông qua id của môn thi
     @GetMapping("chitietkythi/lopthi/{id}")
     public ResponseEntity<List<ChiTietKyThi>> findByMaLopThi(@PathVariable("id") int maLop) {
         List<ChiTietKyThi> resultList = chiTietKyThiDAO.findByMaLopThi(maLop);

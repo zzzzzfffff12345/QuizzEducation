@@ -2,6 +2,7 @@ package com.vnpt.quizz_education_be.Entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -12,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -48,5 +50,9 @@ public class DeThi implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ma_mon")
     MonThi monThi;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "deThi")
+    List<CauHoi> cauHois;
 
 }
