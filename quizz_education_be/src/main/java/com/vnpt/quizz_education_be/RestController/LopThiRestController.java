@@ -1,6 +1,5 @@
 package com.vnpt.quizz_education_be.RestController;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vnpt.quizz_education_be.DAO.ChiTietKiThiDAO;
 import com.vnpt.quizz_education_be.DAO.LopThiDAO;
 import com.vnpt.quizz_education_be.Entity.LopThi;
 
@@ -22,16 +22,19 @@ import com.vnpt.quizz_education_be.Entity.LopThi;
 @CrossOrigin(origins = "*")
 @RequestMapping("/quizzeducation/api")
 public class LopThiRestController {
-   
+
     @Autowired
     LopThiDAO lopThiDAO;
 
-    @GetMapping("lopthi")
-    public ResponseEntity<List<LopThi>> findAll() {
-        return ResponseEntity.ok(lopThiDAO.findAll());
-    }
+    @Autowired
+    ChiTietKiThiDAO chiTietKiThiDAO;
 
-      // Get 1 đối tượng thông qua id
+    // @GetMapping("lopthi")
+    // public ResponseEntity<List<LopThi>> findAll() {
+    // return ResponseEntity.ok(lopThiDAO.findAll());
+    // }
+
+    // Get 1 đối tượng thông qua id
     @GetMapping("lopthi/{id}")
     public ResponseEntity<LopThi> findById(@PathVariable("id") Integer maLopThi) {
         Optional<LopThi> optional = lopThiDAO.findById(maLopThi);
@@ -65,10 +68,7 @@ public class LopThiRestController {
         if (!lopThiDAO.existsById(maLopThi)) {
             return ResponseEntity.notFound().build();
         }
-
         lopThiDAO.deleteById(maLopThi);
-
         return ResponseEntity.ok().build();
     }
 }
-

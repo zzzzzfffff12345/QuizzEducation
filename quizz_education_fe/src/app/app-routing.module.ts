@@ -3,16 +3,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DefaultLayoutComponent } from './Admin/containers';
+import { LoginComponent } from './Admin/views/pages/login/login.component';
 import { Page404Component } from './Admin/views/pages/page404/page404.component';
 import { Page500Component } from './Admin/views/pages/page500/page500.component';
-import { LoginComponent } from './Admin/views/pages/login/login.component';
 import { RegisterComponent } from './Admin/views/pages/register/register.component';
+import { DefaultLayoutTeacherComponent } from './Teacher/containers-teacher/index-teacher';
 import { MainUserComponent } from './User/main-user/main-user.component';
-import { ExamComponent } from './User/pages/exam/exam.component';
+import { HistoryComponent } from './User/pages/history/history.component';
+// import { AboutComponent } from './User/pages/about/about.component';
 import { HomeComponent } from './User/pages/home/home.component';
 import { ScoreComponent } from './User/pages/score/score.component';
-import { DefaultLayoutTeacherComponent } from './Teacher/containers-teacher/index-teacher';
-import { HistoryComponent } from './User/pages/history/history.component';
+import { ManageClassComponent } from './Teacher/views/manage-class/manage-class.component';
 const routes: Routes = [
   {
     path: '',
@@ -23,7 +24,7 @@ const routes: Routes = [
     path: 'user',
     component: MainUserComponent,
     children: [
-      { path: 'exam', component: ExamComponent },
+      // { path: 'exam', component: AboutComponent },
       { path: 'home', component: HomeComponent },
       { path: 'score', component: ScoreComponent },
       { path: 'history', component: HistoryComponent }
@@ -41,7 +42,9 @@ const routes: Routes = [
       {
         path: 'exam',
         loadChildren: () =>
-          import('./Admin/views/exam/exam.module').then((m) => m.CoreUIExamModule)
+          import('./Admin/views/exam/exam.module').then(
+            (m) => m.CoreUIExamModule
+          ),
       },
       {
         path: 'account',
@@ -61,57 +64,72 @@ const routes: Routes = [
       {
         path: 'pages',
         loadChildren: () =>
-          import('./Admin/views/pages/pages.module').then((m) => m.PagesModule)
+          import('./Admin/views/pages/pages.module').then((m) => m.PagesModule),
       },
-    ],
-    canActivate: [InterceptorUrlGuard],
+    ]
   },
   {
     path: 'teacher',
     component: DefaultLayoutTeacherComponent,
+    data: {
+      title: 'Home',
+    },
     children: [
-
       {
         path: 'forms',
         loadChildren: () =>
-          import('./Teacher/views/forms/forms.module').then((m) => m.CoreUIFormsModule)
+          import('./Teacher/views/forms/forms.module').then(
+            (m) => m.CoreUIFormsModule
+          ),
       },
 
       {
         path: 'pages',
         loadChildren: () =>
-          import('./Teacher/views/pages/pages.module').then((m) => m.PagesModule)
+          import('./Teacher/views/pages/pages.module').then(
+            (m) => m.PagesModule
+          ),
       },
+      {
+        path: 'manage-student',
+        loadChildren: () =>
+          import('./Teacher/views/manage-student/manage-student.module').then(
+            (m) => m.ManageStudentModule
+          ),
+      },
+      {
+        path: 'manage-class',
+        component: ManageClassComponent
+      }
     ],
-    canActivate: [InterceptorUrlGuard],
   },
   {
     path: '404',
     component: Page404Component,
     data: {
-      title: 'Page 404'
-    }
+      title: 'Page 404',
+    },
   },
   {
     path: '500',
     component: Page500Component,
     data: {
-      title: 'Page 500'
-    }
+      title: 'Page 500',
+    },
   },
   {
     path: 'login',
     component: LoginComponent,
     data: {
-      title: 'Login Page'
-    }
+      title: 'Login Page',
+    },
   },
   {
     path: 'changepassword',
     component: RegisterComponent,
     data: {
-      title: 'Register Page'
-    }
+      title: 'Register Page',
+    },
   },
  { path: '**', redirectTo: '404' }
 ];
@@ -121,11 +139,10 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'top',
       anchorScrolling: 'enabled',
-      initialNavigation: 'enabledBlocking'
+      initialNavigation: 'enabledBlocking',
       // relativeLinkResolution: 'legacy'
-    })
+    }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }

@@ -1,7 +1,6 @@
 package com.vnpt.quizz_education_be.Entity;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

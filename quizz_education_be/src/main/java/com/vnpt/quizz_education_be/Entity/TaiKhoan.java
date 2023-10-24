@@ -63,6 +63,7 @@ public class TaiKhoan implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ma_lop")
     LopThi lopThi;
+
     // Relationship 1-N
 
     @ManyToOne
