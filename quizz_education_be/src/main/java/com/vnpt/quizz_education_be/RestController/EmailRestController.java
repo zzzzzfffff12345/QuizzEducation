@@ -7,16 +7,25 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vnpt.quizz_education_be.DAO.TaiKhoanDAO;
 import com.vnpt.quizz_education_be.DTO.EmailDTO;
-import com.vnpt.quizz_education_be.Entity.TaiKhoan;
 import com.vnpt.quizz_education_be.Service.EmailService;
-import com.vnpt.quizz_education_be.Util.OtpGenerator;
+
+
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200") // Chỉ định origin của ứng dụng Angular
+@CrossOrigin(origins = "*")
+@RequestMapping("/quizzeducation/api")
 public class EmailRestController {
+    
+    @Autowired
+    private EmailService emailService;
 
+    @PostMapping("/send-email")
+    public ResponseEntity<String> sendEmail(@RequestBody EmailDTO emailRequest) {
+        emailService.sendEmail(emailRequest.getFrom(), emailRequest.getTo(), emailRequest.getSubject(), emailRequest.getText());
+        return ResponseEntity.ok().build();
+    }
 }

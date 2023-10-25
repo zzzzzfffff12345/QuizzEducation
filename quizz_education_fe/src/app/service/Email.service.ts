@@ -5,11 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class EmailService {
-  private emailApiUrl = 'http://localhost:8080/send-email'; // URL API Spring Boot
+  // private emailApiUrl = 'http://localhost:8080/quizzeducation/api/send-email'; 
 
-  constructor(private http: HttpClient) { }
+  // constructor(private http: HttpClient) { }
 
-//   sendEmail(emailData: EmailData) {
-//     return this.http.post(this.emailApiUrl, emailData);
-//   }
+  // sendEmail(emailData: any) {
+  //   return this.http.post(this.emailApiUrl, emailData);
+  // }
 }
