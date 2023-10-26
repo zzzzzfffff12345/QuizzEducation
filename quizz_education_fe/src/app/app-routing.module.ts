@@ -67,7 +67,8 @@ const routes: Routes = [
         loadChildren: () =>
           import('./Admin/views/pages/pages.module').then((m) => m.PagesModule),
       },
-    ]
+    ],
+    canActivate: [InterceptorUrlGuard],
   },
   {
     path: 'teacher',
@@ -103,6 +104,7 @@ const routes: Routes = [
         component: ManageClassComponent
       }
     ],
+    canActivate: [InterceptorUrlGuard],
   },
   {
     path: '404',

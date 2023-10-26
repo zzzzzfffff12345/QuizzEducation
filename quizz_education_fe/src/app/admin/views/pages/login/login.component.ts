@@ -63,7 +63,18 @@ export class LoginComponent implements OnInit {
         if (response.token != '191003') {
           const helper = new JwtHelperService();
           localStorage.setItem('token', response.token);
+          
           const data = JSON.parse(helper.decodeToken(response.token).sub);
+          data.token = response.token;
+          this.httpSvService.putItem('taikhoan', data.tenDangNhap, data).subscribe(
+            (response) => {
+              console.log('Cập nhật token thành công');
+            },
+            (error) => {
+              console.log('Lỗi Cập nhật mật khẩu', error);
+            }
+          );
+
           // Chuyển hướng đến trang chính hoặc làm bất kỳ điều gì cần thiết.
           if(data.vaiTro.tenVaiTro === 'Học sinh'){
               this.router.navigate(['user/home'])

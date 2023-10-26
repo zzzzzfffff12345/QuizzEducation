@@ -41,7 +41,6 @@ import { HomeHeaderComponent } from './User/pages/home/home-header/home-header.c
 import { HomeComponent } from './User/pages/home/home.component';
 import { FooterComponent } from './User/sharepages/footer/footer.component';
 import { NavbarComponent } from './User/sharepages/navbar/navbar.component';
-
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { ManageClassComponent } from './Teacher/views/manage-class/manage-class.component';
