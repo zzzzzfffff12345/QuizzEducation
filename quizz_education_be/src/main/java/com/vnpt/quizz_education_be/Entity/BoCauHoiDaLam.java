@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +17,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import lombok.Data;
 
 @SuppressWarnings("serial")
 @Data
@@ -46,9 +47,5 @@ public class BoCauHoiDaLam implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ten_dang_nhap")
     TaiKhoan taiKhoan;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "boCauHoiDaLam")
-    List<LichSuThi> List_LichSuThi;
 
 }

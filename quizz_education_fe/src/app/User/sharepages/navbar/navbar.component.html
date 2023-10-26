@@ -12,9 +12,8 @@
         <a routerLink="exam" routerLinkActive="active-link" class="nav-item nav-link">Thi Ngay</a>
         <a routerLink="score" routerLinkActive="active-link" class="nav-item nav-link">Điểm Thi</a>
         <a routerLink="history" routerLinkActive="active-link" class="nav-item nav-link">Lịch Sử Thi</a>
-      
       </div>
-
+      
       <div class="nav-account d-flex" data-bs-toggle="modal" data-bs-target="#profile">
         <div class="avarta-footer">
           <img [src]="user.anhDaiDien ? user.anhDaiDien : defaultImage" alt="" class="avata_profile_img">
@@ -25,8 +24,8 @@
           <p>{{user.vaiTro.TenVaiTro}}</p>
         </div>
       </div>
+      
       <div class="nav-account-logout">
-
         <div class="row">
           <div class="col-md-12 ml-3">
 
@@ -68,8 +67,6 @@
               </svg></a>
           </div>
         </div>
-
-
       </div>
 
 
@@ -78,14 +75,14 @@
 </nav>
 
 
-
-
 <!-- Modal profile -->
 <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-dialog-md">
       <div class="modal-content">
-        <div class="modal-body bg-light">
+
+
+        <div class="modal-body" style="padding: 0;">
           <div class="profile-header">
             <div class="background_profile">
               <p class="text-center text-white pt-1">HỆ THỐNG THI TRẮC NGHIỆM <br><b>QUIZZ EDUCATION</b></p>
@@ -96,33 +93,36 @@
             </div>
             <div class="role_avata">
               <div class="avata_profile">
-                
-                <img [src]="user.anhDaiDien ? user.anhDaiDien : defaultImage" alt="" class="avata_profile_img">
-
-
+                <img (click)="openChangeImage()" [src]="user.anhDaiDien ? user.anhDaiDien : defaultImage" alt="" class="avata_profile_img">
               </div>
-             
+
               <div class="role_profile">
                 <p class="title-card">THẺ HỌC SINH</p>
-                <div class="d-flex"><label>
-                    <i>Họ và tên/Name:</i></label>
-                  <h5>  {{user.hoVaTen}}</h5>
-                </div>
 
                 <div class="d-flex"><label>
-                  <i>Ngày sinh/DateOfBirth:</i></label>
-                  <p>  {{user.ngaySinh | date:'dd/MM/yyyy'}}</p>
+                    <i>Họ và tên/Name:</i></label>
+                  <h5> {{user.hoVaTen}}</h5>
                 </div>
 
                 <div class="d-flex">
-                  <label> <i>Lớp/Class:</i></label>
-                  <p>  {{user.lopThi.tenLop}}</p>
-                  <div class="khung-qr">
-                    <img class="QR" src="https://firebasestorage.googleapis.com/v0/b/quizzeducation-eaea3.appspot.com/o/images%2FQR_Chau_Manh_Tan.png?alt=media&token=cf326965-2283-478c-b27e-043eb3c6afb9" alt="">
+                  <label><i>Ngày sinh/DateOfBirth:</i></label>
+                  <p> {{user.ngaySinh | date:'dd/MM/yyyy'}}</p>
+
+                </div>
+
               
-                  </div>
-                  </div>
-                  <p class="footer-card">www.quizz.edu.vn</p>
+
+                <div class="d-flex">
+                  <label> <i>Lớp/Class:</i></label>
+                  <p> {{user.lopThi.tenLop}}</p>
+
+                  
+
+                  <div class="khung-qr">
+                    <img class="QR"[src]="qrCodeImage" alt="QR Code">
+                   </div>
+                </div>
+                <p class="footer-card">www.quizz.edu.vn</p>
               </div>
             </div>
           </div>
@@ -131,7 +131,8 @@
               <div class="title-content d-flex">
                 <h2>Thông tin cá nhân</h2>
                 <input type="file" accept="images/*" id="fileInput" style="display: none;">
-                <button style="margin-left: 70px; border-radius: 10px; border: none; " (click)="openFileInput()"><svg
+                <button style="margin-left: 70px; border-radius: 10px; border: none; "(click)="openChangeImage()" >
+                  <svg
                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-pencil-square" viewBox="0 0 16 16">
                     <path
@@ -141,7 +142,7 @@
                   </svg> Đổi ảnh</button>
               </div>
               <div class="profile-body-content-header">
-
+                
                 <div class="row g-3 grid p-fluid">
 
                   <div class="field col-12">
@@ -190,17 +191,13 @@
                     <input type="text" id="trangThai" class="form-control box-shadow-none disabled-input"
                       [value]="user.trangThai? 'DHOC (Đang Học)':'NHOC (Nghĩ Học)'">
                   </div>
-                </div>
-
               </div>
 
+
             </div>
-
-
           </div>
         </div>
-
+        <input id="changeImage" accept="image/*" type="file" (change)="saveNewProfilePic($event)" hidden>
       </div>
     </div>
-  </div>
-</div>
+    

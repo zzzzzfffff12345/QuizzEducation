@@ -12,6 +12,6 @@ public interface BoCauHoiDaLamDAO extends JpaRepository<BoCauHoiDaLam, Integer> 
     @Query("SELECT new com.vnpt.quizz_education_be.DTO.DiemThiDTO(o) FROM BoCauHoiDaLam o WHERE o.taiKhoan.tenDangNhap = :tenDangNhap")
     List<DiemThiDTO> getBangDiem(String tenDangNhap);
 
-    @Query("SELECT o FROM BoCauHoiDaLam o WHERE o.taiKhoan.tenDangNhap = :tenDangNhap AND o.deThi.maDeThi = :maDeThi")
-    BoCauHoiDaLam getBoCauHoiDaLam(String tenDangNhap, Integer maDeThi);
+    @Query("SELECT p FROM BoCauHoiDaLam p WHERE p.taiKhoan.tenDangNhap = ?1 AND p.deThi.chiTietKyThi.kyThi.maKyThi = ?2 AND p.deThi.monThi.maMon = ?3")
+    BoCauHoiDaLam getBoCauHoiBangUsernameVaKiThi(String tenDangNhap, Integer maKyThi, Integer maMon);
 }

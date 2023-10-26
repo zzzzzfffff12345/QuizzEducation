@@ -1,4 +1,4 @@
-package com.vnpt.quizz_education_be.Controller;
+package com.vnpt.quizz_education_be.RestController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import com.vnpt.quizz_education_be.Login.JwtTokenProvider;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/quizzeducation/api")
-public class AuthController {
+public class JWTRestController {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
@@ -28,7 +28,7 @@ public class AuthController {
     @PostMapping("login")
     public ResponseEntity<TaiKhoan> LoginMethod(@RequestBody TaiKhoan account) throws JsonProcessingException {
         if (accountDAO.existsByTenDangNhap(account.getTenDangNhap())) {
-
+           
             // lấy tài khoản đăng nhập đi check với DB
             TaiKhoan accountLogin = accountDAO.findByTenDangNhap(account.getTenDangNhap());
             if (accountLogin.getTenDangNhap().trim().equals(account.getTenDangNhap())

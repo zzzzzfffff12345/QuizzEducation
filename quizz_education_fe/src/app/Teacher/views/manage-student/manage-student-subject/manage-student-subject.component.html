@@ -1,0 +1,36 @@
+<div class="card">
+  <p-table #dt1 [value]="listMonThi" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['maMon', 'tenMon']" [rowsPerPageOptions]="[10, 25, 50]">
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <form [formGroup]="formFilter">
+          <span class="p-input-icon-left ml-auto">
+            <input pInputText type="text" (change)="dt1.filterGlobal(getValueSearch(), 'contains')"
+              formControlName="search" class="form-control box-shadow-none" placeholder="Tìm kiếm"
+              aria-label="Example text with button addon" aria-describedby="button-search">
+          </span>
+        </form>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header" class="theader">
+      <tr>
+        <th pSortableColumn="maMon" style="width:25%">Mã kì thi<p-sortIcon field="maKyThi"></p-sortIcon></th>
+        <th pSortableColumn="tenMon" style="width:25%">Tên kì thi<p-sortIcon field="tenKyThi"></p-sortIcon></th>
+        <th pSortableColumn="thoiGianLamBai" style="width:25%">Mô tả<p-sortIcon field="moTa"></p-sortIcon></th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" class="tbody" let-event>
+      <tr>
+        <td>{{ event.maMon }}</td>
+        <td>{{ event.tenMon }}</td>
+        <td>{{ event.thoiGianLamBai }}</td>
+        <td><button class="btn btn-primary"
+            [routerLink]="['/teacher/manage-student/event/' + currentEvent + '/subject/'+ event.maMon+'/class']">Chi
+            tiết</button></td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

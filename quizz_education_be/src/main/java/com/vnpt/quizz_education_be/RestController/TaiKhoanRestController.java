@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vnpt.quizz_education_be.DAO.TaiKhoanDAO;
@@ -41,15 +43,19 @@ public class TaiKhoanRestController {
         return ResponseEntity.ok(taiKhoanDAO.findByHocSinh());
     }
 
+    @GetMapping("taikhoan/giaovien")
+    public ResponseEntity<List<TaiKhoan>> findByGiaoVien() {
+        return ResponseEntity.ok(taiKhoanDAO.findByGiaoVien());
+    }
 
     // Get 1 đối tượng thông qua id
     @GetMapping("taikhoan/{id}")
-    public ResponseEntity<TaiKhoan> findById(@PathVariable("id") String tenDangNhap){
+    public ResponseEntity<TaiKhoan> findById(@PathVariable("id") String tenDangNhap) {
         Optional<TaiKhoan> optional = taiKhoanDAO.findById(tenDangNhap);
-       if(!optional.isPresent()){
-        return ResponseEntity.notFound().build();
-       }
-       return ResponseEntity.ok(optional.get());
+        if (!optional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(optional.get());
     }
 
     // Thêm 1 đối tượng
@@ -60,11 +66,12 @@ public class TaiKhoanRestController {
             // 400 Bad Request: Địa chỉ tồi
         }
         TaiKhoan taikhoan2 = taiKhoanDAO.save(taikhoan);
+
         return ResponseEntity.ok(taikhoan2);
     }
 
     // Cập nhật 1 đối tượng dựa trên id
-     @PutMapping("taikhoan/{id}")
+    @PutMapping("taikhoan/{id}")
     public ResponseEntity<TaiKhoan> put(@PathVariable("id") String tenDangNhap, @RequestBody TaiKhoan taikhoan) {
         if (!taiKhoanDAO.existsById(tenDangNhap)) {
             return ResponseEntity.notFound().build();
@@ -74,14 +81,22 @@ public class TaiKhoanRestController {
     }
 
     // Xóa 1 đối tượng
-     @DeleteMapping("taikhoan/{id}")
+    @DeleteMapping("taikhoan/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") String tenDangNhap) {
         if (!taiKhoanDAO.existsById(tenDangNhap)) {
             return ResponseEntity.notFound().build();
         }
-
         taiKhoanDAO.deleteById(tenDangNhap);
-
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("taikhoan/lopThi")
+    public ResponseEntity<List<TaiKhoan>> getTaiKhoanInClass(@RequestParam("maLopThi") Integer maLopThi) {
+        return ResponseEntity.ok(taiKhoanDAO.getTaiKhoanInClass(maLopThi));
+    }
+
+    @GetMapping("taikhoan/noClass")
+    public ResponseEntity<List<TaiKhoan>> getTaiKhoanNotHaveClass() {
+        return ResponseEntity.ok(taiKhoanDAO.getTaiKhoanNotHaveClass());
     }
 }

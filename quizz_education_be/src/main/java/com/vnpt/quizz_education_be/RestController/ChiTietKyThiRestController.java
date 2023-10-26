@@ -34,7 +34,7 @@ public class ChiTietKyThiRestController {
         return ResponseEntity.ok(chiTietKyThiDAO.findAll());
     }
 
-    // Get 1 đối tượng thông qua id
+    // Get 1 đối tượng thông qua id 
     @GetMapping("chitietkythi/{id}")
     public ResponseEntity<ChiTietKyThi> findById(@PathVariable("id") Integer maChiTietKyThi) {
         Optional<ChiTietKyThi> optional = chiTietKyThiDAO.findById(maChiTietKyThi);
@@ -54,7 +54,6 @@ public class ChiTietKyThiRestController {
         return ResponseEntity.ok(resultList);
     }
 
-    
     // Get 1 đối tượng thông qua id của môn thi
     @GetMapping("chitietkythi/monthi/{id}")
     public ResponseEntity<List<ChiTietKyThi>> findByMaMon(@PathVariable("id") int maMon) {
@@ -94,8 +93,6 @@ public class ChiTietKyThiRestController {
         return ResponseEntity.ok(chitietkythi);
     }
 
-
-
     @DeleteMapping("chitietkythi/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Integer maChiTietKyThi) {
         if (!chiTietKyThiDAO.existsById(maChiTietKyThi)) {
@@ -107,4 +104,14 @@ public class ChiTietKyThiRestController {
         return ResponseEntity.ok().build();
     }
 
+    // @GetMapping("monthi")
+    // public ResponseEntity<List<MonThi>> findMonThiByKiThiId(@RequestParam("kithi") Integer kiThiId) {
+    //     return ResponseEntity.ok(chiTietKyThiDAO.getMonThiInKiThi(kiThiId));
+    // }
+
+    // @GetMapping("lopthi")
+    // public ResponseEntity<List<LopThi>> getLopThiByKyThiAndMonThi(@RequestParam("kithi") Integer kithiId,
+    //         @RequestParam("monthi") Integer monThiId) {
+    //     return ResponseEntity.ok(chiTietKyThiDAO.getLopThiByKiThiAndMonThi(kithiId, monThiId));
+    // }
 }
