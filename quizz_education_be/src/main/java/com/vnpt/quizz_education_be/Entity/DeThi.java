@@ -5,19 +5,16 @@ import java.sql.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.vnpt.quizz_education_be.DAO.ChiTietKiThiDAO;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import lombok.Data;
 
 @SuppressWarnings("serial")
@@ -41,20 +38,24 @@ public class DeThi implements Serializable {
     private Boolean daSuDung;
 
     // Relationship N - 1
-
+   
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ma_chi_tiet_ky_thi")
-    ChiTietKyThi ChiTietKyThi;
+    ChiTietKyThi chiTietKyThi;
 
-    @JsonIgnore
+  
     @ManyToOne
     @JoinColumn(name = "ten_dang_nhap")
     TaiKhoan taiKhoan;
 
-    @JsonIgnore
+  
     @ManyToOne
     @JoinColumn(name = "ma_mon")
     MonThi monThi;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "deThi")
+    List<CauHoi> cauHois;
 
 }

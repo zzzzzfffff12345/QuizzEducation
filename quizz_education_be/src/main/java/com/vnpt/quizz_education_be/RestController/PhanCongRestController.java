@@ -18,12 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vnpt.quizz_education_be.DAO.PhanCongDAO;
 import com.vnpt.quizz_education_be.Entity.PhanCong;
 
-
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/quizzeducation/api")
 public class PhanCongRestController {
-    
+
     @Autowired
     PhanCongDAO phanCongDAO;
 
@@ -66,9 +65,7 @@ public class PhanCongRestController {
         if (!phanCongDAO.existsById(maPhanCong)) {
             return ResponseEntity.notFound().build();
         }
-
         phanCongDAO.deleteById(maPhanCong);
-
         return ResponseEntity.ok().build();
     }
 }

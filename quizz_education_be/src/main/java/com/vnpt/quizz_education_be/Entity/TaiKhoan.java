@@ -2,24 +2,15 @@ package com.vnpt.quizz_education_be.Entity;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @SuppressWarnings("serial")
 @Data
@@ -63,14 +54,15 @@ public class TaiKhoan implements Serializable {
     @Column(name = "anh_dai_dien")
     private String anhDaiDien;
 
-    @JsonIgnore
+    @Column(name = "token")
+    private String token;
+
     @ManyToOne
     @JoinColumn(name = "ma_lop")
     LopThi lopThi;
 
     // Relationship 1-N
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ma_vai_tro")
     VaiTro vaiTro;
