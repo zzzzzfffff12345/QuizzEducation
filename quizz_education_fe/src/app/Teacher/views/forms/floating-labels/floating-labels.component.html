@@ -1,0 +1,199 @@
+<c-row ngPreserveWhitespaces>
+
+
+  <c-col xs="12">
+    <c-card class="mb-4">
+
+
+      <div class="tabs">
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button (click)="editTabs()" class="nav-link active text-dark" id="nav-danh-sach-tab" [ngClass]="{'active': activeTab === 'danh-sach'}" data-bs-toggle="tab"
+            data-bs-target="#nav-danh-sach" type="button" role="tab" aria-controls="nav-danh-sach"
+            aria-selected="true">Danh sách đề thi</button>
+          <button  (click)="switchToEditTab()" class="nav-link text-dark" id="nav-tao-de-thi-tab" [ngClass]="{'active': activeTab === 'tao-de-thi'}" data-bs-toggle="tab"
+            data-bs-target="#nav-tao-de-thi" type="button" role="tab" aria-controls="nav-tao-de-thi"
+            aria-selected="false">Chi tiết đề thi</button>
+          
+          </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+
+          <div class="tab-pane fade show  mt-4" [ngClass]="{ 'show active': showLichPhanCong }" id="nav-danh-sach" role="tabpanel" aria-labelledby="nav-danh-sach-tab">
+
+            <!-- start table -->
+            <div class="group-header-table ">
+              <p-table [value]="listContest" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" #dt1
+                dataKey="maDeThi" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
+                [paginator]="true" currentPageReportTemplate="Hiển thị {first} đến {last} của {totalRecords} đối tượng"
+                [globalFilterFields]="['maDeThi', 'tenDeThi','chiTietKyThi.trangThai','chiTietKyThi.thoiGianBatDau','chiTietKyThi.thoiGianKetThuc','chiTietKyThi.monThi.tenMon','chiTietKyThi.lopThi.tenLop','chiTietKyThi.kyThi.tenKyThi']">
+
+                <ng-template pTemplate="header" class="theader">
+                  <tr>
+                    <th style="min-width:200px; text-align: center" pSortableColumn="maDeThi">Mã đề thi
+                      <p-sortIcon field="maDeThi"></p-sortIcon>
+                    </th>
+                    <th style="min-width:200px; text-align: center" pSortableColumn="tenDeThi">Tên đề thi
+                      <p-sortIcon field="tenDeThi"></p-sortIcon>
+                    </th>
+                    
+                    <th style="min-width:200px; text-align: center" pSortableColumn="chiTietKyThi.thoiGianBatDau">Thời gian bắt
+                      đầu
+                      <p-sortIcon field="chiTietKyThi.thoiGianBatDau"></p-sortIcon>
+                    </th>
+                    <th style="min-width:200px; text-align: center" pSortableColumn="chiTietKyThi.thoiGianKetThuc">Thời gian
+                      kết thúc
+                      <p-sortIcon field="chiTietKyThi.thoiGianKetThuc"></p-sortIcon>
+                    </th>
+                    <th style="min-width:200px; text-align: center" pSortableColumn="chiTietKyThi.monThi.tenMon">Môn thi
+                      <p-sortIcon field="chiTietKyThi.monThi.tenMon"></p-sortIcon></th>
+
+                    <th style="min-width:200px; text-align: center" pSortableColumn="chiTietKyThi.lopThi.tenLop">Lớp thi
+                      <p-sortIcon field="chiTietKyThi.lopThi.tenLop"></p-sortIcon></th>
+                      <th style="min-width:200px; text-align: center" pSortableColumn="chiTietKyThi.trangThai">Trạng thái đề thi
+                        <p-sortIcon field="chiTietKyThi.trangThai"></p-sortIcon>
+                      </th>
+                    <th style="min-width:200px; text-align: center"  pSortableColumn="chiTietKyThi.kyThi.tenKyThi">Tên kỳ thi
+                      <p-sortIcon field="chiTietKyThi.kyThi.tenKyThi"></p-sortIcon></th>
+                    
+                    <th style="min-width:200px; text-align: center">Thao tác</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" class="tbody" let-list let-rowIndex="rowIndex">
+                  <tr>
+                    <td class="text-center">{{list.maDeThi}}</td>
+                    <td class="text-center">{{list.tenDeThi}}</td>
+                    
+                    <td class="text-center">{{list.chiTietKyThi.thoiGianBatDau| date: 'HH:mm | dd-MM-yyyy'}}</td>
+                    <td class="text-center">{{list.chiTietKyThi.thoiGianKetThuc| date: 'HH:mm | dd-MM-yyyy'}}</td>
+                    <td class="text-center">{{list.chiTietKyThi.monThi.tenMon}}</td>
+                    <td class="text-center">{{list.chiTietKyThi.lopThi.tenLop}}</td>
+                    <td class="text-center"
+                      [ngClass]="{'text-success': list.chiTietKyThi.trangThai == 'Đang diễn ra', 'text-danger': list.chiTietKyThi.trangThai == 'Đã kết thúc' }">
+                      {{list.chiTietKyThi.trangThai}}</td>
+                    <td class="text-center">{{list.chiTietKyThi.kyThi.tenKyThi}}</td>
+                    <td class="text-center">
+                      <button class="btn btn-light" (click)=" getCauHoiDeThi(list.maDeThi)" (click)=" editTeacher(list.maDeThi)"  (click)=" editTeacher(list.maDeThi)" (click)="switchToEditTab()" style="color: blue;">Chi tiết</button>
+                    </td>
+
+                  </tr>
+                </ng-template>
+
+              </p-table>
+
+            </div>
+
+
+            <!-- end table -->
+
+          </div>
+
+
+          <div class="tab-pane fade" id="nav-tao-de-thi"  [ngClass]="{ 'show active': showTaoDeThi }" role="tabpanel" aria-labelledby="nav-tao-de-thi-tab">
+
+            <div class="tab-header-thong-tin-de-thi">
+              <h3>Thông Tin Đề Thi</h3>
+              <form [formGroup]="myForm">
+
+                <div class="modal-body">
+                  <div class="row">  
+
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="formattedStartTime" class="form-label">Tên đề thi</label>
+                        <input formControlName="tenDeThi" type="text" class="form-control" id="tenDeThi"
+                          name="tenDeThi" readonly required>
+                      </div>
+
+                    </div>              
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="formattedStartTime" class="form-label">Môn thi</label>
+                        <input formControlName="selectedMonThi" type="text" class="form-control" id="monThi"
+                          name="monThi" readonly required>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="tenKyThi" class="form-label">Tên kỳ thi</label>
+                        <input formControlName="selectedKyThi" type="text" class="form-control" id="tenKyThi"
+                          name="tenKyThi" readonly required>
+                      </div>
+                    </div>
+
+                      <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="tenKyThi" class="form-label">Lớp thi</label>
+                        <input formControlName="selectedLopThi" type="text" class="form-control" id="lopThi"
+                          name="lopThi" readonly required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              
+
+              </form>
+
+
+            </div>
+            <p-table [value]="listCauHoi" responsiveLayout="scroll">
+              <ng-template pTemplate="header">
+                <tr>
+              
+                  <th style="min-width:300px; text-align: center" pSortableColumn="maCauHoi">Mã Câu Hỏi
+                  
+                  </th>
+                  <th style="min-width:300px; text-align: center" pSortableColumn="noiDungCauHoi">Nội Dung Câu Hỏi
+                  
+                  </th>
+                  <th style="min-width:300px; text-align: center" pSortableColumn="diemCauHoi">Điểm Câu Hỏi
+                  
+                  </th>
+
+                  <th style="min-width:300px; text-align: center" pSortableColumn="">Thao Tác
+                  
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" class="tbody" let-list1 let-rowIndex="rowIndex">
+                <tr>
+                  <td class="text-center">{{list1.maCauHoi}}  </td>
+                  <td class="text-center">{{list1.noiDungCauHoi}}  </td>
+                  <td class="text-center">{{list1.diemCauHoi}}  </td>
+                
+                  <td class="text-center">
+                    <button class="btn btn-light" >Chi tiết</button>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+
+
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+
+      <p-dialog header="Thông tin câu hỏi" [position]="'top'" [modal]="true"
+      [(visible)]="displayModalGrnDetail" [breakpoints]="{'960px': '75vw'}" [style]="{width: '40vw'}"
+      [draggable]="false" [resizable]="false">
+      <form class="row g-3 grid p-fluid materialForm">
+          
+         <h1>Cau hoi đi nè!!!</h1>
+
+          
+          
+      </form>
+  </p-dialog>
+  
+    </c-card>
+  </c-col>
+</c-row>
